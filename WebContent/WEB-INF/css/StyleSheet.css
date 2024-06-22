@@ -33,16 +33,17 @@ thead th {
 
 th,
 td {
-  padding: 20px;
+  padding: 10px;
 }
 
 thead th,
 tfoot th {
   font-family: "Times New Roman", cursive;
+  font-size:small;
 }
 
 th {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 td {
