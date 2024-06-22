@@ -1,0 +1,124 @@
+@charset "ISO-8859-1";
+
+/* Variables */
+:root {
+	/* COLORES */ -
+	--primary-color-light: #fff; -
+	--primary-color: #56ADDA; -
+	--secondary-color: #83D9FE; -
+	--terciary-color: #b6dcb6; -
+	--blanco-color: #ffffff;
+	--negro-color: #000000;
+	--gris-color: #777777; 
+	/* FUENTES */ -
+	-primary-font: "Raleway", sans-serif; -
+	-secondary-font: "Roboto", sans-serif;
+}
+
+.header {
+	color: #56ADDA;
+}
+
+/* tablas */
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid black;
+}
+
+thead th {
+  width: auto;
+}
+
+th,
+td {
+  padding: 20px;
+}
+
+thead th,
+tfoot th {
+  font-family: "Times New Roman", cursive;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+tfoot th {
+  text-align: right;
+}
+
+thead,
+tfoot {
+  background: #777777;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+thead th,
+tfoot th,
+tfoot td {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  border: 3px solid #777777;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #777777;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #777777;
+}
+
+tbody tr {
+  background: #777777;
+}
+
+table {
+  background-color: #777777;
+}
+
+caption {
+  font-family: "Rock Salt", cursive;
+  padding: 20px;
+  font-style: italic;
+  caption-side: bottom;
+  color: #666;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+
+
+/* Footer */
+.footer {
+    background: url(../assets/images/footer/bg.jpg);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 15rem;
+    align-content: center;
+}
+
+/* Responsivo */
+/*Móviles: entre 320 y 480 píxeles*/
+@media screen and (max-width: 480px) {}
+
+/*Tablets: entre 768 y 1024 píxeles.*/
+@media (min-width: 481px) and (max-width: 767px) {}
+
+/*Pantallas grandes: más de 1200 píxeles.*/
+@media only screen and (min-width : 1224px) {}

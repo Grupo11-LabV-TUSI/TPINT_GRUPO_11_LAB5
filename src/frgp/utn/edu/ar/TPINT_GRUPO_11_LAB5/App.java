@@ -35,6 +35,7 @@ public class App {
 		// Paciente
 		PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
 		Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
+		paciente.setDni(11111111);
 		try {
 			estado = pacienteNegocio.add(paciente);
 			// System.out.println(MENSAJE_AGREGADO);
@@ -132,6 +133,22 @@ public class App {
 			e.printStackTrace();
 		} finally {
 			System.out.println(turno.toString());
+			System.out.println(MENSAJE_YA_EXISTE);
+		}
+		
+		// Usuario ADMIN
+		usuario = (Usuario) appContext.getBean("UsuarioBean");
+		usuario.setUsuario("Admin");
+		usuario.setContraseña("Clave1234");
+		try {
+			estado = usuarioNegocio.add(usuario);
+			// System.out.println(MENSAJE_AGREGADO);
+		} catch (Exception e) {
+			// TODO: handle exception
+			// System.err.println(MENSAJE_YA_EXISTE);
+			e.printStackTrace();
+		} finally {
+			System.out.println(usuario.toString());
 			System.out.println(MENSAJE_YA_EXISTE);
 		}
 
