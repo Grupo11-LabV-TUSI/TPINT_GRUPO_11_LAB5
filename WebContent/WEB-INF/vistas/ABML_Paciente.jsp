@@ -1,0 +1,232 @@
+<%@page import="java.time.LocalDate"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Paciente</title>
+<style type="text/css">
+	<jsp:include page="../css/StyleSheet.css"></jsp:include>
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<jsp:include page="Menu.jsp"></jsp:include>
+	
+<div class="container">
+        <h2>Gestión de Usuarios</h2>
+        
+        <div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+        <!-- Botón para abrir el modal -->
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#userModal">
+        
+            Alta Paciente
+        </button>
+         
+    </div>
+  </div>
+</div>
+
+  <!--//////////////////Inicio de tabla////////////////////////////-->
+<%System.out.println(">>>>>>>>>> lllegamos <<<<<<  <"); %>
+
+<section class="row justify-content-center pt-1 px-1">
+						<fieldset>
+							<legend>ABML Pacientes</legend>
+							
+							<input type="submit" name="btnVerPaciente" value="IR" class="btn btn-success"> 
+							<div class="table-responsive">
+									</form>
+							<table summary="Los pacientes registrados en la Clinica">
+								<caption>
+		    						Un listado de los pacientes registrados en la Clinica
+		  						</caption>
+							    <thead>
+							        <tr>
+							        	<th></th>
+							            <th>DNI</th>
+							            <th>NOMBRE</th>
+							            <th>APELLIDO</th>
+							            <th>EMAIL</th>
+							            <th>TELEFONO</th>
+							            <th>FECHA NACIMIENTO</th>
+							            <th>DIRECCION</th>
+							            <th>LOCALIDAD</th>
+							            <th>PROVINCIA</th>
+							            <th>ESTADO</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							    	<c:forEach items="${listaPacientes}" var="paciente">
+								        <tr>
+								        	<form action="ver_detalle_paciente.html" method="get">
+								        		<td> <input type="submit" name="btnVerPaciente" value="Ver" class="bg-warning"> </td>
+									            <td> ${paciente.getDni()} 
+									            <input type="hidden" name="paciente" value="${paciente}"> </td>
+									             <input type="hidden" name="dni" value="${paciente.getDni()}">
+									            <td> ${paciente.getNombre()} </td>
+									            <td> ${paciente.getApellido()} </td>
+									            <td> ${paciente.getEmail()} </td>
+									            <td> ${paciente.getTelefono()} </td>
+									            <td> ${paciente.getFecha_nacimiento()} </td>
+									            <td> ${paciente.getDireccion()} </td>
+									            <td> ${paciente.getLocalidad()} </td>
+									            <td> ${paciente.getProvincia()} </td>
+									            
+									         </form>
+									          	
+									          	
+									        	<td>
+									        	
+							
+								
+	              									<form action="actualizar_estado_paciente.html" method="get">
+										        	 <input type="hidden" name="dni" value="${paciente.getDni()}"> 
+											             <c:choose>
+		              									 
+		              									     
+		              									     <c:when test="${paciente.getEstado()}">
+		              									     				<input type="submit" name="btnEstado" value="Alta" class="btn btn-success"> 
+		                   									     		
+		                 									 </c:when>
+				                   							 <c:otherwise>
+				                   							 	
+				                   							 				<input type="submit" name="btnEstado" value="Baja" class="btn btn-danger"> 
+				                   							 </c:otherwise>
+											            	
+											             </c:choose>
+			                        				</form> 
+									             </td> 
+									             
+									            
+									             
+									             
+									             
+									             
+									             
+								      
+								        </tr>
+							        </c:forEach>
+							    </tbody>					    
+							</table>
+							
+										${estadoUpdatePaciente}
+							
+							</div>
+						</fieldset>			
+					</section>
+
+
+
+  <!--//////////////////FIN TABLA//////////////////////////////////-->
+
+
+        <!-- El Modal -->
+        <div class="modal fade" id="userModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Cabecera del Modal -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Formulario de Carga de Paciente</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Cuerpo del Modal -->
+                    <div class="modal-body">
+                       <form action="ServletClientes" method="post">
+						<table>
+							<tr> 
+								<td style="width: 139px; ">DNI</td>
+								<td style="height: 0px; "><input type="Number" name="txtDNI" min="1" max="99999999"
+								required  maxlength="10" autocomplete="off" onkeypress="return((event.charCode >= 48 && event.charCode <= 57))"
+								value="00.000.000" /><br></td>
+							</tr>
+								<tr> 
+								<td>Nombre: </td>
+								<td style="height: 0px; "><input type="text" name="txtNOMBRE" style="text-transform:uppercase"/></td>
+								<td></td>
+							</tr>	 
+							<tr>
+							<td>Apellido: </td>
+								<td style="height: 0px; "><input type="text" name="txtAPELLIDO" style="text-transform:uppercase"/></td>
+							</tr>
+							<tr> 
+								<td>Fecha de Nacimiento: </td>
+								<td style="height: 0px; "><input type="date" name="txtFECHA_NAC" value="DD/MM/AAAA" required/><br></td>		
+							</tr>	
+							<tr>
+								<td>Domicilio: </td>
+								<td style="height: 0px; "><input type="text" name="txtDIRECCION" required  maxlength="40" autocomplete="off" style="text-transform:uppercase"/><br></td>	
+							</tr>
+							<tr>
+								<td>Correo Electrónico: </td>
+								<td style="height: 0px; ">  <input type="email" name="textEMAIL" required /> </td>	
+							</tr>
+							<tr> 
+								<td>Teléfono: </td>
+								<td style="height: 0px; "><input type="tel" name="txtTELEFONO"/></td>
+							</tr>
+						<tr>
+					
+							<td>Localidad: </td>
+							<td style="height: 0px; "><input type="text" name="txtLocalidad"/></td>
+
+							<!-- 
+						<td style="height: 0px; ">
+								<select name="txtLOCALIDAD" >
+								<option value="1" >Seleccione: </option>
+								
+									<%
+									//if(list_Especialidad!=null)
+										//for (Especialidad loc : list_Especialidad) {
+									%>
+									
+									<%
+										//}
+										%>
+					%>
+										<!-- ACA DESARROLLO LAS OPCIONES -->									 				
+				
+										<!--				
+					 </select>	
+							</td> -->
+						</tr>
+							
+							
+							<tr>
+							
+							</tr>
+							<br />
+							<tr>
+								<td style="height: 0px; "><input type="submit" name="btnAceptar" value="Alta"/></td>
+							</tr>
+						
+						</table>
+						</form>
+                    </div>
+                    <!-- Pie del Modal -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</body>
+<jsp:include page="footer.jsp"></jsp:include>
+</html>

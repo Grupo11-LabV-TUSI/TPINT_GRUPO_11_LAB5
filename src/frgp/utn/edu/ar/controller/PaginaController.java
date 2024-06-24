@@ -81,6 +81,9 @@ public class PaginaController {
 		return MV;
 	}
 	
+	
+	
+	
 	/** OTRA VISTA */
 	// Ver paciente
 	@RequestMapping("ver_paciente.html")
@@ -91,6 +94,8 @@ public class PaginaController {
 		MV.setViewName("Ingreso");
 		return MV;
 	}
+	
+	
 	/** OTRA VISTA */
 	// Ver medico
 	@RequestMapping("ver_medico.html")

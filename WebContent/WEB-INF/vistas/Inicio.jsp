@@ -82,6 +82,12 @@
 					<section class="row justify-content-center pt-3 px-3">
 						<fieldset>
 							<legend>ABML Pacientes</legend>
+							<form action="ABML_paciente.html" method="get">
+							
+							
+							
+							<input type="submit" name="btnVerPaciente" value="IR" class="btn btn-success"> 
+							</form>
 							<table summary="Los pacientes registrados en la Clinica">
 								<caption>
 		    						Un listado de los pacientes registrados en la Clinica
