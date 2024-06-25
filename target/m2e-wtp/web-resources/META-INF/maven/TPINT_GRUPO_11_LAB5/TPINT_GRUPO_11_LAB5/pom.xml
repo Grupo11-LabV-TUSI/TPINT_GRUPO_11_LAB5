@@ -8,7 +8,6 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-
 		<!-- SPRINGFRAMEWORK -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -90,7 +89,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.3.2</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>

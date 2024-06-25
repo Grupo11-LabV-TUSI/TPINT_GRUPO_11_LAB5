@@ -42,6 +42,16 @@
           		<button class="btn btn-outline-primary" type="submit">Nosotros</button>
         	</form>
           </li>
+         
+ <li class="nav-item">
+         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Medico
+            </a>
+   <form class="d-flex mt-3" action="redireccionar_ingreso.html" method="get">
+          			<input class="btn btn-outline-success" type="submit" value="ABM_Medico" name="btnNavIngresar">
+        		</form>
+ </li>
+                   
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Usuario
