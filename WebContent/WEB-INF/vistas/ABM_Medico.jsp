@@ -114,69 +114,69 @@
                     </div>
                     <!-- Cuerpo del Modal -->
                     <div class="modal-body">
-                       <form action="ServletClientes" method="post">
-						<table>
-							<tr> 
-								<td style="width: 139px; ">Matricula</td>
-								<td style="height: 0px; "><input type="Number" name="txtDNI" min="1" max="99999999"
-								required  maxlength="10" autocomplete="off" onkeypress="return((event.charCode >= 48 && event.charCode <= 57))"
-								value="00.000.000" /><br></td>
-							</tr>
-								<tr> 
-								<td>Nombre: </td>
-								<td style="height: 0px; "><input type="text" name="txtNOMBRE" style="text-transform:uppercase"/></td>
-								<td></td>
-							</tr>	 
-							<tr>
-							<td>Apellido: </td>
-								<td style="height: 0px; "><input type="text" name="txtAPELLIDO" style="text-transform:uppercase"/></td>
-							</tr>
-							<tr> 
-								<td>Fecha de Nacimiento: </td>
-								<td style="height: 0px; "><input type="date" name="txtFECHA_NAC" value="DD/MM/AAAA" required/><br></td>		
-							</tr>	
-							<tr>
-								<td>Domicilio: </td>
-								<td style="height: 0px; "><input type="text" name="txtDIRECCION" required  maxlength="40" autocomplete="off" style="text-transform:uppercase"/><br></td>	
-							</tr>
-							<tr>
-								<td>Correo Electrónico: </td>
-								<td style="height: 0px; ">  <input type="email" name="textEMAIL" required /> </td>	
-							</tr>
-							<tr> 
-								<td>Teléfono: </td>
-								<td style="height: 0px; "><input type="tel" name="txtTELEFONO"/></td>
-							</tr>
-						<tr>
-							<td>Especialidad: </td>
-						<td style="height: 0px; ">
-								<select name="txtLOCALIDAD" >
-								<option value="1" >Seleccione: </option>
-								
-									<%
-									//if(list_Especialidad!=null)
-										//for (Especialidad loc : list_Especialidad) {
-									%>
-									
-									<%
-										//}
-										%>
-										<!-- ACA DESARROLLO LAS OPCIONES -->									 				
-								 </select>	
-							</td>
-						</tr>
-							
-							
-							<tr>
-							
-							</tr>
-							<br />
-							<tr>
-								<td style="height: 0px; "><input type="submit" name="btnAceptar" value="Agregar"/></td>
-							</tr>
-						
-						</table>
-						</form>
+                       <form action="agregar_medico.html" method="post">
+		                <div class="form-group row">
+		                    <label class="col-sm-2 col-form-label">Nombre:</label>
+		                    <div class="col-sm-6">
+		                        <!-- <input type="text" class="form-control" name="nombre" value="${medico.nombre}"/> -->
+		                        <input type="text" id="txtnombre" name="txtnombre">
+		                    </div>
+		                </div>
+		                
+		                <div class="form-group row">
+		                    <label class="col-sm-2 col-form-label">Apellido:</label>
+		                    <div class="col-sm-6">
+		                     <input type="text" id="txtapellido" name="txtapellido">
+		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.apellido}"/> -->
+		                       
+		                    </div>
+		                </div>
+		                
+		                <div class="form-group row">
+		                    <label class="col-sm-2 col-form-label">Telefono:</label>
+		                    <div class="col-sm-6">
+		                    <input type="phone" id="txttelefono" name="txttelefono">
+		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.telefono}"/> -->
+		                       
+		                    </div>
+		                </div>
+		                
+		                <div class="form-group row">
+		                    <label class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
+		                    <div class="col-sm-6">
+		              			<input type="date" id="txtfechaNacimiento" name="txtfechaNacimiento" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+
+		            
+		                      <!-- <input type="text" class="form-control" name="nombre" value="${medico.fechaNacimiento}"/> -->  
+		                    </div>
+		                </div>
+		                
+		                 <div class="form-group row">
+		                    <label class="col-sm-2 col-form-label">Email:</label>
+		                    <div class="col-sm-6">
+		                    <input type="email" id="txtemail" name="txtemail">
+		                    <!-- <input type="text" class="form-control" name="nombre" value="${medico.email}"/> -->  
+		                        
+		                    </div>
+		                </div>
+
+						 <div class="form-group row">
+						            <label class="col-sm-2 col-form-label">Especialidad:</label>
+						            <div class="col-sm-6">
+						                <select class="form-control" name="txtespecialidad">
+						                    <option value="1">Odontología</option>
+						                    <option value="2">Pediatría</option>
+						                </select>
+						            </div>
+						        </div>
+
+		                 <br />
+		                <div class="form-group row">
+		                    <div class="col-sm-10">
+		                        <input type="submit" name="btnAgregarMedico" class="btn btn-primary" />
+		                    </div>
+		                </div>
+		            </form>
                     </div>
                     <!-- Pie del Modal -->
                     <div class="modal-footer">
