@@ -28,13 +28,13 @@ public class App2 {
 		// Paciente
 
 		PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
-		Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
+		Paciente paciente = (Paciente) appContext.getBean("PacienteBean");		
 		List<Paciente> listaPaciente = pacienteNegocio.readAll();
 		System.err.println("Listado de tabla Paciente");
 		for (Paciente aux : listaPaciente) {
 			System.out.println(aux.toString());
 		}
-
+		
 		// Especialidad
 
 		EspecialidadNegocio especialidadNegocio = (EspecialidadNegocio) appContext.getBean("EspecialidadNegocioBean");

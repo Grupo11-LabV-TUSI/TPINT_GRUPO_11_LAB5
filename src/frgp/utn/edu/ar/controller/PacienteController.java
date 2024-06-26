@@ -1,5 +1,7 @@
 package frgp.utn.edu.ar.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -95,6 +97,39 @@ public class PacienteController {
 		
 		System.out.println(paciente);
 		MV.setViewName("detalle_paciente");
+		return MV;
+	}
+	
+	
+	@RequestMapping("alta_paciente.html")
+	public ModelAndView eventoAltaPaciente(
+		@RequestParam("txtDNI") int dni,
+		@RequestParam("txtNOMBRE") String nombre,
+		@RequestParam("txtAPELLIDO")String apellido,
+		@RequestParam("txtFECHA_NAC")String fechaNac,
+		@RequestParam("txtDIRECCION")String direccion,
+		@RequestParam("textEMAIL")String email,
+		@RequestParam("txtTELEFONO")String telefono,
+		@RequestParam("txtLocalidad")String localidad
+			
+			) {
+		ModelAndView MV = new ModelAndView();
+		
+		System.out.println("LLEGO A alta  paciente");
+		paciente.setDni(dni);
+		paciente.setNombre(nombre);
+		paciente.setApellido(apellido);
+			LocalDate fecha = LocalDate.parse(fechaNac);
+		paciente.setFecha_nacimiento(fecha);
+		paciente.setDireccion(direccion);
+		paciente.setEmail(email);
+		paciente.setTelefono(telefono);
+		paciente.setLocalidad(localidad);
+		pacienteNegocio.add(paciente);
+		MV.addObject("listaPacientes", pacienteNegocio.readAll());
+		MV.setViewName("ABML_Paciente");
+		
+		
 		return MV;
 	}
 	

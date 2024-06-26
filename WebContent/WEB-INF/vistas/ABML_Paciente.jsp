@@ -6,6 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	
+	<script type="text/javascript" charset="utf8"src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/sl-1.2.6/datatables.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+
+
+
 <title>Paciente</title>
 <style type="text/css">
 	<jsp:include page="../css/StyleSheet.css"></jsp:include>
@@ -16,12 +23,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+	<script type="text/javascript" charset="utf8"src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/sl-1.2.6/datatables.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+
+
+
+
 </head>
 <body>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#tabla_paciente').DataTable( {
+		  "searching": false,
+		  "info": false	  
+		  
+		});
+	});
+	
+
+	
+	
+</script>
+
+
+
 	<jsp:include page="Menu.jsp"></jsp:include>
 	
 <div class="container">
-        <h2>Gestión de Usuarios</h2>
+        <h2>GestiÃ³n de Usuarios</h2>
         
         <div class="container">
   <div class="row">
@@ -31,90 +63,100 @@
     <div class="col-sm">
 
     </div>
-    <div class="col-sm">
-        <!-- Botón para abrir el modal -->
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#userModal">
-        
-            Alta Paciente
-        </button>
-         
-    </div>
+   
   </div>
 </div>
 
   <!--//////////////////Inicio de tabla////////////////////////////-->
 <%System.out.println(">>>>>>>>>> lllegamos <<<<<<  <"); %>
 
-		<section class="row justify-content-center pt-1 px-1">
-		<fieldset>
-			<legend>ABML Pacientes</legend>
-
-			<input type="submit" name="btnVerPaciente" value="IR"
-				class="btn btn-success">
-			<div class="table-responsive">
-				</form>
-				<table summary="Los pacientes registrados en la Clinica">
-					<caption>Un listado de los pacientes registrados en la
-						Clinica</caption>
-					<thead>
-						<tr>
-							<th></th>
-							<th>DNI</th>
-							<th>NOMBRE</th>
-							<th>APELLIDO</th>
-							<th>EMAIL</th>
-							<th>TELEFONO</th>
-							<th>FECHA NACIMIENTO</th>
-							<th>DIRECCION</th>
-							<th>LOCALIDAD</th>
-							<th>PROVINCIA</th>
-							<th>ESTADO</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${listaPacientes}" var="paciente">
-							<tr>
-								<form action="ver_detalle_paciente.html" method="get">
-									<td><input type="submit" name="btnVerPaciente" value="Ver"
-										class="bg-warning"></td>
-									<td>${paciente.getDni()} <input type="hidden"
-										name="paciente" value="${paciente}">
-									</td> <input type="hidden" name="dni" value="${paciente.getDni()}">
-									<td>${paciente.getNombre()}</td>
-									<td>${paciente.getApellido()}</td>
-									<td>${paciente.getEmail()}</td>
-									<td>${paciente.getTelefono()}</td>
-									<td>${paciente.getFecha_nacimiento()}</td>
-									<td>${paciente.getDireccion()}</td>
-									<td>${paciente.getLocalidad()}</td>
-									<td>${paciente.getProvincia()}</td>
-								</form>
-								<td>
-									<form action="actualizar_estado_paciente.html" method="get">
-										<input type="hidden" name="dni" value="${paciente.getDni()}">
-										<c:choose>
-											<c:when test="${paciente.getEstado()}">
-												<input type="submit" name="btnEstado" value="Alta"
-													class="btn btn-success">
-											</c:when>
-											<c:otherwise>
-
-												<input type="submit" name="btnEstado" value="Baja"
-													class="btn btn-danger">
-											</c:otherwise>
-										</c:choose>
+<section class="row justify-content-center pt-1 px-1">
+						<fieldset>
+							<legend>ABML Pacientes</legend>
+							
+							        
+							           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+									        <div class="container">
+									            <!-- BotÃ³n de Inicio -->
+									            <form class="form-inline mr-auto" action="cargar_inicio.html" method="get">
+									                <button class="btn btn-primary"  type="submit" name="btnNavIrInicio">Inicio</button>
+									            </form>
+									            <!-- BotÃ³n de Alta Paciente -->
+									            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#userModal">Alta Paciente</button>
+									        </div>
+									    </nav>
+							        
+							 
+							   </br>
+							<div class="table-responsive">
 									</form>
-								</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-
-				${estadoUpdatePaciente}
-
-			</div>
-		</fieldset>
-		</section>
+							<table id= "tabla_paciente" class="display">
+								
+							    <thead>
+							        <tr>
+							        	<th></th>
+							            <th>DNI</th>
+							            <th>NOMBRE</th>
+							            <th>APELLIDO</th>
+							            <th>FECHA NACIMIENTO</th>
+							            <th>ESTADO</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							    	<c:forEach items="${listaPacientes}" var="paciente">
+								        <tr>
+								        	<form action="ver_detalle_paciente.html" method="get">
+								        		<td> <input type="submit" name="btnVerPaciente" value="Ver" class="btn btn-warning"> </td>
+									            <td> ${paciente.getDni()} </td>
+									            <input type="hidden" name="paciente" value="${paciente}"> 
+									             <input type="hidden" name="dni" value="${paciente.getDni()}"> 
+									            <td> ${paciente.getNombre()} </td>
+									            <td> ${paciente.getApellido()} </td>
+									            <td> ${paciente.getFecha_nacimiento()} </td>
+									           
+									            
+									         </form>
+									          	
+									          	
+									        	<td>
+									        	
+							
+								
+	              									<form action="actualizar_estado_paciente.html" method="get">
+										        	 <input type="hidden" name="dni" value="${paciente.getDni()}"> 
+											             <c:choose>
+		              									 
+		              									     
+		              									     <c:when test="${paciente.getEstado()}">
+		              									     				<input type="submit" name="btnEstado" value="Alta" class="btn btn-success"> 
+		                   									     		
+		                 									 </c:when>
+				                   							 <c:otherwise>
+				                   							 	
+				                   							 				<input type="submit" name="btnEstado" value="Baja" class="btn btn-danger"> 
+				                   							 </c:otherwise>
+											            	
+											             </c:choose>
+			                        				</form> 
+									             </td> 
+									             
+									            
+									             
+									             
+									             
+									             
+									             
+								      
+								        </tr>
+							        </c:forEach>
+							    </tbody>					    
+							</table>
+							
+										
+							
+							</div>
+						</fieldset>			
+					</section>
 
 
 
@@ -122,6 +164,11 @@
 
 
         <!-- El Modal -->
+        
+        
+        
+        <form action="alta_paciente.html" method="post">
+        
         <div class="modal fade" id="userModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -158,11 +205,11 @@
 								<td style="height: 0px; "><input type="text" name="txtDIRECCION" required  maxlength="40" autocomplete="off" style="text-transform:uppercase"/><br></td>	
 							</tr>
 							<tr>
-								<td>Correo Electrónico: </td>
+								<td>Correo ElectrÃ³nico: </td>
 								<td style="height: 0px; ">  <input type="email" name="textEMAIL" required /> </td>	
 							</tr>
 							<tr> 
-								<td>Teléfono: </td>
+								<td>TelÃ©fono: </td>
 								<td style="height: 0px; "><input type="tel" name="txtTELEFONO"/></td>
 							</tr>
 						<tr>
@@ -196,16 +243,29 @@
 							
 							</tr>
 							<br />
-							<tr>
-								<td style="height: 0px; "><input type="submit" name="btnAceptar" value="Alta"/></td>
-							</tr>
+							
+							
+								
+							
+							
+							
+							
 						
 						</table>
 						</form>
                     </div>
                     <!-- Pie del Modal -->
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    
+                    	<input type="submit" name="bntAltaEnviar" value="Alta" class="btn btn-success"> 
+        </form>
+                <form action="ABML_paciente.html" method="post">
+                    
+                    
+                    	<input type="submit" name="bntCancelar" value="Cancelar"  class="btn btn-danger"> 
+                    	
+                </form>
+                   
                     </div>
                 </div>
             </div>
