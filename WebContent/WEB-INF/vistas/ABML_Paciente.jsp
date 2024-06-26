@@ -53,7 +53,7 @@
 	<jsp:include page="Menu.jsp"></jsp:include>
 	
 <div class="container">
-        <h2>Gesti髇 de Usuarios</h2>
+        <h2>Gesti贸n de Usuarios</h2>
         
         <div class="container">
   <div class="row">
@@ -77,11 +77,11 @@
 							        
 							           <nav class="navbar navbar-expand-lg navbar-light bg-light">
 									        <div class="container">
-									            <!-- Bot髇 de Inicio -->
+									            <!-- Bot贸n de Inicio -->
 									            <form class="form-inline mr-auto" action="cargar_inicio.html" method="get">
 									                <button class="btn btn-primary"  type="submit" name="btnNavIrInicio">Inicio</button>
 									            </form>
-									            <!-- Bot髇 de Alta Paciente -->
+									            <!-- Bot贸n de Alta Paciente -->
 									            <button class="btn btn-success" type="button" data-toggle="modal" data-target="#userModal">Alta Paciente</button>
 									        </div>
 									    </nav>
@@ -160,7 +160,7 @@
 
 
 
-  <!--//////////////////FIN TABLA//////////////////////////////////-->
+		<!--//////////////////FIN TABLA//////////////////////////////////-->
 
 
         <!-- El Modal -->
@@ -205,11 +205,11 @@
 								<td style="height: 0px; "><input type="text" name="txtDIRECCION" required  maxlength="40" autocomplete="off" style="text-transform:uppercase"/><br></td>	
 							</tr>
 							<tr>
-								<td>Correo Electr髇ico: </td>
+								<td>Correo Electr贸nico: </td>
 								<td style="height: 0px; ">  <input type="email" name="textEMAIL" required /> </td>	
 							</tr>
 							<tr> 
-								<td>Tel閒ono: </td>
+								<td>Tel茅fono: </td>
 								<td style="height: 0px; "><input type="tel" name="txtTELEFONO"/></td>
 							</tr>
 						<tr>
