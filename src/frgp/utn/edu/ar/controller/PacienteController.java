@@ -135,4 +135,49 @@ public class PacienteController {
 	
 	
 	
+	
+	@RequestMapping("actualizar_paciente.html")
+	public ModelAndView eventoActualizarPaciente(@RequestParam("dni") int dni, @RequestParam("btnEstado") String btnEstado)
+	{
+		ModelAndView MV = new ModelAndView();
+		paciente = pacienteNegocio.readOne(dni);
+
+		String mensaje = "No se puedo actualizar paciente inexistente";
+		System.out.println("LLLLLLLLLLLLLLLEEEEEGo0 a actualizar paciente");
+		System.out.println(paciente.toString()); 
+		
+		
+		
+			
+			MV.addObject("estadoUpdatePaciente", mensaje);
+			
+		
+		if(btnEstado.equals("Alta")) {
+			
+			paciente.setEstado(false);
+		}
+		else{
+			
+			paciente.setEstado(true);
+
+		}
+		pacienteNegocio.update(paciente);
+		mensaje = "Actualizado correctamente";
+		
+		MV.addObject("estadoUpdatePaciente", mensaje);
+	
+		MV.addObject("listaPacientes", pacienteNegocio.readAll());
+
+		MV.setViewName("ABML_Paciente");
+		
+		System.out.println("actualiceeeeeeeeeeeeeeeeeeeeeeeeee");
+		
+		System.out.println(paciente.toString()); 
+		
+		return MV;
+	}
+	
+	
+	
+	
 }
