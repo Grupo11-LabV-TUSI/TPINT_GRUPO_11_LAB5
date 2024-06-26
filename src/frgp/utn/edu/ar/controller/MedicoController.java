@@ -19,7 +19,7 @@ public class MedicoController {
 	ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
 
 	/* Paciente */
-	MedicoNegocio medicoNegocio = (MedicoNegocio) appContext.getBean("PacienteNegocioBean");
+	MedicoNegocio medicoNegocio = (MedicoNegocio) appContext.getBean("MedicoNegocioBean");
 	Medico medico = (Medico) appContext.getBean("MedicoBean");
 
 
