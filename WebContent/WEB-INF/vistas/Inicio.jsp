@@ -185,6 +185,9 @@
 					<section class="row justify-content-center pt-3 px-3">
 						<fieldset>
 							<legend>ABML Turnos</legend>
+							<form action="ABML_turno.html" method="get">
+								<input type="submit" name="btnIrTurno" value="IR" class="btn btn-success"> 
+							</form>
 							<table summary="Los medicos registrados en la Clinica">
 								<caption>
 		    						Un listado de los turnos registrados en la Clinica

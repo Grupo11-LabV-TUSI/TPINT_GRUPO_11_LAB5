@@ -45,95 +45,80 @@
   <!--//////////////////Inicio de tabla////////////////////////////-->
 <%System.out.println(">>>>>>>>>> lllegamos <<<<<<  <"); %>
 
-<section class="row justify-content-center pt-1 px-1">
-						<fieldset>
-							<legend>ABML Pacientes</legend>
-							
-							<input type="submit" name="btnVerPaciente" value="IR" class="btn btn-success"> 
-							<div class="table-responsive">
+		<section class="row justify-content-center pt-1 px-1">
+		<fieldset>
+			<legend>ABML Pacientes</legend>
+
+			<input type="submit" name="btnVerPaciente" value="IR"
+				class="btn btn-success">
+			<div class="table-responsive">
+				</form>
+				<table summary="Los pacientes registrados en la Clinica">
+					<caption>Un listado de los pacientes registrados en la
+						Clinica</caption>
+					<thead>
+						<tr>
+							<th></th>
+							<th>DNI</th>
+							<th>NOMBRE</th>
+							<th>APELLIDO</th>
+							<th>EMAIL</th>
+							<th>TELEFONO</th>
+							<th>FECHA NACIMIENTO</th>
+							<th>DIRECCION</th>
+							<th>LOCALIDAD</th>
+							<th>PROVINCIA</th>
+							<th>ESTADO</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${listaPacientes}" var="paciente">
+							<tr>
+								<form action="ver_detalle_paciente.html" method="get">
+									<td><input type="submit" name="btnVerPaciente" value="Ver"
+										class="bg-warning"></td>
+									<td>${paciente.getDni()} <input type="hidden"
+										name="paciente" value="${paciente}">
+									</td> <input type="hidden" name="dni" value="${paciente.getDni()}">
+									<td>${paciente.getNombre()}</td>
+									<td>${paciente.getApellido()}</td>
+									<td>${paciente.getEmail()}</td>
+									<td>${paciente.getTelefono()}</td>
+									<td>${paciente.getFecha_nacimiento()}</td>
+									<td>${paciente.getDireccion()}</td>
+									<td>${paciente.getLocalidad()}</td>
+									<td>${paciente.getProvincia()}</td>
+								</form>
+								<td>
+									<form action="actualizar_estado_paciente.html" method="get">
+										<input type="hidden" name="dni" value="${paciente.getDni()}">
+										<c:choose>
+											<c:when test="${paciente.getEstado()}">
+												<input type="submit" name="btnEstado" value="Alta"
+													class="btn btn-success">
+											</c:when>
+											<c:otherwise>
+
+												<input type="submit" name="btnEstado" value="Baja"
+													class="btn btn-danger">
+											</c:otherwise>
+										</c:choose>
 									</form>
-							<table summary="Los pacientes registrados en la Clinica">
-								<caption>
-		    						Un listado de los pacientes registrados en la Clinica
-		  						</caption>
-							    <thead>
-							        <tr>
-							        	<th></th>
-							            <th>DNI</th>
-							            <th>NOMBRE</th>
-							            <th>APELLIDO</th>
-							            <th>EMAIL</th>
-							            <th>TELEFONO</th>
-							            <th>FECHA NACIMIENTO</th>
-							            <th>DIRECCION</th>
-							            <th>LOCALIDAD</th>
-							            <th>PROVINCIA</th>
-							            <th>ESTADO</th>
-							        </tr>
-							    </thead>
-							    <tbody>
-							    	<c:forEach items="${listaPacientes}" var="paciente">
-								        <tr>
-								        	<form action="ver_detalle_paciente.html" method="get">
-								        		<td> <input type="submit" name="btnVerPaciente" value="Ver" class="bg-warning"> </td>
-									            <td> ${paciente.getDni()} 
-									            <input type="hidden" name="paciente" value="${paciente}"> </td>
-									             <input type="hidden" name="dni" value="${paciente.getDni()}">
-									            <td> ${paciente.getNombre()} </td>
-									            <td> ${paciente.getApellido()} </td>
-									            <td> ${paciente.getEmail()} </td>
-									            <td> ${paciente.getTelefono()} </td>
-									            <td> ${paciente.getFecha_nacimiento()} </td>
-									            <td> ${paciente.getDireccion()} </td>
-									            <td> ${paciente.getLocalidad()} </td>
-									            <td> ${paciente.getProvincia()} </td>
-									            
-									         </form>
-									          	
-									          	
-									        	<td>
-									        	
-							
-								
-	              									<form action="actualizar_estado_paciente.html" method="get">
-										        	 <input type="hidden" name="dni" value="${paciente.getDni()}"> 
-											             <c:choose>
-		              									 
-		              									     
-		              									     <c:when test="${paciente.getEstado()}">
-		              									     				<input type="submit" name="btnEstado" value="Alta" class="btn btn-success"> 
-		                   									     		
-		                 									 </c:when>
-				                   							 <c:otherwise>
-				                   							 	
-				                   							 				<input type="submit" name="btnEstado" value="Baja" class="btn btn-danger"> 
-				                   							 </c:otherwise>
-											            	
-											             </c:choose>
-			                        				</form> 
-									             </td> 
-									             
-									            
-									             
-									             
-									             
-									             
-									             
-								      
-								        </tr>
-							        </c:forEach>
-							    </tbody>					    
-							</table>
-							
-										${estadoUpdatePaciente}
-							
-							</div>
-						</fieldset>			
-					</section>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+
+				${estadoUpdatePaciente}
+
+			</div>
+		</fieldset>
+		</section>
 
 
 
-  <!--//////////////////FIN TABLA//////////////////////////////////-->
+		<!--//////////////////FIN TABLA//////////////////////////////////-->
 
 
         <!-- El Modal -->
