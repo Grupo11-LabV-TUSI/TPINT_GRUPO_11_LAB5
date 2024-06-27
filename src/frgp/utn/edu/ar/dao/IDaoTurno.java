@@ -1,6 +1,8 @@
 package frgp.utn.edu.ar.dao;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import frgp.utn.edu.ar.entidad.Turno;
@@ -27,5 +29,8 @@ public interface IDaoTurno {
 	public long contarTurnosPresenteEntreFechas(Date startDate, Date endDate);
 
 	public long contarTurnosAusenteEntreFechas(Date startDate, Date endDate);
+	
+    List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId);
+
 
 }

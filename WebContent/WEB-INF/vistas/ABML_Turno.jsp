@@ -33,6 +33,11 @@
 	
 	        toggleMedicoSelect();
 	    }); 
+	    $(document).ready(function() {
+	        <c:if test="${not empty error}">
+	            alert('${error}');
+	        </c:if>
+	    });
     </script>
 </head>
 <body>
@@ -80,20 +85,20 @@
     						<input type="date" class="form-control" id="fecha" name="fecha" required min="${LocalDate.now()}" max="${LocalDate.now().plusMonths(1)}">
                         </div>
                         <div class="form-group">
-    <label for="hora">Horario</label>
-    <select class="form-control" id="hora" name="hora" required>
-        <option value="">Seleccione un horario</option>
-        <option value="09:00">09:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">01:00 PM</option>
-        <option value="14:00">02:00 PM</option>
-        <option value="15:00">03:00 PM</option>
-        <option value="16:00">04:00 PM</option>
-        <option value="17:00">05:00 PM</option>
-    </select>
-</div>
+						    <label for="hora">Horario</label>
+						    <select class="form-control" id="hora" name="hora" required>
+						        <option value="">Seleccione un horario</option>
+						        <option value="09:00">09:00 AM</option>
+						        <option value="10:00">10:00 AM</option>
+						        <option value="11:00">11:00 AM</option>
+						        <option value="12:00">12:00 PM</option>
+						        <option value="13:00">01:00 PM</option>
+						        <option value="14:00">02:00 PM</option>
+						        <option value="15:00">03:00 PM</option>
+						        <option value="16:00">04:00 PM</option>
+						        <option value="17:00">05:00 PM</option>
+						    </select>
+						</div>
 
                         <div class="form-group">
                             <label for="paciente">Paciente</label>

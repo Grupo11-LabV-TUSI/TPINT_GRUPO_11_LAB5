@@ -62,18 +62,31 @@ public class TurnoController {
 	    return MV;
 	}
 	
-	@RequestMapping(value = "/guardar_turno.html", method = RequestMethod.POST)
+	@RequestMapping(value = "/guardar_turno.html")
 	public ModelAndView guardarTurno(@RequestParam("fecha") String fechaStr,
 	                                 @RequestParam("hora") String horarioStr,
 	                                 @RequestParam("medico") Long matriculaMedico,
 	                                 @RequestParam("paciente") int dniPaciente,
 	                                 @RequestParam(value = "observacion", required = false) String observacion) {
-	    ModelAndView MV = new ModelAndView("redirect:/ABML_turno.html");
+	    ModelAndView MV = new ModelAndView();
 
 	    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 	    LocalDate fecha = LocalDate.parse(fechaStr, dateFormatter);
 	    LocalTime hora = LocalTime.parse(horarioStr, timeFormatter);
+
+	    boolean turnoExistente = turnoNegocio.existeTurno(fecha, hora, matriculaMedico);
+	    if (turnoExistente) {
+	        MV = new ModelAndView("ABML_Turno");
+	        MV.addObject("error", "Ya existe un turno asignado para este médico en la fecha y hora seleccionadas.");
+	        MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	        MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
+	        MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	        List<Medico> listaMedicosFiltrados = medicoNegocio.readAll(); 
+	        MV.addObject("listaMedicosFiltrados", listaMedicosFiltrados);
+
+	        return MV;
+	    }
 
 	    Medico medico = medicoNegocio.readOne(matriculaMedico);
 	    Paciente paciente = pacienteNegocio.readOne(dniPaciente);
@@ -85,12 +98,14 @@ public class TurnoController {
 	    nuevoTurno.setHora(hora);
 	    nuevoTurno.setObservacion(observacion);
 	    nuevoTurno.setEstadoTurno(EEstadoTurno.Pendiente);
-	    nuevoTurno.setEstado(true); 
+	    nuevoTurno.setEstado(true);
 
 	    turnoNegocio.add(nuevoTurno);
-
+	    MV.setViewName("redirect:/ABML_turno.html");
 	    return MV;
 	}
+	
+		
 	
 	
 }
