@@ -136,47 +136,54 @@ public class PacienteController {
 	
 	
 	
-	@RequestMapping("actualizar_paciente.html")
-	public ModelAndView eventoActualizarPaciente(@RequestParam("dni") int dni, @RequestParam("btnEstado") String btnEstado)
+	@RequestMapping("modificar_paciente.html")
+	public ModelAndView eventoModificarPaciente(@RequestParam("dni") int dni)
 	{
 		ModelAndView MV = new ModelAndView();
+		System.out.println("LLEGO A VER captura paciente paciente");
 		paciente = pacienteNegocio.readOne(dni);
-
-		String mensaje = "No se puedo actualizar paciente inexistente";
-		System.out.println("LLLLLLLLLLLLLLLEEEEEGo0 a actualizar paciente");
-		System.out.println(paciente.toString()); 
 		
+		MV.addObject("paciente",paciente);
 		
-		
-			
-			MV.addObject("estadoUpdatePaciente", mensaje);
-			
-		
-		if(btnEstado.equals("Alta")) {
-			
-			paciente.setEstado(false);
-		}
-		else{
-			
-			paciente.setEstado(true);
-
-		}
-		pacienteNegocio.update(paciente);
-		mensaje = "Actualizado correctamente";
-		
-		MV.addObject("estadoUpdatePaciente", mensaje);
-	
-		MV.addObject("listaPacientes", pacienteNegocio.readAll());
-
-		MV.setViewName("ABML_Paciente");
-		
-		System.out.println("actualiceeeeeeeeeeeeeeeeeeeeeeeeee");
-		
-		System.out.println(paciente.toString()); 
-		
+		System.out.println(paciente);
+		MV.setViewName("modificar_paciente");
 		return MV;
 	}
 	
+	@RequestMapping("actualizar_paciente.html")
+	public ModelAndView eventoActualizarPaciente(
+			@RequestParam("txtDNI") int dni,
+			@RequestParam("txtNOMBRE") String nombre,
+			@RequestParam("txtAPELLIDO")String apellido,
+			@RequestParam("txtFECHA_NAC")String fechaNac,
+			@RequestParam("txtDIRECCION")String direccion,
+			@RequestParam("textEMAIL")String email,
+			@RequestParam("txtTELEFONO")String telefono,
+			@RequestParam("txtLocalidad")String localidad,
+			@RequestParam("txtProvincia") String provincia
+				
+	)
+	{
+	ModelAndView MV = new ModelAndView();
+	
+	System.out.println("LLEGO A alta  paciente");
+	paciente.setDni(dni);
+	paciente.setNombre(nombre);
+	paciente.setApellido(apellido);
+		LocalDate fecha = LocalDate.parse(fechaNac);
+	paciente.setFecha_nacimiento(fecha);
+	paciente.setDireccion(direccion);
+	paciente.setEmail(email);
+	paciente.setTelefono(telefono);
+	paciente.setLocalidad(localidad);
+	paciente.setProvincia(provincia);
+	pacienteNegocio.update(paciente);
+	
+	MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	MV.setViewName("ABML_Paciente");
+	
+	return MV;
+	}
 	
 	
 	

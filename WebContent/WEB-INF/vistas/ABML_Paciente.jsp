@@ -47,7 +47,7 @@
     <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="container">
-        <h2>Gestión de Usuarios</h2>
+        <h2>Gestiï¿½n de Usuarios</h2>
 
         <div class="container">
             <div class="row">
@@ -67,19 +67,16 @@
 
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container">
-                        <!-- Botón de Inicio -->
+                        <!-- Botï¿½n de Inicio -->
                         <form class="form-inline mr-auto" action="cargar_inicio.html"
                             method="get">
                             <button class="btn btn-primary" type="submit" name="btnNavIrInicio">Inicio</button>
                         </form>
-                        <!-- Botón de Alta Paciente -->
+                        <!-- Botï¿½n de Alta Paciente -->
                         <button class="btn btn-success" type="button" data-toggle="modal"
                             data-target="#userModal" style="margin-right: 10px">Alta Paciente</button>
-                         <!-- Botón de Update Paciente -->    
-                         <button class="btn btn-info" type="button" data-toggle="modal"
-                            data-target="#userModalUpdate" style="margin-right: 10px">Modificar Paciente</button>    
-                            
-                            
+                         <!-- Botï¿½n de Update Paciente --> 
+                      
                     </div>
                 </nav>
 
@@ -89,7 +86,9 @@
                     <table id="tabla_paciente" class="display">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>MODIFICAR</th>
+                                <th>DETALLES</th>
+                                
                                 <th>DNI</th>
                                 <th>NOMBRE</th>
                                 <th>APELLIDO</th>
@@ -100,6 +99,14 @@
                         <tbody>
                             <c:forEach items="${listaPacientes}" var="paciente">
                                 <tr>
+                                <td>
+                                	<form type = "submit" action ="modificar_paciente.html" metodo= "Post">
+                        
+                      				  	<input type="submit" name="btnModificarPaciente" value="Modificar Paciente"   class="btn btn-info" >
+                        				<input type="hidden" name="dni" value="${paciente.getDni()}">
+                 			       </form>
+                                </td>
+                                
                                     <form action="ver_detalle_paciente.html" method="get">
                                         <td><input type="submit" name="btnVerPaciente" value="Ver"
                                             class="btn btn-warning"></td>
@@ -186,13 +193,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Correo Electrónico:</td>
+                                        <td>Correo Electrï¿½nico:</td>
                                         <td style="height: 0px;">
                                             <input type="email" name="textEMAIL" required />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Teléfono:</td>
+                                        <td>Telï¿½fono:</td>
                                         <td style="height: 0px;">
                                             <input type="tel" name="txtTELEFONO" />
                                         </td>
@@ -271,13 +278,13 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Correo Electrónico:</td>
+                                        <td>Correo Electrï¿½nico:</td>
                                         <td style="height: 0px;">
                                             <input type="email" name="textEMAIL" required />
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Teléfono:</td>
+                                        <td>Telï¿½fono:</td>
                                         <td style="height: 0px;">
                                             <input type="tel" name="txtTELEFONO" />
                                         </td>
@@ -311,3 +318,5 @@
 </body>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>
+
+
