@@ -1,9 +1,13 @@
 package frgp.utn.edu.ar.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Especialidad;
@@ -35,19 +39,22 @@ public class TurnoController {
 	
 	
 	@RequestMapping("ABML_turno.html")
-	public ModelAndView ABML_turno() {
-		ModelAndView MV = new ModelAndView();
-		MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-		
-		
-		MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
-        MV.addObject("listaMedicos", medicoNegocio.readAll());
-        MV.addObject("listaPacientes", pacienteNegocio.readAll());
-		
-		System.out.println("LLEGO AL ABML TURNO");
-		
-		MV.setViewName("ABML_Turno");
-		return MV;
+	public ModelAndView ABML_turno(@RequestParam(required = false) Integer especialidad) {
+	    ModelAndView MV = new ModelAndView("ABML_Turno");
+	    MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	    MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
+	    MV.addObject("listaPacientes", pacienteNegocio.readAll());
+
+	    if (especialidad != null) {
+	        List<Medico> listaMedicosFiltrados = medicoNegocio.readAll().stream()
+	                .filter(m -> m.getEspecialidad().getEspecialidad_id() == especialidad)
+	                .collect(Collectors.toList());
+	        MV.addObject("listaMedicosFiltrados", listaMedicosFiltrados);
+	    } else {
+	        MV.addObject("listaMedicosFiltrados", medicoNegocio.readAll());
+	    }
+
+	    return MV;
 	}
 	
 	
