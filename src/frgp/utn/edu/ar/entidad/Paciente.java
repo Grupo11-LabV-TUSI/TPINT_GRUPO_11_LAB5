@@ -2,6 +2,7 @@ package frgp.utn.edu.ar.entidad;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -187,7 +188,7 @@ public class Paciente implements Serializable {
 		String mensaje = "Paciente [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
 				+ ", telefono=" + telefono + ", fecha_nacimiento=" + fecha_nacimiento + ", direccion=" + direccion
 				+ ", localidad=" + localidad + ", provincia=" + provincia + ", estado=" + estado + ", turnos=";
-		String auxMensaje = "{";
+		String auxMensaje =	"{";
 		if (turnos != null) {
 			for (Turno turno : turnos) {
 				auxMensaje += turno.getId() + " " + turno.getMedico() + " " + turno.getFecha() + " " + turno.getHora()
