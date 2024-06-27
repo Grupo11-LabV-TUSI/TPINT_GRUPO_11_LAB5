@@ -49,6 +49,7 @@ public class DaoPaciente implements IDaoPaciente {
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();
 		Paciente paciente = (Paciente) session.get(Paciente.class, dniPaciente);
+		paciente.toString();
 		tx = session.getTransaction();
 		tx.commit();
 		session.close();
@@ -118,6 +119,9 @@ public class DaoPaciente implements IDaoPaciente {
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();
 		List<Paciente> pacientes = session.createQuery("FROM Paciente").list();
+		for (Paciente paciente : pacientes) {
+			paciente.toString();
+		}
 		tx = session.getTransaction();
 		tx.commit();
 		session.close();
