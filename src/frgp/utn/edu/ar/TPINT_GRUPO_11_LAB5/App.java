@@ -118,7 +118,7 @@ public class App {
 		TurnoNegocio turnoNegocio = (TurnoNegocio) appContext.getBean("TurnoNegocioBean");
 		Turno turno = (Turno) appContext.getBean("TurnoBean");
 		medico = medicoNegocio.readOne(1L);
-		paciente = pacienteNegocio.readOne(1);
+		paciente = pacienteNegocio.readOne(11111111);
 		System.err.println("datos para el turno");
 		System.out.println(medico);
 		System.out.println(paciente);

@@ -25,7 +25,9 @@ import frgp.utn.edu.ar.enums.EEstadoTurno;
 /* Querys definidas por notacion */
 @NamedQueries({ 
 		@NamedQuery(name = "findTurnoById", query = "SELECT t FROM Turno t WHERE id=:id"),
-		@NamedQuery(name = "findAllTurnos", query = "SELECT t FROM Turno t") })
+		@NamedQuery(name = "findAllTurnos", query = "SELECT t FROM Turno t"),
+		@NamedQuery(name = "findTurnosByMedico", query = "SELECT t FROM Turno t WHERE medico=:medico")
+		})
 
 @Component
 @Entity
