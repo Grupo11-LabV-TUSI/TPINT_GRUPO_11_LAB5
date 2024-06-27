@@ -50,7 +50,7 @@
             <div class="modal-content">
                 <!-- Cabecera del Modal -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Detalle de Paciente</h4>
+                    <h4 class="modal-title">Modificar de Paciente</h4>
                     
                     
                     <input type="submit"  class="btn-close" name="btnCerrar" value=" " > 
