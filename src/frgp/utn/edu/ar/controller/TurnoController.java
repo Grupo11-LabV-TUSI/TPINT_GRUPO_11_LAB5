@@ -1,5 +1,8 @@
 package frgp.utn.edu.ar.controller;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +18,7 @@ import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
@@ -53,6 +58,36 @@ public class TurnoController {
 	    } else {
 	        MV.addObject("listaMedicosFiltrados", medicoNegocio.readAll());
 	    }
+
+	    return MV;
+	}
+	
+	@RequestMapping(value = "/guardar_turno.html", method = RequestMethod.POST)
+	public ModelAndView guardarTurno(@RequestParam("fecha") String fechaStr,
+	                                 @RequestParam("hora") String horarioStr,
+	                                 @RequestParam("medico") Long matriculaMedico,
+	                                 @RequestParam("paciente") int dniPaciente,
+	                                 @RequestParam(value = "observacion", required = false) String observacion) {
+	    ModelAndView MV = new ModelAndView("redirect:/ABML_turno.html");
+
+	    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+	    LocalDate fecha = LocalDate.parse(fechaStr, dateFormatter);
+	    LocalTime hora = LocalTime.parse(horarioStr, timeFormatter);
+
+	    Medico medico = medicoNegocio.readOne(matriculaMedico);
+	    Paciente paciente = pacienteNegocio.readOne(dniPaciente);
+
+	    Turno nuevoTurno = new Turno();
+	    nuevoTurno.setMedico(medico);
+	    nuevoTurno.setPaciente(paciente);
+	    nuevoTurno.setFecha(fecha);
+	    nuevoTurno.setHora(hora);
+	    nuevoTurno.setObservacion(observacion);
+	    nuevoTurno.setEstadoTurno(EEstadoTurno.Pendiente);
+	    nuevoTurno.setEstado(true); 
+
+	    turnoNegocio.add(nuevoTurno);
 
 	    return MV;
 	}
