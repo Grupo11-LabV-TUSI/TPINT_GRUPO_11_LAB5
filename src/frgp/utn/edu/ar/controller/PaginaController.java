@@ -116,7 +116,20 @@ public class PaginaController {
 		MV.setViewName("Ingreso");
 		return MV;
 	}
+	/**Vista Informes*/
+	@RequestMapping("MenuInformes.html")
+	public ModelAndView eventoVerInformes(String informe) {
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("MenuInformes");
+		return MV;
+	}
 	
+	@RequestMapping("ReporteCalendario.html")
+	public ModelAndView eventoVerCalendario(String informe) {
+		ModelAndView MV = new ModelAndView();
+		MV.setViewName("ReporteCalendario");
+		return MV;
+	}
 	/** FUNCIONES AUXILIARES */
 	/* Inicio */
 	private Usuario verificarUsuario(String usuario, String contrasena) {
