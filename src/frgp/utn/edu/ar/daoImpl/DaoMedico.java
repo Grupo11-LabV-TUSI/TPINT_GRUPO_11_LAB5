@@ -118,7 +118,6 @@ public class DaoMedico implements IDaoMedico {
 		List<Medico> medicos = (List<Medico>) session.createQuery("FROM Medico").list();
 		// Evadiendo LAZY Turnos 
 		for (Medico medico : medicos) {
-			//medico.getHorarios().size();
 			medico.getTurnos().size();
 		}
 		tx = session.getTransaction();
