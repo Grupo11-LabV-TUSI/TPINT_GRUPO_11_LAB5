@@ -1,5 +1,6 @@
 package frgp.utn.edu.ar.controller;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -18,6 +19,7 @@ import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
+import frgp.utn.edu.ar.enums.EDiaHorario;
 import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
@@ -74,7 +76,11 @@ public class TurnoController {
 	    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
 	    LocalDate fecha = LocalDate.parse(fechaStr, dateFormatter);
 	    LocalTime hora = LocalTime.parse(horarioStr, timeFormatter);
-
+	    
+	    DayOfWeek dayOfWeek = fecha.getDayOfWeek();
+	    EDiaHorario diaHorario = convertirDia(dayOfWeek);
+	    
+	    
 	    boolean turnoExistente = turnoNegocio.existeTurno(fecha, hora, matriculaMedico);
 	    if (turnoExistente) {
 	        MV = new ModelAndView("ABML_Turno");
@@ -87,9 +93,24 @@ public class TurnoController {
 
 	        return MV;
 	    }
-
+	    
 	    Medico medico = medicoNegocio.readOne(matriculaMedico);
 	    Paciente paciente = pacienteNegocio.readOne(dniPaciente);
+	    
+	    boolean trabajaEseDia = medico.getHorarios().stream()
+                .anyMatch(horario -> horario.getDia() == diaHorario);
+
+	    
+		if (!trabajaEseDia) {
+			MV = new ModelAndView("ABML_Turno");
+			MV.addObject("error", "El médico no trabaja en el día seleccionado.");
+			MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+			MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
+			MV.addObject("listaPacientes", pacienteNegocio.readAll());
+			MV.addObject("listaMedicosFiltrados", medicoNegocio.readAll());
+			return MV;
+		}
+
 
 	    Turno nuevoTurno = new Turno();
 	    nuevoTurno.setMedico(medico);
@@ -106,6 +127,17 @@ public class TurnoController {
 	}
 	
 		
-	
+	private EDiaHorario convertirDia(DayOfWeek day) {
+	    switch(day) {
+	        case MONDAY:    return EDiaHorario.Lunes;
+	        case TUESDAY:   return EDiaHorario.Martes;
+	        case WEDNESDAY: return EDiaHorario.Miercoles;
+	        case THURSDAY:  return EDiaHorario.Jueves;
+	        case FRIDAY:    return EDiaHorario.Viernes;
+	        case SATURDAY:  return EDiaHorario.Sabado;
+	        case SUNDAY:    return EDiaHorario.Domingo;
+	        default:        return null;
+	    }
+	}
 	
 }

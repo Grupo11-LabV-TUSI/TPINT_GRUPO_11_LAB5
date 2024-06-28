@@ -77,4 +77,6 @@ public class TurnoNegocio implements ITurnoNegocio {
 	    return !turnos.isEmpty();
 	}
 
+	
+
 }
