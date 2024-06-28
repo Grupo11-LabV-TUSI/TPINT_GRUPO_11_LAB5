@@ -74,7 +74,7 @@ public class TurnoNegocio implements ITurnoNegocio {
 	
 	public boolean existeTurno(LocalDate fecha, LocalTime hora, Long medicoId) {
 	    List<Turno> turnos = daoTurno.buscarTurnosPorFechaHoraYMedico(fecha, hora, medicoId);
-	    return !turnos.isEmpty(); // Si la lista no está vacía, significa que ya existe un turno.
+	    return !turnos.isEmpty();
 	}
 
 }
