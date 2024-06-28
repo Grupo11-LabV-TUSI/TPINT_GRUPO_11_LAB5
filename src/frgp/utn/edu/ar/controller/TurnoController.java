@@ -19,6 +19,7 @@ import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
+import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.enums.EDiaHorario;
 import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
@@ -125,6 +126,7 @@ public class TurnoController {
 	    MV.setViewName("redirect:/ABML_turno.html");
 	    return MV;
 	}
+	
 	
 		
 	private EDiaHorario convertirDia(DayOfWeek day) {
