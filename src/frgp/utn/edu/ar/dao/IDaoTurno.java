@@ -30,7 +30,7 @@ public interface IDaoTurno {
 
 	public long contarTurnosAusenteEntreFechas(Date startDate, Date endDate);
 	
-    List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId);
+	public List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId);
 
 
 }
