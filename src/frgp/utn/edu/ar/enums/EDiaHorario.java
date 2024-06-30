@@ -8,4 +8,8 @@ public enum EDiaHorario {
     Jueves,
     Viernes,
     Sabado;
+	
+	public static EDiaHorario getByIndex(int index) {
+		return EDiaHorario.values()[index];
+	}
 }

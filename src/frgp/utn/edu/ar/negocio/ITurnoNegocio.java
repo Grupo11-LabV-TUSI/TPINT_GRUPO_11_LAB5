@@ -1,8 +1,11 @@
 package frgp.utn.edu.ar.negocio;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
+import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Turno;
 
 public interface ITurnoNegocio {
@@ -27,5 +30,11 @@ public interface ITurnoNegocio {
 	public long contarTurnosPresenteEntreFechas(Date startDate, Date endDate);
 
 	public long contarTurnosAusenteEntreFechas(Date startDate, Date endDate);
+	
+	// listar turnos medico fecha y hora
+	public boolean existeTurno(LocalDate fecha, LocalTime hora, Long medicoId);
+	
+	// listar turnos por medico
+	public List<Turno> buscarTurnosPorMedico(Medico medico);
 
 }

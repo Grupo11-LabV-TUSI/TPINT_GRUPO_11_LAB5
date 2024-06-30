@@ -76,7 +76,7 @@ public class PaginaController {
 
 	            default:
 	                session.setAttribute("rol", "Medic");
-	                MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	                MV.addObject("listaTurnos", turnoNegocio.buscarTurnosPorMedico(usuarioIngresado.getMedico()));
 	                break;
 	        }
 	        MV.setViewName("Inicio");
