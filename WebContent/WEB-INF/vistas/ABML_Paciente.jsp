@@ -47,8 +47,26 @@
     <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="container">
-        <h2>Gesti�n de Usuarios</h2>
+        <h2>Gestion de Usuarios</h2>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#tabla_paciente').DataTable( {
+		  "searching": false,
+		  "info": false	  
+		  
+		});
+	});
+	 
+</script>
+
+
+
+	<jsp:include page="Menu.jsp"></jsp:include>
+	
+<div class="container">
+        <h2>Gesti�n de Usuarios</h2>
+        
         <div class="container">
             <div class="row">
                 <div class="col-sm"></div>

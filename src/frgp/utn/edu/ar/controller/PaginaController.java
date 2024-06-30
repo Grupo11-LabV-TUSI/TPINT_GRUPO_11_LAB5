@@ -6,12 +6,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
@@ -55,35 +57,77 @@ public class PaginaController {
 	// Redirige a inicio si ingreso correctamente
 	@RequestMapping("validar_ingreso.html")
 	public ModelAndView eventoValidarIngreso(String txtUsuario, String txtPassword, HttpSession session) {
-		ModelAndView MV = new ModelAndView();
-		
-		Usuario usuarioIngresado = verificarUsuario(txtUsuario,txtPassword);
-		
-		System.out.println(usuarioIngresado);
-		
-		if( usuarioIngresado != null) {						
-			switch (usuarioIngresado.getUsuario()) {
-				case "Admin":
-					session.setAttribute("rol", "Admin");
-					MV.addObject("listaPacientes", pacienteNegocio.readAll());
-					MV.addObject("listaMedicos", medicoNegocio.readAll());
-					MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-					break;
-	
-				default:
-					session.setAttribute("rol", "Medic");
-					MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-					break;
-			}
-			MV.setViewName("Inicio");
-			session.setAttribute("usuarioIngresado", usuarioIngresado);
-		} else {
-			MV.setViewName("Ingreso");
-			MV.addObject("MensajeError","Algo salio mal intente de nuevo, el usaurio no esta registrado");
-			
-		}
-		return MV;
+	    ModelAndView MV = new ModelAndView();
+
+	    Usuario usuarioIngresado = verificarUsuario(txtUsuario, txtPassword);
+
+	    if (usuarioIngresado != null) {
+	        session.setAttribute("usuarioIngresado", usuarioIngresado);
+	        session.setAttribute("txtUsuario", txtUsuario);
+	        session.setAttribute("txtPassword", txtPassword);
+
+	        switch (usuarioIngresado.getUsuario()) {
+	            case "Admin":
+	                session.setAttribute("rol", "Admin");
+	                MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	                MV.addObject("listaMedicos", medicoNegocio.readAll());
+	                MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	                break;
+
+	            default:
+	                session.setAttribute("rol", "Medic");
+	                MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	                break;
+	        }
+	        MV.setViewName("Inicio");
+	    } else {
+	        MV.setViewName("Ingreso");
+	        MV.addObject("MensajeError", "Algo salió mal, intente de nuevo, el usuario no está registrado");
+	    }
+	    return MV;
 	}
+	
+	
+	@RequestMapping("actualizar_estado_turno.html")
+	public ModelAndView eventoActualizarEstadoTurno(@RequestParam("turnoId") Long id, 
+	                                                @RequestParam(value = "estadoTurno", required = false) String estadoTurno,
+	                                                @RequestParam(value = "observacion", required = false) String observacion,
+	                                                HttpSession session) {
+	    System.out.println("ESTOY PARA ACTUALIZAR EL ESTADO DEL TURNO");
+	    ModelAndView MV = new ModelAndView();
+	    Turno turno = turnoNegocio.leer(id);
+
+	    String mensaje = "No se pudo actualizar: turno inexistente";
+
+	    if (turno != null) {
+	        if (estadoTurno != null) {
+	            if (estadoTurno.equals("Presente")) {
+	                turno.setEstadoTurno(EEstadoTurno.Presente);
+	            } else if (estadoTurno.equals("Ausente")) {
+	                turno.setEstadoTurno(EEstadoTurno.Ausente);
+	            }
+	        }
+
+	        if (observacion != null && !observacion.trim().isEmpty()) {
+	            turno.setObservacion(observacion);
+	        }
+
+	        boolean actualizado = turnoNegocio.actualizar(turno);
+	        if (actualizado) {
+	            mensaje = "Actualizado correctamente";
+	        } else {
+	            mensaje = "No se pudo actualizar el turno.";
+	        }
+	    }
+
+	    String txtUsuario = (String) session.getAttribute("txtUsuario");
+	    String txtPassword = (String) session.getAttribute("txtPassword");
+
+	    return eventoValidarIngreso(txtUsuario, txtPassword, session);
+	}
+
+
+	
 	
 	
 	

@@ -13,6 +13,7 @@ import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
@@ -30,6 +31,9 @@ public class PacienteController {
 	/* Paciente */
 	PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
 	Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
+	
+	TurnoNegocio turnoNegocio = (TurnoNegocio) appContext.getBean("TurnoNegocioBean");
+	Turno turno = (Turno) appContext.getBean("TurnoBean");
 	
 	
 	/** abml */
@@ -84,6 +88,27 @@ public class PacienteController {
 		System.out.println(paciente.toString()); 
 		
 		return MV;
+	}
+	
+	@RequestMapping(value = "/actualizarEstadoTurno")
+	public ModelAndView actualizarEstadoTurno(@RequestParam("turnoId") Long turnoId, @RequestParam("estadoTurno") String estadoTurno) {
+	    ModelAndView MV = new ModelAndView();
+	    Turno turno = turnoNegocio.leer(turnoId);
+
+	    if (turno != null) {
+	        turno.setEstadoTurno(EEstadoTurno.valueOf(estadoTurno));
+	        boolean actualizado = turnoNegocio.actualizar(turno);
+	        if (actualizado) {
+	            MV.addObject("mensaje", "Estado del turno actualizado correctamente.");
+	        } else {
+	            MV.addObject("mensaje", "No se pudo actualizar el turno.");
+	        }
+	    } else {
+	        MV.addObject("mensaje", "El turno no existe.");
+	    }
+
+	    MV.setViewName("redirect:/ABML_turno.html");
+	    return MV;
 	}
 	
 	
