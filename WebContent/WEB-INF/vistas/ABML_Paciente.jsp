@@ -35,12 +35,19 @@
         href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
 </head>
 <body>
-  
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tabla_paciente').DataTable({
+                "searching": false,
+                "info": false
+            });
+        });
+    </script>
 
     <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="container">
-    
+        <h2>Gestion de Usuarios</h2>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -55,10 +62,10 @@
 
 
 
-
+	<jsp:include page="Menu.jsp"></jsp:include>
 	
 <div class="container">
-        <h2>ABML Pacientes</h2>
+        <h2>Gesti�n de Usuarios</h2>
         
         <div class="container">
             <div class="row">
@@ -74,12 +81,13 @@
 
         <section class="row justify-content-center pt-1 px-1">
             <fieldset>
-             
+                <legend>ABML Pacientes</legend>
+
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container">
                         <!-- Bot�n de Inicio -->
-                        <form class="form-inline mr-auto" action="validar_ingreso.html"
-                            method="post">
+                        <form class="form-inline mr-auto" action="cargar_inicio.html"
+                            method="get">
                             <button class="btn btn-primary" type="submit" name="btnNavIrInicio">Inicio</button>
                         </form>
                         <!-- Bot�n de Alta Paciente -->
