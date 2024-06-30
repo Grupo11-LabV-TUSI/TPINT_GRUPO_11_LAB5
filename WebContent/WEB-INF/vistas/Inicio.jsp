@@ -22,6 +22,7 @@
 
 <!-- let table = new DataTable('#myTable'); -->
 <script type="text/javascript">
+
 		$(document).ready(function() {
 			$('#table_id_pacientes_admin').DataTable();
 		});
