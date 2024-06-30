@@ -1,6 +1,8 @@
 package frgp.utn.edu.ar.negocioImpl;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -68,5 +70,13 @@ public class TurnoNegocio implements ITurnoNegocio {
 	public long contarTurnosAusenteEntreFechas(Date startDate, Date endDate) {
 		return daoTurno.contarTurnosAusenteEntreFechas(startDate, endDate);
 	}
+
+	
+	public boolean existeTurno(LocalDate fecha, LocalTime hora, Long medicoId) {
+	    List<Turno> turnos = daoTurno.buscarTurnosPorFechaHoraYMedico(fecha, hora, medicoId);
+	    return !turnos.isEmpty();
+	}
+
+	
 
 }
