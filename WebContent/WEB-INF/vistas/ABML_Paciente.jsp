@@ -37,17 +37,14 @@
 <body>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#tabla_paciente').DataTable({
-                "searching": false,
-                "info": false
-            });
+            $('#tabla_paciente').DataTable({ });
         });
     </script>
 
     <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="container">
-        <h2>Gesti�n de Usuarios</h2>
+        <h2>ABML PACIENTES</h2>
 
         <div class="container">
             <div class="row">
@@ -57,11 +54,9 @@
         </div>
 
         <!--//////////////////Inicio de tabla////////////////////////////-->
-        <%
-            System.out.println(">>>>>>>>>> lllegamos <<<<<<  <");
-        %>
+       
 
-        <section class="row justify-content-center pt-1 px-1">
+        <section class="row justify-content-center pt-1 px-1" style="width: calc(100% + 20px); margin-left: -10px;" >
             <fieldset>
                 <legend>ABML Pacientes</legend>
 
@@ -81,9 +76,10 @@
                 </nav>
 
                 </br>
-                <div class="table-responsive">
+              
+                <div class="table-responsive" style="width: calc(100% - 20px);">
                     </form>
-                    <table id="tabla_paciente" class="display">
+                    <table id="tabla_paciente" class="display" >
                         <thead>
                             <tr>
                                 <th>MODIFICAR</th>
