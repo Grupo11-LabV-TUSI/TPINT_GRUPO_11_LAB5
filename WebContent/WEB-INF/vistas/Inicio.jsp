@@ -41,11 +41,6 @@
 		$(document).ready(function() {
 			$('#table_id_turnos_medic').DataTable();
 		});
-		$(document).ready(function() {
-	        $('.estadoTurnoSelect').change(function() {
-	            $(this).closest('form').submit();
-	        });
-	 });
 </script>
 
 </head>
@@ -257,80 +252,45 @@
 				</c:when>
 				<c:when test="${not empty usuarioIngresado.getUsuario()}">
 					<section class="row justify-content-center pt-3 px-3">
-					    <fieldset>
-					        <legend>ABML Turnos</legend>
-					        <table id="table_id_turnos_medic" class="display" summary="Los turnos registrados en la Clínica">
-					            <caption>Un listado de los turnos registrados en la Clínica</caption>
-					            <thead>
-					                <tr>
-					                    <th></th>
-					                    <th>ID</th>
-					                    <th>MÉDICO</th>
-					                    <th>PACIENTE</th>
-					                    <th>FECHA</th>
-					                    <th>HORA</th>
-					                    <th>OBSERVACIÓN</th>
-					                    <th>EDITAR</th>
-					                    <th>ESTADO TURNO</th>
-					                </tr>
-					            </thead>
-					            <tbody>
-					                <c:choose>
-					                    <c:when test="${usuarioIngresado.usuario == 'Admin'}">
-					                        <c:forEach items="${listaTurnos}" var="turno">
-					                            <tr>
-					                                <form action="ver_turno.html" method="get">
-					                                    <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
-					                                    <td>${turno.getId()}</td>
-					                                    <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
-					                                    <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
-					                                    <td>${turno.getFecha()}</td>
-					                                    <td>${turno.getHora()}</td>
-					                                    <td>${turno.getObservacion()}</td>
-					                                    <td>${turno.getEstado()}</td>
-					                                    <td>${turno.getEstadoTurno()}</td>
-					                                </form>
-					                            </tr>
-					                        </c:forEach>
-					                    </c:when>
-					                    <c:otherwise>
-					                        <c:forEach items="${listaTurnos}" var="turno">
-					                            <c:if test="${turno.getMedico().getUsuario().getId() == usuarioIngresado.id}">
-					                                <tr>
-					                                    <form action="actualizar_estado_turno.html" method="get">
-					                                        <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
-					                                        <td>${turno.getId()}</td>
-					                                        <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
-					                                        <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
-					                                        <td>${turno.getFecha()}</td>
-					                                        <td>${turno.getHora()}</td>
-					                                        <td>
-										                        <textarea name="observacion" 
-										                                  <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">disabled</c:if>>${turno.getObservacion()}</textarea>
-										                    </td>
-					                                        <td>
-										                        <button type="submit" name="guardarComentario" class="btn btn-primary" 
-										                                <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">disabled</c:if>>Guardar</button>
-										                    </td>
-					                                        <td>
-										                        <c:if test="${turno.getEstadoTurno() == 'Pendiente'}">
-										                            <input type="hidden" name="turnoId" value="${turno.getId()}">
-										                            <button type="submit" name="estadoTurno" value="Presente" class="btn btn-success">Presente</button>
-										                            <button type="submit" name="estadoTurno" value="Ausente" class="btn btn-danger">Ausente</button>
-										                        </c:if>
-										                        <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">
-										                            ${turno.getEstadoTurno()}
-										                        </c:if>
-										                    </td>
-					                                    </form>
-					                                </tr>
-					                            </c:if>
-					                        </c:forEach>
-					                    </c:otherwise>
-					                </c:choose>
-					            </tbody>
-					        </table>
-					    </fieldset>
+						<p>Bienvenido doctor</p>
+						<fieldset>
+							<legend>ABML Turnos</legend>
+							<table id="table_id_turnos_medic" class="display" summary="Los medicos registrados en la Clinica">
+								<caption>
+		    						Un listado de los turnos registrados en la Clinica
+		  						</caption>
+							    <thead>
+							        <tr>
+							        	<th></th>
+							            <th>ID</th>
+							            <th>MEDICO</th>
+							            <th>PACIENTE</th>
+							            <th>FECHA</th>
+							            <th>HORA</th>
+							            <th>OBSERVACION</th>
+							            <th>ESTADO TURNO</th>
+							            <th>ESTADO</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							    	<c:forEach items="${listaTurnos}" var="turno">
+								        <tr>
+								        	<form action="ver_turno.html" method="get">
+								        		<td> <input type="submit" name="btnVerTurno" value="Ver" class="bg-warning"> </td>
+									            <td> ${turno.getId()} <input type="hidden" name="turno" value="${turno}"> </td>
+									            <td> ${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()} </td>
+									            <td> ${turno.getPaciente().getNombre()} </td>
+									            <td> ${turno.getFecha()} </td>
+									            <td> ${turno.getHora()} </td>
+									            <td> ${turno.getObservacion()} </td>
+									            <td> ${turno.getEstadoTurno()} </td>
+									            <td> ${turno.getEstado()} </td>
+								        	</form>
+								        </tr>
+							        </c:forEach>
+							    </tbody>					    
+							</table>
+						</fieldset>
 					</section>
 				</c:when>
 				<c:otherwise>
