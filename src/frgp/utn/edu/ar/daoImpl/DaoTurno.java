@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import frgp.utn.edu.ar.dao.IDaoTurno;
+import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Turno;
 
 @Repository
@@ -179,6 +180,23 @@ public class DaoTurno implements IDaoTurno {
 
 	public Conexion getConexion() {
 		return conexion;
+	}
+
+	@Override
+	public List<Turno> buscarTurnosPorMedico(Medico medico) {
+		Session session = conexion.abrirConexion();
+		Transaction tx = session.beginTransaction();
+		Query query = session.getNamedQuery("findTurnosByMedico");
+		query.setParameter("medico", medico);
+		List<Turno> lista = query.list();
+		// Sortear LZY en Medico.turnos
+		for (Turno turno : lista) {
+			turno.getMedico().getTurnos().size();
+		}
+		tx = session.getTransaction();
+		tx.commit();
+		session.close();
+		return lista;
 	}
 
 }

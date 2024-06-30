@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import frgp.utn.edu.ar.dao.IDaoTurno;
+import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.negocio.ITurnoNegocio;
 
@@ -68,5 +69,18 @@ public class TurnoNegocio implements ITurnoNegocio {
 	public long contarTurnosAusenteEntreFechas(Date startDate, Date endDate) {
 		return daoTurno.contarTurnosAusenteEntreFechas(startDate, endDate);
 	}
+
+	@Override
+	public boolean existeTurno(LocalDate fecha, LocalTime hora, Long medicoId) {
+	    List<Turno> turnos = daoTurno.buscarTurnosPorFechaHoraYMedico(fecha, hora, medicoId);
+	    return !turnos.isEmpty();
+	}
+
+	@Override
+	public List<Turno> buscarTurnosPorMedico(Medico medico) {
+		return daoTurno.buscarTurnosPorMedico(medico);
+	}
+
+	
 
 }

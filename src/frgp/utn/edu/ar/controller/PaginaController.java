@@ -55,34 +55,34 @@ public class PaginaController {
 	// Redirige a inicio si ingreso correctamente
 	@RequestMapping("validar_ingreso.html")
 	public ModelAndView eventoValidarIngreso(String txtUsuario, String txtPassword, HttpSession session) {
-		ModelAndView MV = new ModelAndView();
-		
-		Usuario usuarioIngresado = verificarUsuario(txtUsuario,txtPassword);
-		
-		System.out.println(usuarioIngresado);
-		
-		if( usuarioIngresado != null) {						
-			switch (usuarioIngresado.getUsuario()) {
-				case "Admin":
-					session.setAttribute("rol", "Admin");
-					MV.addObject("listaPacientes", pacienteNegocio.readAll());
-					MV.addObject("listaMedicos", medicoNegocio.readAll());
-					MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-					break;
-	
-				default:
-					session.setAttribute("rol", "Medic");
-					MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-					break;
-			}
-			MV.setViewName("Inicio");
-			session.setAttribute("usuarioIngresado", usuarioIngresado);
-		} else {
-			MV.setViewName("Ingreso");
-			MV.addObject("MensajeError","Algo salio mal intente de nuevo, el usaurio no esta registrado");
-			
-		}
-		return MV;
+	    ModelAndView MV = new ModelAndView();
+
+	    Usuario usuarioIngresado = verificarUsuario(txtUsuario, txtPassword);
+
+	    if (usuarioIngresado != null) {
+	        session.setAttribute("usuarioIngresado", usuarioIngresado);
+	        session.setAttribute("txtUsuario", txtUsuario);
+	        session.setAttribute("txtPassword", txtPassword);
+
+	        switch (usuarioIngresado.getUsuario()) {
+	            case "Admin":
+	                session.setAttribute("rol", "Admin");
+	                MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	                MV.addObject("listaMedicos", medicoNegocio.readAll());
+	                MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	                break;
+
+	            default:
+	                session.setAttribute("rol", "Medic");
+	                MV.addObject("listaTurnos", turnoNegocio.buscarTurnosPorMedico(usuarioIngresado.getMedico()));
+	                break;
+	        }
+	        MV.setViewName("Inicio");
+	    } else {
+	        MV.setViewName("Ingreso");
+	        MV.addObject("MensajeError", "Algo salió mal, intente de nuevo, el usuario no está registrado");
+	    }
+	    return MV;
 	}
 	
 	
