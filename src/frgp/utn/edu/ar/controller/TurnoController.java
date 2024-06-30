@@ -56,6 +56,7 @@ public class TurnoController {
 	    if (especialidad != null) {
 	        List<Medico> listaMedicosFiltrados = medicoNegocio.readAll().stream()
 	                .filter(m -> m.getEspecialidad().getEspecialidad_id() == especialidad)
+	                .filter(m -> m.getEstado()==true)
 	                .collect(Collectors.toList());
 	        MV.addObject("listaMedicosFiltrados", listaMedicosFiltrados);
 	    } else {
