@@ -1,5 +1,7 @@
 package frgp.utn.edu.ar.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -44,41 +46,43 @@ public class PaginaController {
 	/** INGRESO */
 	// Redirige a ingreso
 	@RequestMapping("redireccionar_ingreso.html")
-	public ModelAndView eventoRedireccionarIngreso() {
+	public ModelAndView eventoRedireccionarIngreso(HttpSession session) {
 		ModelAndView MV = new ModelAndView();
+	    session.invalidate();
 		MV.setViewName("Ingreso");
 		return MV;
 	}
 	// Redirige a inicio si ingreso correctamente
 	@RequestMapping("validar_ingreso.html")
-	public ModelAndView eventoValidarIngreso(String txtUsuario, String txtPassword) {
-		ModelAndView MV = new ModelAndView();
-		
-		Usuario usuarioIngresado = verificarUsuario(txtUsuario,txtPassword);
-		
-		System.out.println(usuarioIngresado);
-		
-		if( usuarioIngresado != null) {
-			
-			switch (usuarioIngresado.getUsuario()) {
-				case "Admin":
-					MV.addObject("listaPacientes", pacienteNegocio.readAll());
-					MV.addObject("listaMedicos", medicoNegocio.readAll());
-					MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-					break;
-	
-				default:
-					MV.addObject("listaTurnos", turnoNegocio.leerTodos());
-					break;
-			}
-			MV.setViewName("Inicio");
-			MV.addObject("usuarioIngresado", usuarioIngresado);
-		} else {
-			MV.setViewName("Ingreso");
-			MV.addObject("MensajeError","Algo salio mal intente de nuevo, el usaurio no esta registrado");
-			
-		}
-		return MV;
+	public ModelAndView eventoValidarIngreso(String txtUsuario, String txtPassword, HttpSession session) {
+	    ModelAndView MV = new ModelAndView();
+
+	    Usuario usuarioIngresado = verificarUsuario(txtUsuario, txtPassword);
+
+	    if (usuarioIngresado != null) {
+	        session.setAttribute("usuarioIngresado", usuarioIngresado);
+	        session.setAttribute("txtUsuario", txtUsuario);
+	        session.setAttribute("txtPassword", txtPassword);
+
+	        switch (usuarioIngresado.getUsuario()) {
+	            case "Admin":
+	                session.setAttribute("rol", "Admin");
+	                MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	                MV.addObject("listaMedicos", medicoNegocio.readAll());
+	                MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+	                break;
+
+	            default:
+	                session.setAttribute("rol", "Medic");
+	                MV.addObject("listaTurnos", turnoNegocio.buscarTurnosPorMedico(usuarioIngresado.getMedico()));
+	                break;
+	        }
+	        MV.setViewName("Inicio");
+	    } else {
+	        MV.setViewName("Ingreso");
+	        MV.addObject("MensajeError", "Algo salió mal, intente de nuevo, el usuario no está registrado");
+	    }
+	    return MV;
 	}
 	
 	

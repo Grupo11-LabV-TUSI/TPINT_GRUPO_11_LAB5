@@ -4,7 +4,7 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tpint_grupo11?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC</property>
         <property name="hibernate.connection.username">root</property>
@@ -18,7 +18,7 @@
         <mapping class="frgp.utn.edu.ar.entidad.Medico"/>
         <mapping class="frgp.utn.edu.ar.entidad.Turno"/>
         <mapping class="frgp.utn.edu.ar.entidad.Nacionalidad"/>
-        <mapping class="frgp.utn.edu.ar.entidad.Provincia"/>
-        <mapping class="frgp.utn.edu.ar.entidad.Localidad"/>
+		<mapping class="frgp.utn.edu.ar.entidad.Provincia"/>
+		<mapping class="frgp.utn.edu.ar.entidad.Localidad"/>
     </session-factory>
 </hibernate-configuration>

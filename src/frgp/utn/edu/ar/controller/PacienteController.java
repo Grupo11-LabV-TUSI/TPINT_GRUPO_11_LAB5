@@ -135,4 +135,56 @@ public class PacienteController {
 	
 	
 	
+	
+	@RequestMapping("modificar_paciente.html")
+	public ModelAndView eventoModificarPaciente(@RequestParam("dni") int dni)
+	{
+		ModelAndView MV = new ModelAndView();
+		System.out.println("LLEGO A VER captura paciente paciente");
+		paciente = pacienteNegocio.readOne(dni);
+		
+		MV.addObject("paciente",paciente);
+		
+		System.out.println(paciente);
+		MV.setViewName("modificar_paciente");
+		return MV;
+	}
+	
+	@RequestMapping("actualizar_paciente.html")
+	public ModelAndView eventoActualizarPaciente(
+			@RequestParam("txtDNI") int dni,
+			@RequestParam("txtNOMBRE") String nombre,
+			@RequestParam("txtAPELLIDO")String apellido,
+			@RequestParam("txtFECHA_NAC")String fechaNac,
+			@RequestParam("txtDIRECCION")String direccion,
+			@RequestParam("textEMAIL")String email,
+			@RequestParam("txtTELEFONO")String telefono,
+			@RequestParam("txtLocalidad")String localidad,
+			@RequestParam("txtProvincia") String provincia
+				
+	)
+	{
+	ModelAndView MV = new ModelAndView();
+	
+	System.out.println("LLEGO A alta  paciente");
+	paciente.setDni(dni);
+	paciente.setNombre(nombre);
+	paciente.setApellido(apellido);
+		LocalDate fecha = LocalDate.parse(fechaNac);
+	paciente.setFecha_nacimiento(fecha);
+	paciente.setDireccion(direccion);
+	paciente.setEmail(email);
+	paciente.setTelefono(telefono);
+	paciente.setLocalidad(localidad);
+	paciente.setProvincia(provincia);
+	pacienteNegocio.update(paciente);
+	
+	MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	MV.setViewName("ABML_Paciente");
+	
+	return MV;
+	}
+	
+	
+	
 }
