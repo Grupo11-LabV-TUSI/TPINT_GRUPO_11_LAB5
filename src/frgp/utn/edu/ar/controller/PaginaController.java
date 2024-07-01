@@ -6,14 +6,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
-import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
@@ -86,48 +84,6 @@ public class PaginaController {
 	    }
 	    return MV;
 	}
-	
-	
-	@RequestMapping("actualizar_estado_turno.html")
-	public ModelAndView eventoActualizarEstadoTurno(@RequestParam("turnoId") Long id, 
-	                                                @RequestParam(value = "estadoTurno", required = false) String estadoTurno,
-	                                                @RequestParam(value = "observacion", required = false) String observacion,
-	                                                HttpSession session) {
-	    System.out.println("ESTOY PARA ACTUALIZAR EL ESTADO DEL TURNO");
-	    ModelAndView MV = new ModelAndView();
-	    Turno turno = turnoNegocio.leer(id);
-
-	    String mensaje = "No se pudo actualizar: turno inexistente";
-
-	    if (turno != null) {
-	        if (estadoTurno != null) {
-	            if (estadoTurno.equals("Presente")) {
-	                turno.setEstadoTurno(EEstadoTurno.Presente);
-	            } else if (estadoTurno.equals("Ausente")) {
-	                turno.setEstadoTurno(EEstadoTurno.Ausente);
-	            }
-	        }
-
-	        if (observacion != null && !observacion.trim().isEmpty()) {
-	            turno.setObservacion(observacion);
-	        }
-
-	        boolean actualizado = turnoNegocio.actualizar(turno);
-	        if (actualizado) {
-	            mensaje = "Actualizado correctamente";
-	        } else {
-	            mensaje = "No se pudo actualizar el turno.";
-	        }
-	    }
-
-	    String txtUsuario = (String) session.getAttribute("txtUsuario");
-	    String txtPassword = (String) session.getAttribute("txtPassword");
-
-	    return eventoValidarIngreso(txtUsuario, txtPassword, session);
-	}
-
-
-	
 	
 	
 	

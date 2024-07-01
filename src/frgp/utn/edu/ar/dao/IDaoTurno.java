@@ -1,8 +1,6 @@
 package frgp.utn.edu.ar.dao;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import frgp.utn.edu.ar.entidad.Medico;

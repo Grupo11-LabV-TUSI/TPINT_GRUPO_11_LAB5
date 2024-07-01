@@ -1,8 +1,6 @@
 package frgp.utn.edu.ar.daoImpl;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -182,26 +180,6 @@ public class DaoTurno implements IDaoTurno {
 
 	public Conexion getConexion() {
 		return conexion;
-	}
-	
-	public List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId) {
-	    Session session = conexion.abrirConexion();
-	    Transaction tx = session.beginTransaction();
-	    try {
-	        Query query = session.createQuery("FROM Turno t WHERE t.fecha = :fecha AND t.hora = :hora AND t.medico.id = :medicoId");
-	        query.setParameter("fecha", fecha);
-	        query.setParameter("hora", hora);
-	        query.setParameter("medicoId", medicoId);
-	        List<Turno> turnos = query.list();
-	        tx.commit();
-	        return turnos;
-	    } catch (Exception e) {
-	        if (tx != null) tx.rollback();
-	        e.printStackTrace();
-	        return null;
-	    } finally {
-	        session.close();
-	    }
 	}
 
 	@Override

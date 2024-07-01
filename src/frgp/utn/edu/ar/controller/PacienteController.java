@@ -13,7 +13,6 @@ import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
-import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
@@ -31,9 +30,6 @@ public class PacienteController {
 	/* Paciente */
 	PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
 	Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
-	
-	TurnoNegocio turnoNegocio = (TurnoNegocio) appContext.getBean("TurnoNegocioBean");
-	Turno turno = (Turno) appContext.getBean("TurnoBean");
 	
 	
 	/** abml */
@@ -90,27 +86,6 @@ public class PacienteController {
 		return MV;
 	}
 	
-	@RequestMapping(value = "/actualizarEstadoTurno")
-	public ModelAndView actualizarEstadoTurno(@RequestParam("turnoId") Long turnoId, @RequestParam("estadoTurno") String estadoTurno) {
-	    ModelAndView MV = new ModelAndView();
-	    Turno turno = turnoNegocio.leer(turnoId);
-
-	    if (turno != null) {
-	        turno.setEstadoTurno(EEstadoTurno.valueOf(estadoTurno));
-	        boolean actualizado = turnoNegocio.actualizar(turno);
-	        if (actualizado) {
-	            MV.addObject("mensaje", "Estado del turno actualizado correctamente.");
-	        } else {
-	            MV.addObject("mensaje", "No se pudo actualizar el turno.");
-	        }
-	    } else {
-	        MV.addObject("mensaje", "El turno no existe.");
-	    }
-
-	    MV.setViewName("redirect:/ABML_turno.html");
-	    return MV;
-	}
-	
 	
 	@RequestMapping("ver_detalle_paciente.html")
 	public ModelAndView eventoVerPaciente(@RequestParam("dni") int dni) {
@@ -156,6 +131,58 @@ public class PacienteController {
 		
 		
 		return MV;
+	}
+	
+	
+	
+	
+	@RequestMapping("modificar_paciente.html")
+	public ModelAndView eventoModificarPaciente(@RequestParam("dni") int dni)
+	{
+		ModelAndView MV = new ModelAndView();
+		System.out.println("LLEGO A VER captura paciente paciente");
+		paciente = pacienteNegocio.readOne(dni);
+		
+		MV.addObject("paciente",paciente);
+		
+		System.out.println(paciente);
+		MV.setViewName("modificar_paciente");
+		return MV;
+	}
+	
+	@RequestMapping("actualizar_paciente.html")
+	public ModelAndView eventoActualizarPaciente(
+			@RequestParam("txtDNI") int dni,
+			@RequestParam("txtNOMBRE") String nombre,
+			@RequestParam("txtAPELLIDO")String apellido,
+			@RequestParam("txtFECHA_NAC")String fechaNac,
+			@RequestParam("txtDIRECCION")String direccion,
+			@RequestParam("textEMAIL")String email,
+			@RequestParam("txtTELEFONO")String telefono,
+			@RequestParam("txtLocalidad")String localidad,
+			@RequestParam("txtProvincia") String provincia
+				
+	)
+	{
+	ModelAndView MV = new ModelAndView();
+	
+	System.out.println("LLEGO A alta  paciente");
+	paciente.setDni(dni);
+	paciente.setNombre(nombre);
+	paciente.setApellido(apellido);
+		LocalDate fecha = LocalDate.parse(fechaNac);
+	paciente.setFecha_nacimiento(fecha);
+	paciente.setDireccion(direccion);
+	paciente.setEmail(email);
+	paciente.setTelefono(telefono);
+	paciente.setLocalidad(localidad);
+	paciente.setProvincia(provincia);
+	pacienteNegocio.update(paciente);
+	
+	MV.addObject("listaPacientes", pacienteNegocio.readAll());
+	MV.setViewName("ABML_Paciente");
+	
+	return MV;
 	}
 	
 	
