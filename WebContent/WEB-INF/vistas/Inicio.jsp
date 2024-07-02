@@ -22,6 +22,7 @@
 
 <!-- let table = new DataTable('#myTable'); -->
 <script type="text/javascript">
+
 		$(document).ready(function() {
 			$('#table_id_pacientes_admin').DataTable();
 		});
@@ -113,6 +114,9 @@
 					<section class="row justify-content-center pt-3 px-3">
 						<fieldset>
 							<legend>ABML Medicos</legend>
+											<form action="ABM_medico.html" method="get">
+												<input type="submit" name="btnVerTurno" value="IR" class="btn btn-success"> 
+											</form>
 							<table id="table_id_medicos_admin" class="display" summary="Los medicos registrados en la Clinica">
 								<caption>
 		    						Un listado de los medicos registrados en la Clinica
