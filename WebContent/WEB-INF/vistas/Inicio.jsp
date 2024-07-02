@@ -42,6 +42,10 @@
 		$(document).ready(function() {
 			$('#table_id_turnos_medic').DataTable();
 		});
+		$(document).ready(function() {
+	        $('.estadoTurnoSelect').change(function() {
+	            $(this).closest('form').submit();
+	        });
 </script>
 
 </head>
@@ -181,7 +185,6 @@
 		  						</caption>
 							    <thead>
 							        <tr>
-							        	<th></th>
 							            <th>ID</th>
 							            <th>MEDICO</th>
 							            <th>PACIENTE</th>
@@ -196,7 +199,6 @@
 							    	<c:forEach items="${listaTurnos}" var="turno">
 								        <tr>
 								        	<form action="ver_turno.html" method="get">
-								        		<td> <input type="submit" name="btnVerTurno" value="Ver" class="bg-warning"> </td>
 									            <td> ${turno.getId()} <input type="hidden" name="turno" value="${turno}"> </td>
 									            <td> ${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()} </td>
 									            <td> ${turno.getPaciente().getNombre()} </td>
