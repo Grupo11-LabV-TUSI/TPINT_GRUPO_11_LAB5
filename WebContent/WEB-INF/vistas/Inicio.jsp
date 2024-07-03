@@ -42,10 +42,10 @@
 		$(document).ready(function() {
 			$('#table_id_turnos_medic').DataTable();
 		});
-		$(document).ready(function() {
+		/*$(document).ready(function() {
 	        $('.estadoTurnoSelect').change(function() {
 	            $(this).closest('form').submit();
-	        });
+	        });*/
 </script>
 
 </head>
@@ -118,6 +118,9 @@
 					<section class="row justify-content-center pt-3 px-3">
 						<fieldset>
 							<legend>ABML Medicos</legend>
+											<form action="ABM_medico.html" method="get">
+												<input type="submit" name="btnVerTurno" value="IR" class="btn btn-success"> 
+											</form>
 							<table id="table_id_medicos_admin" class="display" summary="Los medicos registrados en la Clinica">
 								<caption>
 		    						Un listado de los medicos registrados en la Clinica
