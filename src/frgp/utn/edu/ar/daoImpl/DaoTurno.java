@@ -1,6 +1,8 @@
 package frgp.utn.edu.ar.daoImpl;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -197,6 +199,12 @@ public class DaoTurno implements IDaoTurno {
 		tx.commit();
 		session.close();
 		return lista;
+	}
+
+	@Override
+	public List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
