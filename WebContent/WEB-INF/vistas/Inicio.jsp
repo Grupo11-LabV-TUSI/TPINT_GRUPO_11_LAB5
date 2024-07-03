@@ -15,7 +15,9 @@
 <!-- //cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <!-- //cdn.datatables.net/2.0.8/js/dataTables.min.js -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
@@ -29,12 +31,33 @@
 	    $('#table_id_turnos_admin').DataTable();
 	    $('#table_id_estadisticasTurno_admin').DataTable();
 	    $('#table_id_turnos_medic').DataTable();
-	
-	    // Evento change para estadoTurnoSelect
+	    $('.close').click(function() {
+	        $('#detalleTurnoModal').modal('hide');
+	    });
 	    $('.estadoTurnoSelect').change(function() {
 	        $(this).closest('form').submit();
 	    });
+	    
+	    $('#detalleTurnoModal .btn-secondary[data-dismiss="modal"]').click(function() {
+	        $('#detalleTurnoModal').modal('hide');
+	    });
 	});
+	function mostrarDetalleTurno(id, medico, paciente, fecha, hora, observacion, direccion, localidad, provincia, email, telefono) {
+	    $('#turnoId').text(id);
+	    $('#turnoMedico').text(medico);
+	    $('#turnoPaciente').text(paciente);
+	    $('#turnoFecha').text(fecha);
+	    $('#turnoHora').text(hora);
+	    $('#turnoObservacion').text(observacion);
+	    $('#pacienteDireccion').text(direccion);
+	    $('#pacienteLocalidad').text(localidad);
+	    $('#pacienteProvincia').text(provincia);
+	    $('#pacienteEmail').text(email);
+	    $('#pacienteTelefono').text(telefono);
+	    $('#detalleTurnoModal').modal('show');
+	}
+	
+	
 </script>
 
 </head>
@@ -290,8 +313,8 @@
 					                        <c:forEach items="${listaTurnos}" var="turno">
 					                            <c:if test="${turno.getMedico().getUsuario().getId() == usuarioIngresado.id}">
 					                                <tr>
-					                                    <form action="actualizar_estado_turno.html" method="get">
-					                                        <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
+					                                    <form action="ver_detalle_turno.html" method="get">
+					                                        <td><button type="button" onclick="mostrarDetalleTurno('${turno.id}', '${turno.medico.nombre} ${turno.medico.apellido}', '${turno.paciente.nombre} ${turno.paciente.apellido}', '${turno.fecha}', '${turno.hora}', '${turno.observacion}', '${turno.paciente.direccion}', '${turno.paciente.localidad}', '${turno.paciente.provincia}', '${turno.paciente.email}', '${turno.paciente.telefono}')" class="btn bg-warning">Ver</button></td>
 					                                        <td>${turno.getId()}</td>
 					                                        <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
 					                                        <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
@@ -299,11 +322,11 @@
 					                                        <td>${turno.getHora()}</td>
 					                                        <td>
 										                        <textarea name="observacion" 
-										                                  <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">disabled</c:if>>${turno.getObservacion()}</textarea>
+										                        <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">disabled</c:if>>${turno.getObservacion()}</textarea>
 										                    </td>
 					                                        <td>
 										                        <button type="submit" name="guardarComentario" class="btn btn-primary" 
-										                                <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">disabled</c:if>>Guardar</button>
+										                        <c:if test="${turno.getEstadoTurno() != 'Pendiente'}">disabled</c:if>>Guardar</button>
 										                    </td>
 					                                        <td>
 										                        <c:if test="${turno.getEstadoTurno() == 'Pendiente'}">
@@ -325,6 +348,36 @@
 					        </table>
 					    </fieldset>
 					</section>
+					
+					<!-- Modal para Detalles del Turno -->
+					<div class="modal fade" id="detalleTurnoModal" tabindex="-1" role="dialog" aria-labelledby="detalleTurnoModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="detalleTurnoModalLabel">Detalles del Turno y Paciente</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        <p><strong>ID:</strong> <span id="turnoId"></span></p>
+						    <p><strong>Médico:</strong> <span id="turnoMedico"></span></p>
+						    <p><strong>Paciente:</strong> <span id="turnoPaciente"></span></p>
+						    <p><strong>Fecha:</strong> <span id="turnoFecha"></span></p>
+						    <p><strong>Hora:</strong> <span id="turnoHora"></span></p>
+						    <p><strong>Email:</strong> <span id="pacienteEmail"></span></p>
+						    <p><strong>Teléfono:</strong> <span id="pacienteTelefono"></span></p>
+						    <p><strong>Dirección:</strong> <span id="pacienteDireccion"></span></p>
+						    <p><strong>Localidad:</strong> <span id="pacienteLocalidad"></span></p>
+						    <p><strong>Provincia:</strong> <span id="pacienteProvincia"></span></p>
+					        <p><strong>Observación:</strong> <span id="turnoObservacion" ></span></p>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<section class="row justify-content-center pt-3 px-3">
