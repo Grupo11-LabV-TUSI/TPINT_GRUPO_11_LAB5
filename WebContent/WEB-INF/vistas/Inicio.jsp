@@ -42,10 +42,10 @@
 		$(document).ready(function() {
 			$('#table_id_turnos_medic').DataTable();
 		});
-		$(document).ready(function() {
+		/*$(document).ready(function() {
 	        $('.estadoTurnoSelect').change(function() {
 	            $(this).closest('form').submit();
-	        });
+	        });*/
 </script>
 
 </head>

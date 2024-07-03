@@ -40,8 +40,25 @@ public class PaginaController {
 	/** INICIO */
 	// al lanzar la aplicacion redirecciona a inicio
 	@RequestMapping("cargar_inicio.html")
-	public ModelAndView eventoRedireccionarInicio() {
+	public ModelAndView eventoRedireccionarInicio(HttpSession session) {
 		ModelAndView MV = new ModelAndView();
+		
+		if(session.getAttribute("rol") != null) {
+			switch ((String)session.getAttribute("rol")) {
+            case "Admin":
+                session.setAttribute("rol", "Admin");
+                MV.addObject("listaPacientes", pacienteNegocio.readAll());
+                MV.addObject("listaMedicos", medicoNegocio.readAll());
+                MV.addObject("listaTurnos", turnoNegocio.leerTodos());
+                break;
+
+            default:
+                session.setAttribute("rol", "Medic");
+                MV.addObject("listaTurnos", turnoNegocio.buscarTurnosPorMedico(((Usuario)session.getAttribute("usuarioIngresado")).getMedico()));
+                break;
+			
+			}		
+		}
 		MV.setViewName("Inicio");
 		return MV;
 	}

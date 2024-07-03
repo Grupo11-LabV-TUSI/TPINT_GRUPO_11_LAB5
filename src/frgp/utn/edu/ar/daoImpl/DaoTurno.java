@@ -201,6 +201,7 @@ public class DaoTurno implements IDaoTurno {
 		return lista;
 	}
 	
+	@Override
 	public List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId) {
 	    Session session = conexion.abrirConexion();
 	    Transaction tx = session.beginTransaction();
@@ -219,12 +220,6 @@ public class DaoTurno implements IDaoTurno {
 	    } finally {
 	        session.close();
 	    }
-	}
-
-	@Override
-	public List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
