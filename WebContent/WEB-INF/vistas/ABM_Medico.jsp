@@ -64,6 +64,7 @@
                         <th style="width:140px">ESPECIALIDAD</th>
                         <th style="width:80px">ESTADO</th>
                         <th style="width:100px"></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -84,9 +85,24 @@
 	                            <td> ${medico.getUsuario().getUsuario()} </td>
 	                            <td> ${medico.getEspecialidad().getNombre()} </td>
 	                            <td> ${medico.getEstado()} </td>
-	                            <td>
-										<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-matricula="${medico.matricula}">Eliminar</button>
-                                </td>
+	                            
+                                  <td>
+                                      
+                                            <input type="hidden" name="dni" value="${medico.getMatricula()}" >
+                                            <c:choose>
+                                                <c:when test="${medico.getEstado()}">
+                                                    <input type="submit" name="btnEstado" value="Baja"
+                                                        class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-matricula="${medico.matricula}">
+                                                </c:when>
+                                                
+                                                <c:otherwise>
+                                                	 <input type="submit" name="btnEstado" value="Alta"
+                                                        class="btn btn-success" data-toggle="modal" data-target="#confirmAltaModal" data-matricula="${medico.matricula}">
+                                                   
+                                                </c:otherwise>
+                                            </c:choose>
+                                
+                                    </td>
                          
                         </tr>
                     </c:forEach>
@@ -361,6 +377,35 @@
         </div>
     </div>
 </div>
+
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="confirmAltaModal" tabindex="-1" role="dialog" aria-labelledby="confirmAltaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmAltaModalLabel">Confirmar Alta </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea dar de alta a este médico?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form id="altaMedicoForm" action="habilitar_medico.html" method="post" style="display:inline;">
+                    <input type="hidden" name="matricula" id="altaMedicoMatricula">
+                    <button type="submit" class="btn btn-success">Alta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
     <script type="text/javascript">
         $(document).ready(function(){
             <c:if test="${mostrarModal}">
@@ -373,6 +418,14 @@
         var matricula = button.data('matricula');
         var modal = $(this);
         modal.find('#deleteMedicoMatricula').val(matricula);
+    });
+    
+
+    $('#confirmAltaModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var matricula = button.data('matricula');
+        var modal = $(this);
+        modal.find('#altaMedicoMatricula').val(matricula);
     });
     
     (function() {
@@ -421,8 +474,13 @@
             }
         });
     });
+    
+    
+    
 
 </script>
+
+
 
 		<jsp:include page="footer.jsp"></jsp:include>
 </body>

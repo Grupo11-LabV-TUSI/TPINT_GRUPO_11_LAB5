@@ -63,6 +63,32 @@ public class MedicoController {
 	    MV.addObject("listaMedicos", listaMedicos);
 	    return MV;
 	}
+	
+	
+	@RequestMapping(value = "habilitar_medico.html", method = RequestMethod.POST)
+	public ModelAndView altaMedico(@RequestParam("matricula") Long matricula) {
+	    ModelAndView MV = new ModelAndView("ABM_Medico");
+	    Medico medico = medicoNegocio.readOne(matricula);
+	    
+	    if (medico != null) {
+	        medico.setEstado(true); // Alta lógica
+	        medicoNegocio.update(medico);
+	        
+	        MV.addObject("mensaje", "Médico dado de alta correctamente.");
+	    } else {
+	        MV.addObject("mensaje", "Médico no encontrado.");
+	    }
+
+	    List<Medico> listaMedicos = medicoNegocio.readAll();
+	    MV.setViewName("ABM_Medico");
+	    MV.addObject("listaMedicos", listaMedicos);
+	    return MV;
+	}
+
+	
+	
+	
+	
 
 	@RequestMapping(value = "actualizar_medico.html", method = RequestMethod.POST)
     public ModelAndView actualizarMedico(
