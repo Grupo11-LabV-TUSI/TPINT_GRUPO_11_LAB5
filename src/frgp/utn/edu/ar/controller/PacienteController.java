@@ -1,6 +1,7 @@
 package frgp.utn.edu.ar.controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -65,6 +66,12 @@ public class PacienteController {
 		
 		System.out.println("LLEGO AL ABML PACIENTE");
 		
+		List<Provincia> listaProvincias = provinciaNegocio.readAll();
+		List<Localidad> listaLocalidades = localidadNegocio.readAll();
+		
+		MV.addObject("listaProvincias", listaProvincias);
+		MV.addObject("listaLocalidades", listaLocalidades);
+	
 		MV.setViewName("ABML_Paciente");
 		return MV;
 	}
@@ -134,10 +141,12 @@ public class PacienteController {
 		@RequestParam("txtDIRECCION")String direccion,
 		@RequestParam("textEMAIL")String email,
 		@RequestParam("txtTELEFONO")String telefono,
-		@RequestParam("txtLocalidad")String localidad
+		@RequestParam("provincia") int idProvincia, 
+		@RequestParam("localidad") int idLocalidad
 			
 			) {
 		ModelAndView MV = new ModelAndView();
+		
 		
 		System.out.println("LLEGO A alta  paciente");
 		paciente.setDni(dni);
@@ -148,7 +157,14 @@ public class PacienteController {
 		paciente.setDireccion(direccion);
 		paciente.setEmail(email);
 		paciente.setTelefono(telefono);
-		paciente.setLocalidad(localidad);
+		
+		
+		System.out.println("llego al alta paciente");
+		
+		
+		paciente.setLocalidad(localidadNegocio.readOne(idLocalidad).getDescripcion());
+		paciente.setProvincia(provinciaNegocio.readOne(idProvincia).getDescripcion());
+		
 		pacienteNegocio.add(paciente);
 		MV.addObject("listaPacientes", pacienteNegocio.readAll());
 		MV.setViewName("ABML_Paciente");

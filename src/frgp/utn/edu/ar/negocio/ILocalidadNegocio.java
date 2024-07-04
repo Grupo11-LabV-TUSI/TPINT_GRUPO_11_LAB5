@@ -9,5 +9,6 @@ public interface ILocalidadNegocio {
 	public boolean add(Localidad localidad);
 	public Localidad readOne(int idProvincia);
 	public List<Localidad> readAll();
+	
 
 }

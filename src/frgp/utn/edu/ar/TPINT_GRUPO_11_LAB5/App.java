@@ -37,7 +37,7 @@ public class App {
 		boolean estado = false;
 
 		/** Carga de datos */
-		
+	
 		// Paciente
 		PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
 		Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
