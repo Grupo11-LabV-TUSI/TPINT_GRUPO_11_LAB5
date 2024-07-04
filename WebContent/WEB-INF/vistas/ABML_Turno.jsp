@@ -48,7 +48,7 @@
 
         <section class="row justify-content-center pt-3 px-3">
             <fieldset>
-                <legend>ABML Turnos</legend>
+                <legend>Asignacion de Turnos</legend>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container">
                         <!-- Botón de Inicio -->
@@ -115,10 +115,9 @@
 
                 <div class="table-responsive">
                     <table summary="Los turnos registrados en la Clinica">
-                        <caption>Un listado de los turnos registrados en la Clinica</caption>
+                        <legend>Listado de Turnos</legend>
                         <thead>
                             <tr>
-                                <th></th>
                                 <th>ID</th>
                                 <th>MEDICO</th>
                                 <th>PACIENTE</th>
@@ -132,7 +131,6 @@
                             <c:forEach items="${listaTurnos}" var="turno">
                                 <tr>
                                     <form action="ver_detalle_turno.html" method="get">
-                                        <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
                                         <td>${turno.getId()}<input type="hidden" name="turno" value="${turno}"></td>
                                         <td>${turno.getMedico().getNombre()} ${turno.getMedico().getApellido()}</td>
                                         <td>${turno.getPaciente().getNombre()}</td>
