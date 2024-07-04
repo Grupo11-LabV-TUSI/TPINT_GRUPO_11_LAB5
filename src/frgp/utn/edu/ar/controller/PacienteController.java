@@ -9,16 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
-import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
-import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
-import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
 import frgp.utn.edu.ar.resources.Config;
@@ -34,26 +30,6 @@ public class PacienteController {
 	/* Paciente */
 	PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
 	Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
-	
-	
-	ProvinciaNegocio provinciaNegocio = (ProvinciaNegocio)appContext.getBean("ProvinciaNegocioBean");
-	Provincia provincia = (Provincia)appContext.getBean("ProvinciaBean");
-	
-	LocalidadNegocio localidadNegocio = (LocalidadNegocio)appContext.getBean("LocalidadNegocioBean");
-	Localidad localidad = (Localidad)appContext.getBean("LocalidadBean");
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	/** abml */
@@ -208,41 +184,7 @@ public class PacienteController {
 	
 	return MV;
 	}
-	/*
-	@RequestMapping("alta_paciente.html")
-	public ModelAndView eventoAltaPaciente(
-		@RequestParam("txtDNI") int dni,
-		@RequestParam("txtNOMBRE") String nombre,
-		@RequestParam("txtAPELLIDO")String apellido,
-		@RequestParam("txtFECHA_NAC")String fechaNac,
-		@RequestParam("txtDIRECCION")String direccion,
-		@RequestParam("textEMAIL")String email,
-		@RequestParam("txtTELEFONO")String telefono,
-		@RequestParam("txtLocalidad")String localidad
-			
-			) {
-		ModelAndView MV = new ModelAndView();
-		
-		System.out.println("LLEGO A alta  paciente");
-		paciente.setDni(dni);
-		paciente.setNombre(nombre);
-		paciente.setApellido(apellido);
-			LocalDate fecha = LocalDate.parse(fechaNac);
-		paciente.setFecha_nacimiento(fecha);
-		paciente.setDireccion(direccion);
-		paciente.setEmail(email);
-		paciente.setTelefono(telefono);
-		paciente.setLocalidad(localidad);
-		pacienteNegocio.add(paciente);
-		MV.addObject("listaPacientes", pacienteNegocio.readAll());
-		MV.setViewName("ABML_Paciente");
-		
-		
-		return MV;
-	}
 	
-	
-	*/
 	
 	
 }

@@ -86,10 +86,6 @@ public class App2 {
 		for (Turno aux : listaTurno) {
 			System.out.println(aux.toString());
 		}
-		
-		
-		
-
 
 	}
 
