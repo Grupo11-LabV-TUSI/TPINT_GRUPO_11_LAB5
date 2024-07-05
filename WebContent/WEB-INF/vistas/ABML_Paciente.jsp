@@ -89,7 +89,24 @@ jsp
     <c:forEach var="localidad" items="${listaLocalidades}">
         localidades.push({idLocalidad: ${localidad.idLocalidad}, descripcion: '${localidad.descripcion}', idProvincia: ${localidad.provincia.idProvincia}});
     </c:forEach>
+
+    $(document).ready(function() {
+        // Manejar el cambio en el selector de provincias
+        $('#provincias').change(function() {
+            var provinciaId = $(this).val();
+            $('#localidades').empty(); // Limpiar el select de localidades
+            $('#localidades').append('<option value="">Seleccione una localidad</option>');
+
+            // Filtrar localidades por idProvincia seleccionado
+            localidades.forEach(function(localidad) {
+                if (localidad.idProvincia == provinciaId) {
+                    $('#localidades').append('<option value="' + localidad.idLocalidad + '">' + localidad.descripcion + '</option>');
+                }
+            });
+        });
+    });
 </script>
+
 	
 	
 	
@@ -312,32 +329,6 @@ jsp
 
 
 <jsp:include page="footer.jsp"></jsp:include>
-
-
-	<script>
-    $(document).ready(function () {
-        // Convertir los datos de provincias y localidades a un formato que JavaScript pueda usar
-        var provincias = ${listaProvincias};
-        var localidades = ${listaLocalidades};
-
-        // Manejar el evento de cambio en el selector de provincias
-        $('#provincias').change(function () {
-            var provinciaId = $(this).val();
-            var localidadesFiltradas = localidades.filter(function (localidad) {
-                return localidad.provincia.idProvincia == provinciaId;
-            });
-
-            // Limpiar el selector de localidades
-            $('#localidades').empty();
-            $('#localidades').append('<option value="">Seleccione una localidad</option>');
-
-            // Agregar las localidades filtradas al selector
-            localidadesFiltradas.forEach(function (localidad) {
-                $('#localidades').append('<option value="' + localidad.idLocalidad + '">' + localidad.descripcion + '</option>');
-            });
-        });
-    });
-</script>
 
 
 </body>
