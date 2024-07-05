@@ -78,6 +78,21 @@ jsp
 </head>
 <body>
 
+<% %>
+${mensaje};
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var mensaje = "${mensaje}";
+
+        if (mensaje !== null && mensaje.trim() !== "") {
+            alert(mensaje);
+        }
+    });
+</script>
+
 	<script type="text/javascript">
     // Preparar las listas de provincias y localidades para JavaScript
     var provincias = [];

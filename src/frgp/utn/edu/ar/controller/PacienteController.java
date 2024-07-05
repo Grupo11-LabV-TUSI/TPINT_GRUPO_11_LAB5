@@ -141,8 +141,8 @@ public class PacienteController {
 		@RequestParam("txtDIRECCION")String direccion,
 		@RequestParam("textEMAIL")String email,
 		@RequestParam("txtTELEFONO")String telefono,
-		@RequestParam("provincia") int idProvincia, 
-		@RequestParam("localidad") int idLocalidad
+		@RequestParam("provinciasTXT")  String provinciasTXT, 
+		@RequestParam("localidades") String localidades
 			
 			) {
 		ModelAndView MV = new ModelAndView();
@@ -162,10 +162,19 @@ public class PacienteController {
 		System.out.println("llego al alta paciente");
 		
 		
-		paciente.setLocalidad(localidadNegocio.readOne(idLocalidad).getDescripcion());
-		paciente.setProvincia(provinciaNegocio.readOne(idProvincia).getDescripcion());
+		paciente.setLocalidad(localidadNegocio.readOne(Integer.parseInt(localidades)).getDescripcion());
+		paciente.setProvincia(provinciaNegocio.readOne(Integer.parseInt(provinciasTXT)).getDescripcion());
 		
-		pacienteNegocio.add(paciente);
+		
+		boolean resultado = false;
+		String mensaje = "No Se pudo agregar ";
+		if (resultado = pacienteNegocio.add(paciente)){
+			
+			mensaje ="Paciente agregado con exito";
+			
+			
+		}
+		MV.addObject("mensaje", mensaje);
 		MV.addObject("listaPacientes", pacienteNegocio.readAll());
 		MV.setViewName("ABML_Paciente");
 		
@@ -183,6 +192,12 @@ public class PacienteController {
 		System.out.println("LLEGO A VER captura paciente paciente");
 		paciente = pacienteNegocio.readOne(dni);
 		
+		List<Provincia> listaProvincias = provinciaNegocio.readAll();
+		List<Localidad> listaLocalidades = localidadNegocio.readAll();
+		
+		MV.addObject("listaProvincias", listaProvincias);
+		MV.addObject("listaLocalidades", listaLocalidades);
+		
 		MV.addObject("paciente",paciente);
 		
 		System.out.println(paciente);
@@ -199,8 +214,8 @@ public class PacienteController {
 			@RequestParam("txtDIRECCION")String direccion,
 			@RequestParam("textEMAIL")String email,
 			@RequestParam("txtTELEFONO")String telefono,
-			@RequestParam("txtLocalidad")String localidad,
-			@RequestParam("txtProvincia") String provincia
+			@RequestParam("provinciasTXT")  String provinciasTXT, 
+			@RequestParam("localidades") String localidades
 				
 	)
 	{
@@ -215,50 +230,35 @@ public class PacienteController {
 	paciente.setDireccion(direccion);
 	paciente.setEmail(email);
 	paciente.setTelefono(telefono);
-	paciente.setLocalidad(localidad);
-	paciente.setProvincia(provincia);
-	pacienteNegocio.update(paciente);
 	
+
+	System.out.println("llego al alta paciente");
+	
+	
+	paciente.setLocalidad(localidadNegocio.readOne(Integer.parseInt(localidades)).getDescripcion());
+	paciente.setProvincia(provinciaNegocio.readOne(Integer.parseInt(provinciasTXT)).getDescripcion());
+	
+	
+	boolean resultado = false;
+	String mensaje = "No Se pudo modificar ";
+	if (resultado = pacienteNegocio.update(paciente)){
+		
+		mensaje ="Paciente modificado con exito";
+		
+		
+	}
+
+	MV.addObject("mensaje", mensaje);
+
 	MV.addObject("listaPacientes", pacienteNegocio.readAll());
 	MV.setViewName("ABML_Paciente");
 	
 	return MV;
 	}
-	/*
-	@RequestMapping("alta_paciente.html")
-	public ModelAndView eventoAltaPaciente(
-		@RequestParam("txtDNI") int dni,
-		@RequestParam("txtNOMBRE") String nombre,
-		@RequestParam("txtAPELLIDO")String apellido,
-		@RequestParam("txtFECHA_NAC")String fechaNac,
-		@RequestParam("txtDIRECCION")String direccion,
-		@RequestParam("textEMAIL")String email,
-		@RequestParam("txtTELEFONO")String telefono,
-		@RequestParam("txtLocalidad")String localidad
-			
-			) {
-		ModelAndView MV = new ModelAndView();
-		
-		System.out.println("LLEGO A alta  paciente");
-		paciente.setDni(dni);
-		paciente.setNombre(nombre);
-		paciente.setApellido(apellido);
-			LocalDate fecha = LocalDate.parse(fechaNac);
-		paciente.setFecha_nacimiento(fecha);
-		paciente.setDireccion(direccion);
-		paciente.setEmail(email);
-		paciente.setTelefono(telefono);
-		paciente.setLocalidad(localidad);
-		pacienteNegocio.add(paciente);
-		MV.addObject("listaPacientes", pacienteNegocio.readAll());
-		MV.setViewName("ABML_Paciente");
-		
-		
-		return MV;
-	}
 	
 	
-	*/
+	
+	
 	
 	
 }

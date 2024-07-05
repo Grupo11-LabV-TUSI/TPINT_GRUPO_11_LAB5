@@ -108,7 +108,9 @@
 							    	<c:forEach items="${listaPacientes}" var="paciente">
 								        <tr>
 								        	<form action="ver_paciente.html" method="get">
-								        		<td> <input type="submit" name="btnVerPaciente" value="Ver" class="bg-warning"> </td>
+								        	
+								        		<td>  </td>
+									          
 									            <td> ${paciente.getDni()} <input type="hidden" name="paciente" value="${paciente}"> </td>
 									            <td> ${paciente.getNombre()} </td>
 									            <td> ${paciente.getApellido()} </td>
