@@ -313,7 +313,7 @@
 					                        <c:forEach items="${listaTurnos}" var="turno">
 					                            <c:if test="${turno.getMedico().getUsuario().getId() == usuarioIngresado.id}">
 					                                <tr>
-					                                    <form action="ver_detalle_turno.html" method="get">
+					                                    <form action="actualizar_estado_turno.html" method="get">
 					                                        <td><button type="button" onclick="mostrarDetalleTurno('${turno.id}', '${turno.medico.nombre} ${turno.medico.apellido}', '${turno.paciente.nombre} ${turno.paciente.apellido}', '${turno.fecha}', '${turno.hora}', '${turno.observacion}', '${turno.paciente.direccion}', '${turno.paciente.localidad}', '${turno.paciente.provincia}', '${turno.paciente.email}', '${turno.paciente.telefono}')" class="btn bg-warning">Ver</button></td>
 					                                        <td>${turno.getId()}</td>
 					                                        <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
