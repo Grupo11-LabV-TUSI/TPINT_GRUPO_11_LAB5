@@ -1,14 +1,10 @@
 package frgp.utn.edu.ar.entidad;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Table;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import java.io.Serializable;
 
@@ -25,18 +21,13 @@ public class Provincia implements Serializable {
 
     @Column(name = "Descripcion", length = 20, nullable = false)
     private String descripcion;
-        
 
     // Constructores
 
     public Provincia() {
         // Constructor vacío requerido por JPA
     }
-    public Provincia(int idProvincia, String descripcion) {
-        this.idProvincia = idProvincia;
-        this.descripcion=descripcion;
-    }
-    
+
     public Provincia(String descripcion) {
         this.descripcion = descripcion;
     }
