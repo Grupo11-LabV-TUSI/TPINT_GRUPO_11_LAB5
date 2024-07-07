@@ -66,7 +66,7 @@
                                         <td style="width: 139px;">DNI</td>
                                         <td style="height: 0px;">
                                             <input type="Number" name="txtDNI" min="1" max="99999999" required maxlength="10"
-                                                 onkeypress="return((event.charCode >= 48 && event.charCode <= 57))" read-only
+                                                 onkeypress="return((event.charCode >= 48 && event.charCode <= 57))" readonly
                                                 value="${paciente.getDni()}" /><br>
                                         </td>
                                     </tr>
