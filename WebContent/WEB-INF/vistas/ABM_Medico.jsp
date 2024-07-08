@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,12 +15,21 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+		<!-- //cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">		
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>		
+		<!-- //cdn.datatables.net/2.0.8/js/dataTables.min.js -->
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 	</head>
 	<body>
 		<jsp:include page="Menu.jsp"></jsp:include>
 
-		
+	<script>
+	$(document).ready(function() {
+		$('#tabla_Medicos').DataTable();
+	});
+	
+	</script>	
 <div class="container">
         <h2>Gestión de Usuarios</h2>
         
@@ -47,23 +57,24 @@
     <fieldset>
         <legend>ABM Medicos</legend>
         <div class="table-responsive">
-            <table summary="Los medicos registrados en la Clinica">
+            <table id="tabla_Medicos"  class="display" summary="Los medicos registrados en la Clinica">
                 <caption>
                     Un listado de los medicos registrados en la Clinica
                 </caption>
                 <thead>
                     <tr>
-                        <th style="width:70px"></th>
-                        <th style="width:110px">MATRICULA</th>
-                        <th style="width:130px">NOMBRE</th>
-                        <th>APELLIDO</th>
-                        <th style="width:250px">EMAIL</th>
+                        <th></th>
+                        <th>MATRICULA</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
                         <th>TELEFONO</th>
-                        <th style="width:130px">FECHA NACIMIENTO</th>
+
                         <th>USUARIO</th>
-                        <th style="width:140px">ESPECIALIDAD</th>
-                        <th style="width:80px">ESTADO</th>
-                        <th style="width:100px"></th>
+                        <th>ESPECIALIDAD</th>
+  
+                        
+                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -76,17 +87,33 @@
                                      </form>
                                 </td>                                     
 	                            <td> ${medico.getMatricula()} </td>
-	                            <td> ${medico.getNombre()} </td>
-	                            <td> ${medico.getApellido()} </td>
+	                            <td> ${medico.getNombre()} ${medico.getApellido()}</td>
+	                           
 	                            <td> ${medico.getEmail()} </td>
 	                            <td> ${medico.getTelefono()} </td>
-	                            <td> ${medico.getFechaNacimiento()} </td>
+	    
 	                            <td> ${medico.getUsuario().getUsuario()} </td>
 	                            <td> ${medico.getEspecialidad().getNombre()} </td>
-	                            <td> ${medico.getEstado()} </td>
-	                            <td>
-										<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-matricula="${medico.matricula}">Eliminar</button>
-                                </td>
+	                            
+	                      
+	                            
+                                  <td>
+                                      
+                                            <input type="hidden" name="dni" value="${medico.getMatricula()}" >
+                                            <c:choose>
+                                                <c:when test="${medico.getEstado()}">
+                                                    <input type="submit" name="btnEstado" value="Baja"
+                                                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-matricula="${medico.matricula}">
+                                                </c:when>
+                                                
+                                                <c:otherwise>
+                                                	 <input type="submit" name="btnEstado" value="Alta"
+                                                        class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmAltaModal" data-matricula="${medico.matricula}">
+                                                   
+                                                </c:otherwise>
+                                            </c:choose>
+                                
+                                    </td>
                          
                         </tr>
                     </c:forEach>
@@ -105,32 +132,56 @@
         <div class="modal fade" id="userModal">
             <div class="modal-dialog">
                 <div class="modal-content">
+             
                     <!-- Cabecera del Modal -->
                     <div class="modal-header">
-                        <h4 class="modal-title">Formulario de Carga de Usuario</h4>
+                        <h4 class="modal-title">Alta de Medico</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
+                      <form id="myForm" action="alta_medico.html" method="post">
                     <!-- Cuerpo del Modal -->
                     <div class="modal-body">
-                       <form action="alta_medico.html" method="post">
+                  
+                     
                           <!-- COMIENZO USARIO -->
-                       <div class="form-group row">
-		                    <label class="col-sm-2 col-form-label">Userid:</label>
-		                    <div class="col-sm-6">
-		                        <!-- <input type="text" class="form-control" name="nombre" value="${medico.nombre}"/> -->
-		                        <input type="text" id="txtNOMBRE" name="txtUSERID">
-		                    </div>
-		                </div>
-		                
-		                <div class="form-group row">
-		                    <label class="col-sm-2 col-form-label">Clave:</label>
-		                    <div class="col-sm-6">
-		                     <input type="password" id="txtAPELLIDO" name="txtCLAVE">
-		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.apellido}"/> -->
-		                       
-		                    </div>
-		                </div>
-		                
+                          
+                          
+                           <div class="card w-100" >
+							  <h5 class="card-header">Usuario</h5>
+							  <div class="card-body">
+						   <div class="form-group row">
+						   <div class="col-sm-6">	
+						   <div class="form-group row">
+						   	<div class="col-sm-4">	
+						   		<label for="email">Usuario:</label>	
+						   	</div>	
+						    <div class="col-sm-4">
+						    <input type="text" id="txtNOMBRE" name="txtUSERID">					    	
+						    </div>
+						   </div>
+						   </div>
+					
+							    <div class="form-group row">
+							        <label class="col-sm-4 col-form-label">Clave:</label>
+							        <div class="col-sm-4">
+							            <input type="password" class="form-control" id="txtCLAVE" name="txtCLAVE" required>
+							        </div>
+							    </div>
+							    
+							    <div class="form-group row">
+							        <label class="col-sm-4 col-form-label">Confirmar Clave:</label>
+							        <div class="col-sm-4">
+							            <input type="password" class="form-control" id="txtCLAVE2" name="txtCLAVE2" required>
+							        </div>
+							    </div>
+							
+						   </div>
+						   </div>
+							</div>
+                          
+                          
+                  
+		                <span id="message" style="color:red;"></span><br><br>
 		                <!-- FIN USARIO -->
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Nombre:</label>
@@ -152,7 +203,8 @@
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Telefono:</label>
 		                    <div class="col-sm-6">
-		                    <input type="phone" id="txtTELEFONO" name="txtTELEFONO">
+		                     <input type="text" class="form-control" id="telefono" name="telefono" placeholder="+1234567890" value="${medico.telefono}" required>
+		                    <!--<input type="phone" id="txtTELEFONO" name="txtTELEFONO">-->
 		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.telefono}"/> -->
 		                       
 		                    </div>
@@ -161,7 +213,7 @@
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
 		                    <div class="col-sm-6">
-		              			<input type="date" id="txtFECHA_NAC" name="txtFECHA_NAC" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+		              			<input type="date" id="txtFECHA_NAC" name="txtFECHA_NAC" value="2000-07-22" min="1980-01-01" max="2004-12-31" />
 
 		            
 		                      <!-- <input type="text" class="form-control" name="nombre" value="${medico.fechaNacimiento}"/> -->  
@@ -171,24 +223,32 @@
 		                 <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Email:</label>
 		                    <div class="col-sm-6">
-		                    <input type="email" id="textEMAIL" name="textEMAIL">
+		                    
+		                    <input type="email" class="form-control" id="email" name="email" value="${medico.email}" required />
+						      <div class="invalid-feedback">
+						        Debe ingresar un correo
+						      </div>
+		                    <!-- <input type="email" id="textEMAIL" name="textEMAIL">-->
 		                    <!-- <input type="text" class="form-control" name="nombre" value="${medico.email}"/> -->  
 		                        
 		                    </div>
 		                </div>
 
-						 <div class="form-group row">
-						            <label class="col-sm-2 col-form-label">Especialidad:</label>
-						            <div class="col-sm-6">
-						                <select class="form-control" id="textESPECIALIDAD" name="textESPECIALIDAD">
-						                    <option value="1">Odontología</option>
-						                    <option value="2">Pediatría</option>
-						                </select>
-						            </div>
-						        </div>
+						<div class="form-group row">
+                       <div class="col-sm-3">	
+                            <label for="especialidad">Especialidad:</label>
+                            </div>
+                            <div class="col-sm-7">
+                            <select class="form-control" id="especialidad" name="especialidad" required>
+ 				               <c:forEach var="especialidad" items="${listaEspecialidades}">
+                                    <option value="${especialidad.especialidad_id}" <c:if test="${especialidad.especialidad_id eq medico.especialidad.especialidad_id}">selected</c:if>>${especialidad.nombre}</option>
+                                </c:forEach>
+                            </select>
+                            </div>
+                        </div>
 
 		              
- 
+
                     </div>
                     <!-- Pie del Modal -->
                     <div class="modal-footer">
@@ -198,8 +258,9 @@
 		                        <input type="submit" name="btnAgregarMedico" class="btn btn-primary" />
 		                    </div>
 		                </div>
-		           </form>
+		          
                     </div>
+                   </form>
                 </div>
             </div>
         </div>
@@ -213,7 +274,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                         <h4 class="modal-title">Modificar Medico</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                     </div>
                     <form action="actualizar_medico.html" method="post">
                 <div class="modal-body">
@@ -235,7 +296,8 @@
 						   		<label for="email">Nombre:</label>	
 						   	</div>	
 						    <div class="col-sm-7">
-						    <label for="email">${medico.nombre}</label>						    	
+						    <input type="text" class="form-control" id="nombre" name="nombre" value="${medico.nombre}" required />
+						 				    	
 						    </div>
 						   </div>
 						   
@@ -244,7 +306,8 @@
 						   		<label for="email">Apellido:</label>	
 						   	</div>	
 						    <div class="col-sm-7">
-						    <label for="email">${medico.apellido}</label>						    	
+						     <input type="text" class="form-control" id="apellido" name="apellido" value="${medico.apellido}" required />
+					    	
 						    </div>
 						   </div>
 						   
@@ -329,7 +392,7 @@
                     </c:if>
                 </div>
 				<div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </div>
                  </form>
@@ -344,7 +407,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -352,7 +415,7 @@
                 ¿Está seguro que desea eliminar este médico?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <form id="deleteMedicoForm" action="eliminar_medico.html" method="post" style="display:inline;">
                     <input type="hidden" name="matricula" id="deleteMedicoMatricula">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -361,7 +424,58 @@
         </div>
     </div>
 </div>
+
+
+<!-- Confirm Alta Modal -->
+<div class="modal fade" id="confirmAltaModal" tabindex="-1" role="dialog" aria-labelledby="confirmAltaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmAltaModalLabel">Confirmar Alta </h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea dar de alta a este médico?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="altaMedicoForm" action="habilitar_medico.html" method="post" style="display:inline;">
+                    <input type="hidden" name="matricula" id="altaMedicoMatricula">
+                    <button type="submit" class="btn btn-success">Alta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <script type="text/javascript">
+
+    document.getElementById('txtCLAVE2').addEventListener('blur', function() {
+        var txtCLAVE = document.getElementById('txtCLAVE').value;
+        var txtCLAVE2 = this.value;
+        var message = document.getElementById('message');
+
+        if (txtCLAVE2 !== txtCLAVE) {
+            message.textContent = 'Las claves no son iguales';
+        } else {
+            message.textContent = '';
+        }
+    });
+
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var txtCLAVE = document.getElementById('txtCLAVE').value;
+        var txtCLAVE2 = document.getElementById('txtCLAVE2').value;
+        var message = document.getElementById('message');
+
+        if (txtCLAVE2 !== txtCLAVE) {
+            event.preventDefault();
+            message.textContent = 'Las claves no son iguales';
+        }
+    });
+	
         $(document).ready(function(){
             <c:if test="${mostrarModal}">
                 $('#medicoModal').modal('show');
@@ -375,23 +489,16 @@
         modal.find('#deleteMedicoMatricula').val(matricula);
     });
     
-    (function() {
-    	  'use strict';
-    	  window.addEventListener('load', function() {
-    	    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    	    var forms = document.getElementsByClassName('needs-validation');
-    	    // Loop over them and prevent submission
-    	    var validation = Array.prototype.filter.call(forms, function(form) {
-    	      form.addEventListener('submit', function(event) {
-    	        if (form.checkValidity() === false) {
-    	          event.preventDefault();
-    	          event.stopPropagation();
-    	        }
-    	        form.classList.add('was-validated');
-    	      }, false);
-    	    });
-    	  }, false);
-    	})();
+
+    $('#confirmAltaModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var matricula = button.data('matricula');
+        var modal = $(this);
+        modal.find('#altaMedicoMatricula').val(matricula);
+    });
+    
+       
+   
     
     document.addEventListener('DOMContentLoaded', (event) => {
         const telefonoInput = document.getElementById('telefono');
@@ -412,7 +519,7 @@
             telefonoInput.value = '+' + digits;
         });
 
-        document.querySelector('form').addEventListener('submit', (event) => {
+        document.getElementById('myForm').addEventListener('submit', (event) => {
             const telefonoValue = telefonoInput.value;
 
             if (!/^\+\d{10}$/.test(telefonoValue)) {
@@ -421,8 +528,13 @@
             }
         });
     });
+    
+    
+    
 
 </script>
+
+
 
 		<jsp:include page="footer.jsp"></jsp:include>
 </body>

@@ -1,5 +1,6 @@
 package frgp.utn.edu.ar.controller;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Especialidad;
+import frgp.utn.edu.ar.entidad.Horario;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
+import frgp.utn.edu.ar.negocioImpl.HorarioNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.resources.Config;
 
@@ -32,7 +35,9 @@ public class MedicoController {
 	/* Usuario */
 	UsuarioNegocio usuarioNegocio = (UsuarioNegocio) appContext.getBean("UsuarioNegocioBean");
 	Usuario usuario = (Usuario) appContext.getBean("UsuarioBean");
-
+	/* Turnos */
+	HorarioNegocio horarioNegocio = (HorarioNegocio) appContext.getBean("HorarioNegocioBean");
+	Horario horario = (Horario) appContext.getBean("HorarioBean");
 
 	/** abml */
 	@RequestMapping("ABM_medico.html")
@@ -42,11 +47,15 @@ public class MedicoController {
 		//System.out.println("LLEGO AL ABML MEDICOOOOOOOOO");		
 		MV.setViewName("ABM_Medico");
 		MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
+		MV.addObject("listaHorarios", horarioNegocio.readAll());
+         
+		
 		return MV;
 	}
 	@RequestMapping(value = "eliminar_medico.html", method = RequestMethod.POST)
 	public ModelAndView eliminarMedico(@RequestParam("matricula") Long matricula) {
 	    ModelAndView MV = new ModelAndView("ABM_Medico");
+	    System.out.println("Matricula llegando" + matricula);
 	    Medico medico = medicoNegocio.readOne(matricula);
 	    
 	    if (medico != null) {
@@ -63,9 +72,37 @@ public class MedicoController {
 	    MV.addObject("listaMedicos", listaMedicos);
 	    return MV;
 	}
+	
+	
+	@RequestMapping(value = "habilitar_medico.html", method = RequestMethod.POST)
+	public ModelAndView altaMedico(@RequestParam("matricula") Long matricula) {
+	    ModelAndView MV = new ModelAndView("ABM_Medico");
+	    Medico medico = medicoNegocio.readOne(matricula);
+	    
+	    if (medico != null) {
+	        medico.setEstado(true); // Alta lógica
+	        medicoNegocio.update(medico);
+	        
+	        MV.addObject("mensaje", "Médico dado de alta correctamente.");
+	    } else {
+	        MV.addObject("mensaje", "Médico no encontrado.");
+	    }
+
+	    List<Medico> listaMedicos = medicoNegocio.readAll();
+	    MV.setViewName("ABM_Medico");
+	    MV.addObject("listaMedicos", listaMedicos);
+	    return MV;
+	}
+
+	
+	
+	
+	
 
 	@RequestMapping(value = "actualizar_medico.html", method = RequestMethod.POST)
     public ModelAndView actualizarMedico(
+    		@RequestParam("nombre") String nombre ,
+    		@RequestParam("apellido") String apellido,
             @RequestParam("matricula") Long matricula,
             @RequestParam("email") String email,
             @RequestParam("telefono") String telefono,
@@ -75,6 +112,8 @@ public class MedicoController {
         Medico medico = medicoNegocio.readOne(matricula);
         
         if (medico != null) {
+        	medico.setNombre(nombre);
+        	medico.setApellido(apellido);
             medico.setEmail(email);
             medico.setTelefono(telefono);
           
@@ -129,15 +168,18 @@ public class MedicoController {
 	public ModelAndView eventoAltaPaciente(		
 		@RequestParam("txtUSERID") String userid,
 		@RequestParam("txtCLAVE")String clave,		
+		@RequestParam("txtCLAVE2")String clave2,	
 		@RequestParam("txtNOMBRE") String nombre,
 		@RequestParam("txtAPELLIDO")String apellido,
 		@RequestParam("txtFECHA_NAC")String fechaNac,
-		@RequestParam("textEMAIL")String email,
-		@RequestParam("textESPECIALIDAD")String especialidadID,
-		@RequestParam("txtTELEFONO")String telefono
+		@RequestParam("email")String email,
+		@RequestParam("especialidad")String especialidadID,
+		@RequestParam("telefono")String telefono
 			
 			) {
 		ModelAndView MV = new ModelAndView();
+
+		
 		usuario.setUsuario(userid);
 		usuario.setContraseña(clave);
 		usuarioNegocio.add(usuario);
@@ -167,11 +209,15 @@ public class MedicoController {
 		}
 		medico.setEstado(true);
 		System.out.println("LLEGO A alta  medicooooooo" + medico);
-		medicoNegocio.add(medico);
+
+			medicoNegocio.add(medico);
+		
+		//medicoNegocio.add(medico);
 		MV.addObject("listaPacientes", medicoNegocio.readAll());
-		MV.setViewName("ABM_medico");
-		
-		
+		MV.setViewName("redirect:/cargar_inicio.html");
 		return MV;
+
+		
+	
 	}
 }
