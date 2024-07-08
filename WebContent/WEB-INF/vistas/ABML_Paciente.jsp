@@ -338,7 +338,61 @@ jsp
 	
 </div></div>
 
+<!-- MODAL BAJA ALTA DE PACIENTE -->
 
+
+<!-- Confirm Delete Modal 
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea eliminar este paciente?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="deleteMedicoForm" action="eliminar_medico.html" method="post" style="display:inline;">
+                    <input type="hidden" name="matricula" id="deleteMedicoMatricula">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Confirm Alta Modal 
+<div class="modal fade" id="confirmAltaModal" tabindex="-1" role="dialog" aria-labelledby="confirmAltaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmAltaModalLabel">Confirmar Alta </h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro que desea dar de alta a este médico?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form id="altaMedicoForm" action="habilitar_medico.html" method="post" style="display:inline;">
+                    <input type="hidden" name="matricula" id="altaMedicoMatricula">
+                    <button type="submit" class="btn btn-success">Alta</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+-->
 
 
 <jsp:include page="footer.jsp"></jsp:include>
