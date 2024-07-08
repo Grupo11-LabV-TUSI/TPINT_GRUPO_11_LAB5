@@ -100,7 +100,7 @@ jsp
         $('#provincias').change(function() {
             var provinciaId = $(this).val();
             $('#localidades').empty(); // Limpiar el select de localidades
-            $('#localidades').append('<option value="">Seleccione una localidad</option>');
+           // $('#localidades').append('<option value="">Seleccione una localidad</option>');
 
             // Filtrar localidades por idProvincia seleccionado
             localidades.forEach(function(localidad) {
@@ -220,7 +220,7 @@ jsp
 									</tr>
 									<td>Localidad:</td>
 									<td><select class="form-control" id="localidades"
-										name="localidades">
+										name="localidades" requiered >
 
 
 
