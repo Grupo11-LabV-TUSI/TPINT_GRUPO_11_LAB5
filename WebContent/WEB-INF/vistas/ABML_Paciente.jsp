@@ -78,8 +78,6 @@ jsp
 </head>
 <body>
 
-<% %>
-${mensaje};
 
 
 

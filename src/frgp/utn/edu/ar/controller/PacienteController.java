@@ -3,6 +3,7 @@ package frgp.utn.edu.ar.controller;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -154,21 +155,30 @@ public class PacienteController {
 		
 		
 		boolean resultado = false;
-		String mensaje = "No Se pudo agregar ";
+		String mensaje = "No Se pudo agregar";
+		
+		if (pacienteNegocio.readOne(paciente.getDni()) == null){
+		
+		
+		
 		if (resultado = pacienteNegocio.add(paciente)){
 			
 			mensaje ="Paciente agregado con exito";
 			
 			
 		}
+		}
+		else {
+			mensaje = "DNI repetido - No se puede dar de Alta modifique registro en BD";
+		}
 		MV.addObject("mensaje", mensaje);
 		MV.addObject("listaPacientes", pacienteNegocio.readAll());
 		MV.setViewName("ABML_Paciente");
-		
+	
 		
 		return MV;
-	}
 	
+	}
 	
 	
 	
@@ -178,12 +188,25 @@ public class PacienteController {
 		ModelAndView MV = new ModelAndView();
 		System.out.println("LLEGO A VER captura paciente paciente");
 		paciente = pacienteNegocio.readOne(dni);
+		 int idLocalidadVieja = 0;
 		
 		List<Provincia> listaProvincias = provinciaNegocio.readAll();
 		List<Localidad> listaLocalidades = localidadNegocio.readAll();
 		
+		for (Localidad localidad : listaLocalidades) {
+	        if (localidad.getDescripcion().equals(paciente.getLocalidad())) {
+	           
+	           idLocalidadVieja = 	localidad.getIdLocalidad(); 
+	        }
+	    }
+		
 		MV.addObject("listaProvincias", listaProvincias);
 		MV.addObject("listaLocalidades", listaLocalidades);
+		MV.addObject("idLocalidadVieja", idLocalidadVieja);
+			
+		
+		
+		
 		
 		MV.addObject("paciente",paciente);
 		
@@ -208,7 +231,7 @@ public class PacienteController {
 	{
 	ModelAndView MV = new ModelAndView();
 	
-	System.out.println("LLEGO A alta  paciente");
+	
 	paciente.setDni(dni);
 	paciente.setNombre(nombre);
 	paciente.setApellido(apellido);

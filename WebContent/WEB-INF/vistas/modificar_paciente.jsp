@@ -86,6 +86,8 @@ jsp
     var provincias = [];
     <c:forEach var="provincia" items="${listaProvincias}">
         provincias.push({idProvincia: ${provincia.idProvincia}, descripcion: '${provincia.descripcion}'});
+        
+        
     </c:forEach>
 
     var localidades = [];
@@ -223,7 +225,7 @@ jsp
 
 
 											<c:set var="localidadValue"
-												value="${localidad.idLocalidad == null ? paciente.localidad : ''}" />
+												value="${localidad.idLocalidad == null ? idLocalidadVieja : ''}" />
 											<option value="${localidadValue}">
 												${localidad.descripcion != null ? localidad.descripcion : paciente.localidad}
 											</option>
