@@ -34,8 +34,7 @@ public class Localidad implements Serializable {
         // Constructor vacío requerido por JPA
     }
 
-    public Localidad(int idLocalidad, String descripcion, Provincia provincia) {
-    	this.idLocalidad=idLocalidad;
+    public Localidad(String descripcion, Provincia provincia) {
         this.descripcion = descripcion;
         this.provincia = provincia;
     }

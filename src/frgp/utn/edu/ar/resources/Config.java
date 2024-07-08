@@ -14,36 +14,28 @@ import org.springframework.context.annotation.Scope;
 import frgp.utn.edu.ar.daoImpl.Conexion;
 import frgp.utn.edu.ar.daoImpl.DaoEspecialidad;
 import frgp.utn.edu.ar.daoImpl.DaoHorario;
-import frgp.utn.edu.ar.daoImpl.DaoLocalidad;
 import frgp.utn.edu.ar.daoImpl.DaoMedico;
 import frgp.utn.edu.ar.daoImpl.DaoPaciente;
-import frgp.utn.edu.ar.daoImpl.DaoProvincia;
 import frgp.utn.edu.ar.daoImpl.DaoTurno;
 import frgp.utn.edu.ar.daoImpl.DaoUsuario;
 import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Horario;
-import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
-import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.enums.EDiaHorario;
 import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.HorarioNegocio;
-import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
-import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
 
 @Configuration
 @ComponentScan(basePackages = "utnfrgp")
 public class Config {
-	private static final Provincia Provincia = null;
-
 	/** BEANS CAPAS */
 	/* Bean Conexion */
 	@Bean
@@ -106,27 +98,6 @@ public class Config {
 		daoTurno.setConexion(ConexionBean());
 		return daoTurno;
 	}
-	
-	/* Bean DaoProvincia*/
-	
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public DaoProvincia DaoProvinciaBean() {
-		DaoProvincia daoProvincia = new DaoProvincia();
-		daoProvincia.setConexion(ConexionBean());
-		return daoProvincia;
-	}
-	
-	/* Bean DaoProvincia*/
-	
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public DaoLocalidad DaoLocalidadBean() {
-		DaoLocalidad daoLocalidad = new DaoLocalidad();
-		daoLocalidad.setConexion(ConexionBean());
-		return daoLocalidad;
-	}
-	
 
 	/** BEANS NEGOCIO */
 	/* Bean PacienteNegocio */
@@ -182,25 +153,6 @@ public class Config {
 		turnoNegocio.setDaoTurno(DaoTurnoBean());
 		return turnoNegocio;
 	}
-	
-	/* Bean Provincia Negocio */
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public ProvinciaNegocio ProvinciaNegocioBean() {
-		ProvinciaNegocio provinciaNegocio = new ProvinciaNegocio();
-		provinciaNegocio.setDaoProvincia(DaoProvinciaBean());
-		return provinciaNegocio;
-	}
-	
-	/* Bean Localidad Negocio */
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-	public LocalidadNegocio LocalidadNegocioBean() {
-		LocalidadNegocio localidadNegocio = new LocalidadNegocio();
-		localidadNegocio.setDaoLocalidad(DaoLocalidadBean());
-		return localidadNegocio;
-	}
-	
 
 	/** BEANS ENTIDADES */
 	/* Los Beans de Pacientes */
@@ -249,23 +201,5 @@ public class Config {
 		return new Turno(MedicoBean(), PacienteBean(), LocalDate.now(), LocalTime.now(), "SinObservacion",
 				EEstadoTurno.Pendiente, true);
 	}
-	
-	/* Los Beans de provincia */
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Provincia ProvinciaBean() {
-		
-		return new Provincia(0, "SinNombre");
-	}
-	
-	/* Los Beans de provincia */
-	@Bean
-	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public Localidad LocalidadBean() {
-		
-		return new Localidad(0, "SinNombre", ProvinciaBean());
-	}
-	
-	
-	
+
 }
