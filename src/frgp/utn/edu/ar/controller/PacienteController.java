@@ -76,7 +76,7 @@ public class PacienteController {
 		
 		
 			
-			MV.addObject("estadoUpdatePaciente", mensaje);
+		
 			
 		
 		if(btnEstado.equals("Alta")) {
@@ -88,16 +88,16 @@ public class PacienteController {
 			paciente.setEstado(true);
 
 		}
-		pacienteNegocio.update(paciente);
+		if(pacienteNegocio.update(paciente)) {
 		mensaje = "Actualizado correctamente";
-		
-		MV.addObject("estadoUpdatePaciente", mensaje);
+		}
+		MV.addObject("mensaje", mensaje);
 	
 		MV.addObject("listaPacientes", pacienteNegocio.readAll());
 
 		MV.setViewName("ABML_Paciente");
 		
-		System.out.println("actualiceeeeeeeeeeeeeeeeeeeeeeeeee");
+		
 		
 		System.out.println(paciente.toString()); 
 		
@@ -243,9 +243,7 @@ public class PacienteController {
 	return MV;
 	}
 	
-	
-	
-	
+
 	
 	
 }

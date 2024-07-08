@@ -290,7 +290,7 @@ ${mensaje};
 								<tr>
 									<td>Telefono:</td>
 									<td style="height: 0px;"><input type="tel"
-										name="txtTELEFONO" /></td>
+										 required name="txtTELEFONO" /></td>
 								</tr>
 
 								
@@ -300,7 +300,7 @@ ${mensaje};
 
 								<td>Provincia:</td>
 								<td>
-								<select id="provincias" name="provinciasTXT">
+								<select id="provincias" name="provinciasTXT" required>
 									<c:forEach var="provincia" items="${listaProvincias}">
 										<option value="${provincia.idProvincia}">${provincia.descripcion}</option>
 									</c:forEach>
@@ -310,7 +310,7 @@ ${mensaje};
 								</tr>
 								<td>Localidad:</td>
 								  <td>
-     	  							 <select class="form-control" id="localidades" name="localidades">
+     	  							 <select  id="localidades" name="localidades" required>
        							     <option value="">Seleccione una localidad</option>
        								 </select>
       								  </td>
