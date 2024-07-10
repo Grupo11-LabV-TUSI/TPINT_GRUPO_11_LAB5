@@ -111,7 +111,8 @@
 							    	<c:forEach items="${listaPacientes}" var="paciente">
 								        <tr>
 								        	<form action="ver_paciente.html" method="get">
-								        		<td> <input type="submit" name="btnVerPaciente" value="Ver" class="bg-warning"> </td>
+								        		<td></td>
+								        		<!-- <td> <input type="submit" name="btnVerPaciente" value="Ver" class="bg-warning"> </td>  -->
 									            <td> ${paciente.getDni()} <input type="hidden" name="paciente" value="${paciente}"> </td>
 									            <td> ${paciente.getNombre()} </td>
 									            <td> ${paciente.getApellido()} </td>
@@ -172,7 +173,7 @@
 									            	<select name="miDropdown">
 												        <option value="">Mira Los horarios</option>
 												        <c:forEach items="${medico.getHorarios()}" var="opcion">
-												            <option value="${opcion.getId()}">${opcion.getDia()}</option>
+												            <option value="${opcion.getId()}">${opcion.getDia()} - ${opcion.getHoraInicio()} - ${opcion.getHoraFin()}</option>
 												        </c:forEach>
 												    </select>
 									            </td>
@@ -204,7 +205,9 @@
 							        <tr>
 							            <th>ID</th>
 							            <th>MEDICO</th>
-							            <th>PACIENTE</th>
+							            <th>DNI PACIENTE</th>
+							            <th>NOMBRE PACIENTE</th>
+							            <th>APELLIDO PACIENTE</th>
 							            <th>FECHA</th>
 							            <th>HORA</th>
 							            <th>OBSERVACION</th>
@@ -218,7 +221,9 @@
 								        	<form action="ver_turno.html" method="get">
 									            <td> ${turno.getId()} <input type="hidden" name="turno" value="${turno}"> </td>
 									            <td> ${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()} </td>
+									            <td> ${turno.getPaciente().getDni()} </td>
 									            <td> ${turno.getPaciente().getNombre()} </td>
+									            <td> ${turno.getPaciente().getApellido()} </td>
 									            <td> ${turno.getFecha()} </td>
 									            <td> ${turno.getHora()} </td>
 									            <td> ${turno.getObservacion()} </td>
