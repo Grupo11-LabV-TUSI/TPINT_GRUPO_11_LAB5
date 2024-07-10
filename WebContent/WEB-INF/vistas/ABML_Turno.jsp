@@ -38,6 +38,9 @@
 	            alert('${error}');
 	        </c:if>
 	    });
+    	$(document).ready(function() {
+    		$('#tabla_Medicos').DataTable();
+    	});
     </script>
 </head>
 <body>
@@ -73,12 +76,12 @@
                     <form action="guardar_turno.html" method="post" id="assignTurnForm">
                         <div class="form-group">
                             <label for="medico">Médico</label>
-                            <select class="form-control" id="medico" name="medico" required>
-							    <option value="">Seleccione un médico</option>
-							    <c:forEach items="${listaMedicosFiltrados}" var="medico">
-							        <option value="${medico.getMatricula()}">${medico.getNombre()} ${medico.getApellido()}</option>
-							    </c:forEach>
-							</select>
+                      <select id="medico" name="medico" class="form-select" aria-label="Default select example">
+                            <option value="">Seleccione Medico</option>
+                            <c:forEach var="medico" items="${listaMedicos}">
+                                <option value="${medico.getMatricula()}"> ${medico.getNombre()}, ${medico.getApellido()} </option>
+                            </c:forEach>
+                        </select>
                         </div>
                         <div class="form-group">
                             <label for="fecha">Día</label>

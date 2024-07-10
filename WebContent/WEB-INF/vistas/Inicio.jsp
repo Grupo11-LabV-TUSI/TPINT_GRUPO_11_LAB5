@@ -77,6 +77,9 @@
 				<c:when test="${usuarioIngresado.getUsuario().equals('Admin')}">
 					<p>Bienvenido administrador ${usuarioIngresado.getUsuario() }</p>
 					<section class="row justify-content-center pt-3 px-3">
+						<form action="MenuInformes.html" method="post">
+						  <button type="submit">Reportes</button>
+						</form>
 						<fieldset>
 							<legend>ABML Pacientes</legend>
 							<form action="ABML_paciente.html" method="get">

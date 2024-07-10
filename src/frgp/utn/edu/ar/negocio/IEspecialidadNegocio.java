@@ -11,4 +11,6 @@ public interface IEspecialidadNegocio {
 	public boolean update(Especialidad especialidad);
 	public boolean delete(Especialidad especialidad);
 	public List<Especialidad> readAll();
+    public int obtenerCantidadTurnosPorEspecialidadYFechas(int idEspecialidad, String fechaInicio, String fechaFin);
+
 }
