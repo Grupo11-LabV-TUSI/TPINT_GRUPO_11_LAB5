@@ -287,6 +287,7 @@
 					                    <th></th>
 					                    <th>ID</th>
 					                    <th>MÉDICO</th>
+					                    <th>DNI PACIENTE</th>
 					                    <th>PACIENTE</th>
 					                    <th>FECHA</th>
 					                    <th>HORA</th>
@@ -304,6 +305,7 @@
 					                                    <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
 					                                    <td>${turno.getId()}</td>
 					                                    <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
+					                                    <td>${turno.getPaciente().getDni()}</td>
 					                                    <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
 					                                    <td>${turno.getFecha()}</td>
 					                                    <td>${turno.getHora()}</td>
@@ -322,6 +324,7 @@
 					                                        <td><button type="button" onclick="mostrarDetalleTurno('${turno.id}', '${turno.medico.nombre} ${turno.medico.apellido}', '${turno.paciente.nombre} ${turno.paciente.apellido}', '${turno.fecha}', '${turno.hora}', '${turno.observacion}', '${turno.paciente.direccion}', '${turno.paciente.localidad}', '${turno.paciente.provincia}', '${turno.paciente.email}', '${turno.paciente.telefono}')" class="btn bg-warning">Ver</button></td>
 					                                        <td>${turno.getId()}</td>
 					                                        <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
+					                                        <td>${turno.getPaciente().getDni()}</td>
 					                                        <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
 					                                        <td>${turno.getFecha()}</td>
 					                                        <td>${turno.getHora()}</td>
