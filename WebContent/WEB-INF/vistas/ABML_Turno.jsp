@@ -44,14 +44,14 @@
     <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="container">
-        <h2>Gestión de Turnos</h2>
+        <h2>GestiÃ³n de Turnos</h2>
 
         <section class="row justify-content-center pt-3 px-3">
             <fieldset>
                 <legend>Asignacion de Turnos</legend>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container">
-                        <!-- Botón de Inicio -->
+                        <!-- BotÃ³n de Inicio -->
                         <form class="form-inline mr-auto" action="cargar_inicio.html" method="get">
                             <button class="btn btn-primary" type="submit" name="btnNavIrInicio">Inicio</button>
                         </form>
@@ -72,16 +72,16 @@
                     </form>
                     <form action="guardar_turno.html" method="post" id="assignTurnForm">
                         <div class="form-group">
-                            <label for="medico">Médico</label>
+                            <label for="medico">MÃ©dico</label>
                             <select class="form-control" id="medico" name="medico" required>
-							    <option value="">Seleccione un médico</option>
+							    <option value="">Seleccione un mÃ©dico</option>
 							    <c:forEach items="${listaMedicosFiltrados}" var="medico">
 							        <option value="${medico.getMatricula()}">${medico.getNombre()} ${medico.getApellido()}</option>
 							    </c:forEach>
 							</select>
                         </div>
                         <div class="form-group">
-                            <label for="fecha">Día</label>
+                            <label for="fecha">DÃ­a</label>
     						<input type="date" class="form-control" id="fecha" name="fecha" required min="${LocalDate.now()}" max="${LocalDate.now().plusMonths(1)}">
                         </div>
                         <div class="form-group">
@@ -120,7 +120,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>MEDICO</th>
-                                <th>PACIENTE</th>
+                                <th>DNI PACIENTE</th>
+                                <th>NOMBRE PACIENTE</th>
+                                <th>APELLIDO PACIENTE</th>
                                 <th>FECHA</th>
                                 <th>HORA</th>
                                 <th>OBSERVACION</th>
@@ -133,7 +135,9 @@
                                     <form action="ver_detalle_turno.html" method="get">
                                         <td>${turno.getId()}<input type="hidden" name="turno" value="${turno}"></td>
                                         <td>${turno.getMedico().getNombre()} ${turno.getMedico().getApellido()}</td>
+                                        <td>${turno.getPaciente().getDni()}</td>
                                         <td>${turno.getPaciente().getNombre()}</td>
+                                        <td>${turno.getPaciente().getApellido()}</td>
                                         <td>${turno.getFecha()}</td>
                                         <td>${turno.getHora()}</td>
                                         <td>${turno.getObservacion()}</td>
