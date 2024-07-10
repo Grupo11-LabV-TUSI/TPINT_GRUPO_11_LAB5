@@ -24,6 +24,14 @@ import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
+import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
+import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
+import frgp.utn.edu.ar.entidad.Localidad;
+import frgp.utn.edu.ar.entidad.Provincia;
+
+
+
+
 import frgp.utn.edu.ar.resources.Config;
 
 public class App {
@@ -215,6 +223,17 @@ public class App {
 			System.out.println(usuario.toString());
 			System.out.println(MENSAJE_YA_EXISTE);
 		}
+		
+		// Provincia
+				ProvinciaNegocio provinciaNegocio = (ProvinciaNegocio) appContext.getBean("ProvinciaNegocioBean");
+				Provincia provincia = (Provincia) appContext.getBean("ProvinciaBean");
+				int idProvincia; 
+				String descripcion;
+				idProvincia = 1;
+		        descripcion = "Buenos Aires";
+		        provincia.setIdProvincia(idProvincia);
+		        provincia.setDescripcion(descripcion);
+		        provinciaNegocio.add(provincia);
 
 		
 

@@ -39,6 +39,15 @@ import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
 
+import frgp.utn.edu.ar.daoImpl.DaoLocalidad;
+import frgp.utn.edu.ar.daoImpl.DaoProvincia;
+import frgp.utn.edu.ar.entidad.Localidad;
+import frgp.utn.edu.ar.entidad.Provincia;
+import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
+import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
+
+
+
 @Configuration
 @ComponentScan(basePackages = "utnfrgp")
 public class Config {

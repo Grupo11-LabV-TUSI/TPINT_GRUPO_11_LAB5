@@ -14,13 +14,19 @@ jsp
 
 
 
+
+
 :include
+
 
 
  
 
 
+
 page
+
+
 
 
 
@@ -32,7 +38,11 @@ css
 
 
 
+
+
 .css
+
+
 
 
 
@@ -41,6 +51,8 @@ css
 >
 </
 jsp
+
+
 
 
 
@@ -74,6 +86,8 @@ jsp
     var provincias = [];
     <c:forEach var="provincia" items="${listaProvincias}">
         provincias.push({idProvincia: ${provincia.idProvincia}, descripcion: '${provincia.descripcion}'});
+        
+        
     </c:forEach>
 
     var localidades = [];
@@ -86,7 +100,7 @@ jsp
         $('#provincias').change(function() {
             var provinciaId = $(this).val();
             $('#localidades').empty(); // Limpiar el select de localidades
-            $('#localidades').append('<option value="">Seleccione una localidad</option>');
+           // $('#localidades').append('<option value="">Seleccione una localidad</option>');
 
             // Filtrar localidades por idProvincia seleccionado
             localidades.forEach(function(localidad) {
@@ -190,26 +204,42 @@ jsp
 										<td style="height: 0px;"><input type="tel"
 											name="txtTELEFONO" value="${paciente.getTelefono()}" /></td>
 									</tr>
-								<tr>
+									<tr>
 
-								<td>Provincia:</td>
-								<td>
-								<select id="provincias" name="provinciasTXT">
-									<c:forEach var="provincia" items="${listaProvincias}">
-										<option value="${provincia.idProvincia}">${provincia.descripcion}</option>
-									</c:forEach>
-								</select>
-								</td>
+										<td>Provincia:</td>
+										<td><select id="provincias" name="provinciasTXT">
+												<c:forEach var="provincia" items="${listaProvincias}">
+													<option value="${provincia.idProvincia}"
+														<c:if test="${provincia.descripcion == paciente.getProvincia()}">selected</c:if>>${provincia.descripcion}</option>
 
-								</tr>
-								<td>Localidad:</td>
-								  <td>
-     	  							 <select class="form-control" id="localidades" name="localidades">
-       							     <option value="">Seleccione una localidad</option>
-       								 </select>
-      								  </td>
 
-								</tr>
+
+												</c:forEach>
+										</select></td>
+
+									</tr>
+									<td>Localidad:</td>
+									<td><select class="form-control" id="localidades"
+										name="localidades" requiered >
+
+
+
+											<c:set var="localidadValue"
+												value="${localidad.idLocalidad == null ? idLocalidadVieja : ''}" />
+											<option value="${localidadValue}">
+												${localidad.descripcion != null ? localidad.descripcion : paciente.localidad}
+											</option>
+
+
+
+
+
+
+
+
+									</select></td>
+
+									</tr>
 
 									<br />
 								</table>

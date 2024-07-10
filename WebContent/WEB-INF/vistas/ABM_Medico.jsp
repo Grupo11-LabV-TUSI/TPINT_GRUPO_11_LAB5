@@ -103,12 +103,12 @@
                                             <c:choose>
                                                 <c:when test="${medico.getEstado()}">
                                                     <input type="submit" name="btnEstado" value="Baja"
-                                                        class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-matricula="${medico.matricula}">
+                                                        class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-matricula="${medico.matricula}">
                                                 </c:when>
                                                 
                                                 <c:otherwise>
                                                 	 <input type="submit" name="btnEstado" value="Alta"
-                                                        class="btn btn-success" data-toggle="modal" data-target="#confirmAltaModal" data-matricula="${medico.matricula}">
+                                                        class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmAltaModal" data-matricula="${medico.matricula}">
                                                    
                                                 </c:otherwise>
                                             </c:choose>
@@ -274,7 +274,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                         <h4 class="modal-title">Modificar Medico</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                     </div>
                     <form action="actualizar_medico.html" method="post">
                 <div class="modal-body">
@@ -392,7 +392,7 @@
                     </c:if>
                 </div>
 				<div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </div>
                  </form>
@@ -407,7 +407,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -415,7 +415,7 @@
                 ¿Está seguro que desea eliminar este médico?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <form id="deleteMedicoForm" action="eliminar_medico.html" method="post" style="display:inline;">
                     <input type="hidden" name="matricula" id="deleteMedicoMatricula">
                     <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -426,13 +426,13 @@
 </div>
 
 
-<!-- Confirm Delete Modal -->
+<!-- Confirm Alta Modal -->
 <div class="modal fade" id="confirmAltaModal" tabindex="-1" role="dialog" aria-labelledby="confirmAltaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="confirmAltaModalLabel">Confirmar Alta </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -440,7 +440,7 @@
                 ¿Está seguro que desea dar de alta a este médico?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <form id="altaMedicoForm" action="habilitar_medico.html" method="post" style="display:inline;">
                     <input type="hidden" name="matricula" id="altaMedicoMatricula">
                     <button type="submit" class="btn btn-success">Alta</button>
@@ -519,7 +519,7 @@
             telefonoInput.value = '+' + digits;
         });
 
-        document.querySelector('form').addEventListener('submit', (event) => {
+        document.getElementById('myForm').addEventListener('submit', (event) => {
             const telefonoValue = telefonoInput.value;
 
             if (!/^\+\d{10}$/.test(telefonoValue)) {

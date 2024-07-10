@@ -55,6 +55,7 @@ public class MedicoController {
 	@RequestMapping(value = "eliminar_medico.html", method = RequestMethod.POST)
 	public ModelAndView eliminarMedico(@RequestParam("matricula") Long matricula) {
 	    ModelAndView MV = new ModelAndView("ABM_Medico");
+	    System.out.println("Matricula llegando" + matricula);
 	    Medico medico = medicoNegocio.readOne(matricula);
 	    
 	    if (medico != null) {
