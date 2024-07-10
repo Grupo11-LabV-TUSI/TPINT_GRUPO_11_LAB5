@@ -59,4 +59,10 @@ public class EspecialidadNegocio implements IEspecialidadNegocio {
 		return daoEspecialidad.readAll();
 	}
 
+	@Override
+	public int obtenerCantidadTurnosPorEspecialidadYFechas(int idEspecialidad, String fechaInicio, String fechaFin) {
+		// TODO Auto-generated method stub
+		return daoEspecialidad.obtenerCantidadTurnosPorEspecialidadYFechas(idEspecialidad, fechaInicio, fechaFin);
+	}
+
 }

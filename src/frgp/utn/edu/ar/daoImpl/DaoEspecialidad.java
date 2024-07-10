@@ -2,6 +2,7 @@ package frgp.utn.edu.ar.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -53,7 +54,6 @@ public class DaoEspecialidad implements IDaoEspecialidad {
 		session.close();
 		return especialidad;
 	}
-
 	@Override
 	public boolean exist(int idEspecialidad) {
 		Session session = conexion.abrirConexion();
@@ -122,6 +122,20 @@ public class DaoEspecialidad implements IDaoEspecialidad {
 		session.close();
 		return especialidades;
 	}
+    public int obtenerCantidadTurnosPorEspecialidadYFechas(int idEspecialidad, String fechaInicio, String fechaFin) {
+        Session session = conexion.abrirConexion();
+        Transaction tx = session.beginTransaction();
+        String hql = "SELECT COUNT(t) FROM Turno t WHERE t.especialidad.especialidad_id = :idEspecialidad " +
+                     "AND t.fecha BETWEEN :fechaInicio AND :fechaFin";
+        Query query = session.createQuery(hql);
+        query.setParameter("idEspecialidad", idEspecialidad);
+        query.setParameter("fechaInicio", fechaInicio);
+        query.setParameter("fechaFin", fechaFin);
+        Long count = (Long) query.uniqueResult();
+        tx.commit();
+        session.close();
+        return count != null ? count.intValue() : 0;
+    }
 	// Agrego los gettes y setters para Spring Core
 
 	public Conexion getConexion() {

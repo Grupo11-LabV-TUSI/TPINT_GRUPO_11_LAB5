@@ -38,6 +38,9 @@
 	            alert('${error}');
 	        </c:if>
 	    });
+    	$(document).ready(function() {
+    		$('#tabla_Medicos').DataTable();
+    	});
     </script>
 </head>
 <body>
