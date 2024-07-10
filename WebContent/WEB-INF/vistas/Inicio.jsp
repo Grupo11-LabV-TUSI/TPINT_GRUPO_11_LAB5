@@ -77,6 +77,9 @@
 				<c:when test="${usuarioIngresado.getUsuario().equals('Admin')}">
 					<p>Bienvenido administrador ${usuarioIngresado.getUsuario() }</p>
 					<section class="row justify-content-center pt-3 px-3">
+						<form action="MenuInformes.html" method="post">
+						  <button type="submit">Reportes</button>
+						</form>
 						<fieldset>
 							<legend>ABML Pacientes</legend>
 							<form action="ABML_paciente.html" method="get">
@@ -108,9 +111,8 @@
 							    	<c:forEach items="${listaPacientes}" var="paciente">
 								        <tr>
 								        	<form action="ver_paciente.html" method="get">
-								        	
-								        		<td>  </td>
-									          
+								        		<td></td>
+								        		<!-- <td> <input type="submit" name="btnVerPaciente" value="Ver" class="bg-warning"> </td>  -->
 									            <td> ${paciente.getDni()} <input type="hidden" name="paciente" value="${paciente}"> </td>
 									            <td> ${paciente.getNombre()} </td>
 									            <td> ${paciente.getApellido()} </td>
@@ -171,7 +173,7 @@
 									            	<select name="miDropdown">
 												        <option value="">Mira Los horarios</option>
 												        <c:forEach items="${medico.getHorarios()}" var="opcion">
-												            <option value="${opcion.getId()}">${opcion.getDia()}</option>
+												            <option value="${opcion.getId()}">${opcion.getDia()} - ${opcion.getHoraInicio()} - ${opcion.getHoraFin()}</option>
 												        </c:forEach>
 												    </select>
 									            </td>
@@ -203,7 +205,9 @@
 							        <tr>
 							            <th>ID</th>
 							            <th>MEDICO</th>
-							            <th>PACIENTE</th>
+							            <th>DNI PACIENTE</th>
+							            <th>NOMBRE PACIENTE</th>
+							            <th>APELLIDO PACIENTE</th>
 							            <th>FECHA</th>
 							            <th>HORA</th>
 							            <th>OBSERVACION</th>
@@ -217,7 +221,9 @@
 								        	<form action="ver_turno.html" method="get">
 									            <td> ${turno.getId()} <input type="hidden" name="turno" value="${turno}"> </td>
 									            <td> ${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()} </td>
+									            <td> ${turno.getPaciente().getDni()} </td>
 									            <td> ${turno.getPaciente().getNombre()} </td>
+									            <td> ${turno.getPaciente().getApellido()} </td>
 									            <td> ${turno.getFecha()} </td>
 									            <td> ${turno.getHora()} </td>
 									            <td> ${turno.getObservacion()} </td>
@@ -284,6 +290,7 @@
 					                    <th></th>
 					                    <th>ID</th>
 					                    <th>MÉDICO</th>
+					                    <th>DNI PACIENTE</th>
 					                    <th>PACIENTE</th>
 					                    <th>FECHA</th>
 					                    <th>HORA</th>
@@ -301,6 +308,7 @@
 					                                    <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
 					                                    <td>${turno.getId()}</td>
 					                                    <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
+					                                    <td>${turno.getPaciente().getDni()}</td>
 					                                    <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
 					                                    <td>${turno.getFecha()}</td>
 					                                    <td>${turno.getHora()}</td>
@@ -319,6 +327,7 @@
 					                                        <td><button type="button" onclick="mostrarDetalleTurno('${turno.id}', '${turno.medico.nombre} ${turno.medico.apellido}', '${turno.paciente.nombre} ${turno.paciente.apellido}', '${turno.fecha}', '${turno.hora}', '${turno.observacion}', '${turno.paciente.direccion}', '${turno.paciente.localidad}', '${turno.paciente.provincia}', '${turno.paciente.email}', '${turno.paciente.telefono}')" class="btn bg-warning">Ver</button></td>
 					                                        <td>${turno.getId()}</td>
 					                                        <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
+					                                        <td>${turno.getPaciente().getDni()}</td>
 					                                        <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
 					                                        <td>${turno.getFecha()}</td>
 					                                        <td>${turno.getHora()}</td>
