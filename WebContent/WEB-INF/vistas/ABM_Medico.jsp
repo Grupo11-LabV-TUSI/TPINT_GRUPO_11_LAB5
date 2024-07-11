@@ -10,8 +10,8 @@
 		<style type="text/css">
 			<jsp:include page="../css/StyleSheet.css"></jsp:include>
 		</style>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -20,6 +20,11 @@
 		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>		
 		<!-- //cdn.datatables.net/2.0.8/js/dataTables.min.js -->
 		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+ 
+
 	</head>
 	<body>
 		<jsp:include page="Menu.jsp"></jsp:include>
@@ -27,8 +32,18 @@
 	<script>
 	$(document).ready(function() {
 		$('#tabla_Medicos').DataTable();
+
 	});
-	
+	$(document).ready(function() {
+        var mensaje = "${mensaje}";
+
+        if (mensaje !== null && mensaje.trim() !== "") {
+            alert(mensaje);
+        }
+    });
+
+
+
 	</script>	
 <div class="container">
         <h2>Gestión de Usuarios</h2>
@@ -129,7 +144,7 @@
 
 
         <!-- El Modal -->
-        <div class="modal fade" id="userModal">
+        <div class="modal fade" id="userModal"  tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
              
@@ -140,12 +155,8 @@
                     </div>
                       <form id="myForm" action="alta_medico.html" method="post">
                     <!-- Cuerpo del Modal -->
-                    <div class="modal-body">
-                  
-                     
-                          <!-- COMIENZO USARIO -->
-                          
-                          
+                    <div class="modal-body">   
+                          <!-- COMIENZO USARIO -->                          
                            <div class="card w-100" >
 							  <h5 class="card-header">Usuario</h5>
 							  <div class="card-body">
@@ -159,29 +170,23 @@
 						    <input type="text" id="txtNOMBRE" name="txtUSERID">					    	
 						    </div>
 						   </div>
-						   </div>
-					
+						   </div>					
 							    <div class="form-group row">
 							        <label class="col-sm-4 col-form-label">Clave:</label>
 							        <div class="col-sm-4">
 							            <input type="password" class="form-control" id="txtCLAVE" name="txtCLAVE" required>
 							        </div>
-							    </div>
-							    
+							    </div>							    
 							    <div class="form-group row">
 							        <label class="col-sm-4 col-form-label">Confirmar Clave:</label>
 							        <div class="col-sm-4">
 							            <input type="password" class="form-control" id="txtCLAVE2" name="txtCLAVE2" required>
 							        </div>
-							    </div>
-							
+							    </div>							
 						   </div>
 						   </div>
 							</div>
-                          
-                          
-                  
-		                <span id="message" style="color:red;"></span><br><br>
+		                <span id="message" style="color:red;"></span>
 		                <!-- FIN USARIO -->
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Nombre:</label>
@@ -190,51 +195,40 @@
 		                        <input type="text" id="txtNOMBRE" name="txtNOMBRE">
 		                    </div>
 		                </div>
-		                
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Apellido:</label>
 		                    <div class="col-sm-6">
 		                     <input type="text" id="txtAPELLIDO" name="txtAPELLIDO">
 		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.apellido}"/> -->
-		                       
 		                    </div>
-		                </div>
-		                
+		                </div>		                
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Telefono:</label>
 		                    <div class="col-sm-6">
 		                     <input type="text" class="form-control" id="telefono" name="telefono" placeholder="+1234567890" value="${medico.telefono}" required>
 		                    <!--<input type="phone" id="txtTELEFONO" name="txtTELEFONO">-->
 		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.telefono}"/> -->
-		                       
 		                    </div>
 		                </div>
-		                
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
 		                    <div class="col-sm-6">
-		              			<input type="date" id="txtFECHA_NAC" name="txtFECHA_NAC" value="2000-07-22" min="1980-01-01" max="2004-12-31" />
-
-		            
+		              			<input type="date" id="txtFECHA_NAC" name="txtFECHA_NAC" value="2000-07-22" min="1980-01-01" max="2004-12-31" />		            
 		                      <!-- <input type="text" class="form-control" name="nombre" value="${medico.fechaNacimiento}"/> -->  
 		                    </div>
-		                </div>
-		                
+		                </div>		                
 		                 <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Email:</label>
-		                    <div class="col-sm-6">
-		                    
+		                    <div class="col-sm-6">		                    
 		                    <input type="email" class="form-control" id="email" name="email" value="${medico.email}" required />
 						      <div class="invalid-feedback">
 						        Debe ingresar un correo
 						      </div>
 		                    <!-- <input type="email" id="textEMAIL" name="textEMAIL">-->
 		                    <!-- <input type="text" class="form-control" name="nombre" value="${medico.email}"/> -->  
-		                        
 		                    </div>
 		                </div>
-
-						<div class="form-group row">
+		                <div class="form-group row">
                        <div class="col-sm-3">	
                             <label for="especialidad">Especialidad:</label>
                             </div>
@@ -246,7 +240,34 @@
                             </select>
                             </div>
                         </div>
+		                    
+		                <div class="form-group row">
+					    <label class="col-sm-2 col-form-label">Horarios:</label>
+					        <div class="col-sm-6">
 
+					                <select class="js-example-basic-multiple js-states form-control" id="horario" name="horario" multiple="multiple" required>
+								 <c:forEach var="horario" items="${listaHorarios}">
+                                    <option value="${horario.id}">${horario.dia}-${horario.horaInicio}-${horario.horaFin}</option>
+                                </c:forEach>
+									</select>
+						        								
+		                    </div>
+		 
+		                </div>
+		          
+                                            <script>
+                                                                    $(".js-example-basic-multiple").select2({
+                                                                        placeholder: {
+                                                                            id: 0,
+                                                                            text: "Seleccione un Horario"
+                                                                        },
+                                                                    
+                                                                        
+                                                                        dropdownParent: $('#userModal')
+
+                                                                    });
+                                                                </script>
+						
 		              
 
                     </div>

@@ -2,6 +2,7 @@ package frgp.utn.edu.ar.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -164,6 +165,7 @@ public class MedicoController {
         return MV;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("alta_medico.html")
 	public ModelAndView eventoAltaPaciente(		
 		@RequestParam("txtUSERID") String userid,
@@ -174,49 +176,92 @@ public class MedicoController {
 		@RequestParam("txtFECHA_NAC")String fechaNac,
 		@RequestParam("email")String email,
 		@RequestParam("especialidad")String especialidadID,
-		@RequestParam("telefono")String telefono
+		@RequestParam("telefono")String telefono,
+		@RequestParam("horario")String horarioid
 			
 			) {
 		ModelAndView MV = new ModelAndView();
-
+		String mensaje = null;
 		
 		usuario.setUsuario(userid);
 		usuario.setContraseña(clave);
-		usuarioNegocio.add(usuario);
-		System.out.println("Agregue el Usuario");
 		List<Usuario> listaUsuarios = usuarioNegocio.readAll();
-		System.out.println("Todos los usuarios : " + listaUsuarios);
-		// Buscar el usuario en la lista
-        for (Usuario usuario : listaUsuarios) {
-            if (usuario.getUsuario().equals(userid)) {
-            	System.out.println(userid + "USUARIO COMPARACIO - Agregue el Usuario" + usuario);
-            	medico.setUsuario(usuario);
-            }
-        }		
-		medico.setNombre(nombre);
-		medico.setApellido(apellido);
-			LocalDate fecha = LocalDate.parse(fechaNac);
-			medico.setFechaNacimiento(fecha);
-			medico.setEmail(email);
-		medico.setTelefono(telefono);
-		//Especialidad objespec = new Especialidad();
-		List<Especialidad> listaespecialidad = especialidadNegocio.readAll();
-		for (Especialidad especialidad2 : listaespecialidad) {
-			if (especialidad2.getEspecialidad_id() == Integer.parseInt(especialidadID)) {
-            	System.out.println(especialidad2 + "ESPECIALIDAD COMPARACIO - Agregue el ESPE" + especialidadID);
-            	medico.setEspecialidad(especialidad2);
-            }
-		}
-		medico.setEstado(true);
-		System.out.println("LLEGO A alta  medicooooooo" + medico);
-
-			medicoNegocio.add(medico);
+		  for (Usuario usuario : listaUsuarios) {
+			  System.out.println(usuario.getUsuario() + userid);
+	            if (usuario.getUsuario().equals(userid)) {
+	            	
+	            	//MV.addObject("mensaje", "DNI repetido - No se puede dar de Alta modifique registro en BD");
+	            	MV.setViewName("redirect:/ABM_medico.html");
+	            	MV.addObject("listaMedicos", medicoNegocio.readAll());
+	            	System.out.println("DNI repetido - No se puede dar de Alta modifique registro en BD");
+	
+	            	return MV;
+	            }
+	  
+	        }		
+		if(mensaje==null)
+		{
+		usuarioNegocio.add(usuario);
+				System.out.println("Agregue el Usuario");
+				
+				System.out.println("Todos los usuarios : " + listaUsuarios);
+				// Buscar el usuario en la lista
+				
+		        for (Usuario usuario : listaUsuarios) {
+		            if (usuario.getUsuario().equals(userid)) {
+		            	System.out.println(userid + "USUARIO COMPARACIO - Agregue el Usuario" + usuario);
+		            	medico.setUsuario(usuario);
+		            }
+		        }		
+				medico.setNombre(nombre);
+				medico.setApellido(apellido);
+					LocalDate fecha = LocalDate.parse(fechaNac);
+					medico.setFechaNacimiento(fecha);
+					medico.setEmail(email);
+				medico.setTelefono(telefono);
+				//Especialidad objespec = new Especialidad();
+				List<Especialidad> listaespecialidad = especialidadNegocio.readAll();
+				for (Especialidad especialidad2 : listaespecialidad) {
+					if (especialidad2.getEspecialidad_id() == Integer.parseInt(especialidadID)) {
+		            	System.out.println(especialidad2 + "ESPECIALIDAD COMPARACIO - Agregue el ESPE" + especialidadID);
+		            	medico.setEspecialidad(especialidad2);
+		            }
+				}
+				
+				
+				
+				medico.setEstado(true);
+				System.out.println("LLEGO A alta  medicooooooo" + medico);
 		
-		//medicoNegocio.add(medico);
-		MV.addObject("listaPacientes", medicoNegocio.readAll());
-		MV.setViewName("redirect:/cargar_inicio.html");
-		return MV;
-
+					medicoNegocio.add(medico);
+					
+					List<Medico> listaMedicos = medicoNegocio.readAll();
+					 for (Medico medico : listaMedicos) {
+				            if (medico.getUsuario().equals(userid)) {
+				            	//Horarios
+								List<Horario> listahorarios = horarioNegocio.readAll();
+								for (Horario horario : listahorarios) {
+									if (horario.getId() == Integer.parseInt(horarioid)) {
+						            	System.out.println(horario + "HORARIOS COMPARACIO - Agregue el ESPE" + horarioid);
+						            	medico.setHorarios((Set<Horario>) horario);
+						            }
+								}
+								medicoNegocio.update(medico);
+				            }
+				        }		
+					
+					
+					
+				
+				//medicoNegocio.add(medico);
+				//MV.addObject("listaPacientes", medicoNegocio.readAll());
+				MV.setViewName("redirect:/ABM_medico.html");
+				return MV;
+		}
+		else
+		{
+			return MV;
+		}
 		
 	
 	}
