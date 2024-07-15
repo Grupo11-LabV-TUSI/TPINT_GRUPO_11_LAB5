@@ -157,10 +157,16 @@ jsp
 					method="get">
 					<button class="btn btn-primary" type="submit" name="btnNavIrInicio">Inicio</button>
 				</form>
-				<!-- Bot�n de Alta Paciente -->
-				<button class="btn btn-success" type="button" data-toggle="modal"
-					data-target="#userModal" style="margin-right: 10px">Alta
-					Paciente</button>
+				
+				
+				<form type="submit" action="formularioAlta_paciente.html"
+										metodo="Post">
+
+										<input type="submit" name="btnFormAltaPaciente"
+											value="Alta Paciente" class="btn btn-info">
+				</form>
+					
+					
 				<!-- Bot�n de Update Paciente -->
 
 			</div>
@@ -171,21 +177,28 @@ jsp
 		
 
 
-			<div class="table-responsive" style="width: calc(100% - 20px);">
+			<div class="table-responsive " style="width: calc(100% - 20px)" >
 				</form>
-				<table id="tabla_paciente" class="display">
-					<thead>
-						<tr>
-							<th>MODIFICAR</th>
+				<table id="tabla_paciente" class="table-light table-striped table-hover " >
+					<thead class="bg-default text-white">
+						<tr >
+							<th >MODIFICAR</th>
 							<th>DETALLES</th>
 
 							<th>DNI</th>
 							<th>NOMBRE</th>
 							<th>APELLIDO</th>
 							<th>FECHA NACIMIENTO</th>
+						<!--<th>DOMICILIO</th>
+							<th>EMAIL</th>
+							<th>TELEFONO</th>
+						 -->	
+							<th>PROVINCIA</th>
+							<th>LOCALIDAD</th>
+							
 							<th>ESTADO</th>
 						</tr>
-					</thead>
+					</thead >
 					<tbody>
 						<c:forEach items="${listaPacientes}" var="paciente">
 							<tr>
@@ -208,6 +221,14 @@ jsp
 									<td>${paciente.getNombre()}</td>
 									<td>${paciente.getApellido()}</td>
 									<td>${paciente.getFecha_nacimiento()}</td>
+								<!-- <td>${paciente.getDireccion()}</td>
+									<td>${paciente.getEmail()}</td>
+									<td>${paciente.getTelefono()}</td>
+								  -->
+								    <td>${paciente.getProvincia()}</td>
+									<td>${paciente.getLocalidad()}</td>
+									
+									
 								</form>
 
 								<td>
@@ -235,164 +256,9 @@ jsp
 
 		<!--//////////////////FIN TABLA//////////////////////////////////-->
 
-		<!--//////////////////MODAL DETALLE PACIENTE //////////////////////////////////-->
-	</div>
-	<form action="alta_paciente.html" method="post">
-		<div class="modal fade" id="userModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<!-- Cabecera del Modal -->
-					<div class="modal-header">
-						<h4 class="modal-title">Formulario de Carga de Paciente</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<!-- Cuerpo del Modal -->
-					<div class="modal-body">
-						<form action="ServletClientes" method="post">
-							<table>
-								<tr>
-									<td style="width: 139px;">DNI</td>
-									<td style="height: 0px;"><input type="Number"
-										name="txtDNI" min="1" max="99999999" required maxlength="10"
-										autocomplete="off"
-										onkeypress="return((event.charCode >= 48 && event.charCode <= 57))"
-										value="00.000.000" /><br></td>
-								</tr>
-								<tr>
-									<td>Nombre:</td>
-									<td style="height: 0px;"><input type="text"
-										name="txtNOMBRE" style="text-transform: uppercase" /></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Apellido:</td>
-									<td style="height: 0px;"><input type="text"
-										name="txtAPELLIDO" style="text-transform: uppercase" /></td>
-								</tr>
-								<tr>
-									<td>Fecha de Nacimiento:</td>
-									<td style="height: 0px;"><input type="date"
-										name="txtFECHA_NAC" value="DD/MM/AAAA" required /><br></td>
-								</tr>
-								<tr>
-									<td>Domicilio:</td>
-									<td style="height: 0px;"><input type="text"
-										name="txtDIRECCION" required maxlength="40" autocomplete="off"
-										style="text-transform: uppercase" /><br></td>
-								</tr>
-								<tr>
-									<td>Correo Electr�nico:</td>
-									<td style="height: 0px;"><input type="email"
-										name="textEMAIL" required /></td>
-								</tr>
-								<tr>
-									<td>Telefono:</td>
-									<td style="height: 0px;"><input type="tel"
-										 required name="txtTELEFONO" /></td>
-								</tr>
-
-								
-
-				
-								<tr>
-
-								<td>Provincia:</td>
-								<td>
-								<select id="provincias" name="provinciasTXT" required>
-									<c:forEach var="provincia" items="${listaProvincias}">
-										<option value="${provincia.idProvincia}">${provincia.descripcion}</option>
-									</c:forEach>
-								</select>
-								</td>
-
-								</tr>
-								<td>Localidad:</td>
-								  <td>
-     	  							 <select  id="localidades" name="localidades" required>
-       							     <option value="">Seleccione una localidad</option>
-       								 </select>
-      								  </td>
-
-								</tr>
-
-
-
-
-								<br />
-							</table>
-						</form>
-					</div>
-					<!-- Pie del Modal -->
-					<div class="modal-footer">
-						<input type="submit" name="bntAltaEnviar" value="Alta"
-							class="btn btn-success">
-	</form>
-	<form action="ABML_paciente.html" method="post">
-		<input type="submit" name="bntCancelar" value="Cancelar"
-			class="btn btn-danger">
-	</form>
-
-
-
-</div>
 	
-</div></div>
-
-<!-- MODAL BAJA ALTA DE PACIENTE -->
 
 
-<!-- Confirm Delete Modal 
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ¿Está seguro que desea eliminar este paciente?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form id="deleteMedicoForm" action="eliminar_medico.html" method="post" style="display:inline;">
-                    <input type="hidden" name="matricula" id="deleteMedicoMatricula">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Confirm Alta Modal 
-<div class="modal fade" id="confirmAltaModal" tabindex="-1" role="dialog" aria-labelledby="confirmAltaModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmAltaModalLabel">Confirmar Alta </h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ¿Está seguro que desea dar de alta a este médico?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form id="altaMedicoForm" action="habilitar_medico.html" method="post" style="display:inline;">
-                    <input type="hidden" name="matricula" id="altaMedicoMatricula">
-                    <button type="submit" class="btn btn-success">Alta</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
--->
 
 
 <jsp:include page="footer.jsp"></jsp:include>

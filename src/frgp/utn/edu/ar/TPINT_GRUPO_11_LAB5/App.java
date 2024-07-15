@@ -9,19 +9,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Horario;
-import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
-import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.enums.EDiaHorario;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.HorarioNegocio;
-import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
-import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
 import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
@@ -224,1628 +220,1769 @@ public class App {
 			System.out.println(MENSAJE_YA_EXISTE);
 		}
 		
-		// Provincia
-				ProvinciaNegocio provinciaNegocio = (ProvinciaNegocio) appContext.getBean("ProvinciaNegocioBean");
-				Provincia provincia = (Provincia) appContext.getBean("ProvinciaBean");
-				int idProvincia; 
-				String descripcion;
-				idProvincia = 1;
-		        descripcion = "Buenos Aires";
-		        provincia.setIdProvincia(idProvincia);
-		        provincia.setDescripcion(descripcion);
-		        provinciaNegocio.add(provincia);
-
-		
-
-		// Provincia
-		ProvinciaNegocio provinciaNegocio = (ProvinciaNegocio) appContext.getBean("ProvinciaNegocioBean");
-		Provincia provincia = (Provincia) appContext.getBean("ProvinciaBean");
-		int idProvincia; 
-		String descripcion;
-		idProvincia = 1;
-        descripcion = "Buenos Aires";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 2;
-        descripcion = "Buenos Aires-GBA";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 3;
-        descripcion = "Capital Federal";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 4;
-        descripcion = "Catamarca";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 5;
-        descripcion = "Chaco";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 6;
-        descripcion = "Chubut";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 7;
-        descripcion = "Córdoba";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 8;
-        descripcion = "Corrientes";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 9;
-        descripcion = "Entre Ríos";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 10;
-        descripcion = "Formosa";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 11;
-        descripcion = "Jujuy";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 12;
-        descripcion = "La Pampa";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 13;
-        descripcion = "La Rioja";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 14;
-        descripcion = "Mendoza";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 15;
-        descripcion = "Misiones";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 16;
-        descripcion = "Neuquén";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 17;
-        descripcion = "Río Negro";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 18;
-        descripcion = "Salta";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 19;
-        descripcion = "San Juan";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 20;
-        descripcion = "San Luis";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 21;
-        descripcion = "Santa Cruz";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 22;
-        descripcion = "Santa Fe";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 23;
-        descripcion = "Santiago del Estero";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 24;
-        descripcion = "Tierra del Fuego";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-
-        idProvincia = 25;
-        descripcion = "Tucumán";
-        provincia.setIdProvincia(idProvincia);
-        provincia.setDescripcion(descripcion);
-        provinciaNegocio.add(provincia);
-    
-     // Localidades
-     		LocalidadNegocio localidadNegocio = (LocalidadNegocio) appContext.getBean("LocalidadNegocioBean");
-     		Localidad localidad = (Localidad) appContext.getBean("LocalidadBean");
-     		int idLocalidad;
-     		
-     		
-     		
-     		
-     	
-
-     		idLocalidad = 1;
-     		idProvincia = 1;
-     		descripcion = "25 de Mayo";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 2;
-     		idProvincia = 1;
-     		descripcion = "3 de febrero";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 3;
-     		idProvincia = 1;
-     		descripcion = "A. Alsina";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 4;
-     		idProvincia = 1;
-     		descripcion = "A. Gonzáles Cháves";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 5;
-     		idProvincia = 1;
-     		descripcion = "Aguas Verdes";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 6;
-     		idProvincia = 1;
-     		descripcion = "Alberti";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 7;
-     		idProvincia = 1;
-     		descripcion = "Arrecifes";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 8;
-     		idProvincia = 1;
-     		descripcion = "Ayacucho";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 9;
-     		idProvincia = 1;
-     		descripcion = "Azul";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 10;
-     		idProvincia = 1;
-     		descripcion = "Bahía Blanca";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 11;
-     		idProvincia = 1;
-     		descripcion = "Balcarce";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 12;
-     		idProvincia = 1;
-     		descripcion = "Baradero";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 13;
-     		idProvincia = 1;
-     		descripcion = "Benito Juárez";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 14;
-     		idProvincia = 1;
-     		descripcion = "Berisso";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 15;
-     		idProvincia = 1;
-     		descripcion = "Bolívar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 16;
-     		idProvincia = 1;
-     		descripcion = "Bragado";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 17;
-     		idProvincia = 1;
-     		descripcion = "Brandsen";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 18;
-     		idProvincia = 1;
-     		descripcion = "Campana";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 19;
-     		idProvincia = 1;
-     		descripcion = "Cañuelas";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 20;
-     		idProvincia = 1;
-     		descripcion = "Capilla del Señor";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 21;
-     		idProvincia = 1;
-     		descripcion = "Capitán Sarmiento";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 22;
-     		idProvincia = 1;
-     		descripcion = "Carapachay";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 23;
-     		idProvincia = 1;
-     		descripcion = "Carhue";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 24;
-     		idProvincia = 1;
-     		descripcion = "Cariló";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 25;
-     		idProvincia = 1;
-     		descripcion = "Carlos Casares";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 26;
-     		idProvincia = 1;
-     		descripcion = "Carlos Tejedor";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 27;
-     		idProvincia = 1;
-     		descripcion = "Carmen de Areco";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 28;
-     		idProvincia = 1;
-     		descripcion = "Carmen de Patagones";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 29;
-     		idProvincia = 1;
-     		descripcion = "Castelli";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 30;
-     		idProvincia = 1;
-     		descripcion = "Chacabuco";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 31;
-     		idProvincia = 1;
-     		descripcion = "Chascomús";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 32;
-     		idProvincia = 1;
-     		descripcion = "Chivilcoy";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 33;
-     		idProvincia = 1;
-     		descripcion = "Colón";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 34;
-     		idProvincia = 1;
-     		descripcion = "Coronel Dorrego";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 35;
-     		idProvincia = 1;
-     		descripcion = "Coronel Pringles";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 36;
-     		idProvincia = 1;
-     		descripcion = "Coronel Rosales";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 37;
-     		idProvincia = 1;
-     		descripcion = "Coronel Suarez";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 38;
-     		idProvincia = 1;
-     		descripcion = "Costa Azul";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 39;
-     		idProvincia = 1;
-     		descripcion = "Costa Chica";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 40;
-     		idProvincia = 1;
-     		descripcion = "Costa del Este";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 41;
-     		idProvincia = 1;
-     		descripcion = "Costa Esmeralda";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 42;
-     		idProvincia = 1;
-     		descripcion = "Daireaux";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 43;
-     		idProvincia = 1;
-     		descripcion = "Darregueira";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 44;
-     		idProvincia = 1;
-     		descripcion = "Del Viso";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 45;
-     		idProvincia = 1;
-     		descripcion = "Dolores";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 46;
-     		idProvincia = 1;
-     		descripcion = "Don Torcuato";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 47;
-     		idProvincia = 1;
-     		descripcion = "Ensenada";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 48;
-     		idProvincia = 1;
-     		descripcion = "Escobar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 49;
-     		idProvincia = 1;
-     		descripcion = "Exaltación de la Cruz";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 50;
-     		idProvincia = 1;
-     		descripcion = "Florentino Ameghino";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 51;
-     		idProvincia = 1;
-     		descripcion = "Garín";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 52;
-     		idProvincia = 1;
-     		descripcion = "Gral. Alvarado";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 53;
-     		idProvincia = 1;
-     		descripcion = "Gral. Alvear";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 54;
-     		idProvincia = 1;
-     		descripcion = "Gral. Arenales";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 55;
-     		idProvincia = 1;
-     		descripcion = "Gral. Belgrano";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 56;
-     		idProvincia = 1;
-     		descripcion = "Gral. Guido";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 57;
-     		idProvincia = 1;
-     		descripcion = "Gral. Lamadrid";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 58;
-     		idProvincia = 1;
-     		descripcion = "Gral. Las Heras";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 59;
-     		idProvincia = 1;
-     		descripcion = "Gral. Lavalle";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 60;
-     		idProvincia = 1;
-     		descripcion = "Gral. Madariaga";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 61;
-     		idProvincia = 1;
-     		descripcion = "Gral. Pacheco";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 62;
-     		idProvincia = 1;
-     		descripcion = "Gral. Paz";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 63;
-     		idProvincia = 1;
-     		descripcion = "Gral. Pinto";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 64;
-     		idProvincia = 1;
-     		descripcion = "Gral. Pueyrredón";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 65;
-     		idProvincia = 1;
-     		descripcion = "Gral. Rodríguez";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-
-     		idLocalidad = 74;
-     		idProvincia = 11;
-     		descripcion = "Laprida";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 75;
-     		idProvincia = 16;
-     		descripcion = "Las Flores";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 76;
-     		idProvincia = 20;
-     		descripcion = "Las Toninas";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 77;
-     		idProvincia = 24;
-     		descripcion = "Leandro N. Alem";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 78;
-     		idProvincia = 23;
-     		descripcion = "Lincoln";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-
-
-
-
-
-
-
-
-
-
-
-
-     		idLocalidad = 79;
-     		idProvincia = 25;
-     		descripcion = "Loberia";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 80;
-     		idProvincia = 23;
-     		descripcion = "Lobos";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 81;
-     		idProvincia = 5;
-     		descripcion = "Los Cardales";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 82;
-     		idProvincia = 7;
-     		descripcion = "Los Toldos";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 83;
-     		idProvincia = 23;
-     		descripcion = "Lucila del Mar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 84;
-     		idProvincia = 14;
-     		descripcion = "Luján";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 85;
-     		idProvincia = 12;
-     		descripcion = "Magdalena";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 86;
-     		idProvincia = 6;
-     		descripcion = "Maipú";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 87;
-     		idProvincia = 18;
-     		descripcion = "Mar Chiquita";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 88;
-     		idProvincia = 15;
-     		descripcion = "Mar de Ajó";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 89;
-     		idProvincia = 12;
-     		descripcion = "Mar de las Pampas";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 90;
-     		idProvincia = 22;
-     		descripcion = "Mar del Plata";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 91;
-     		idProvincia = 23;
-     		descripcion = "Mar del Tuyú";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 92;
-     		idProvincia = 5;
-     		descripcion = "Marcos Paz";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 93;
-     		idProvincia = 7;
-     		descripcion = "Mercedes";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 94;
-     		idProvincia = 11;
-     		descripcion = "Miramar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 95;
-     		idProvincia = 15;
-     		descripcion = "Monte";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 96;
-     		idProvincia = 23;
-     		descripcion = "Monte Hermoso";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 97;
-     		idProvincia = 6;
-     		descripcion = "Munro";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 98;
-     		idProvincia = 18;
-     		descripcion = "Navarro";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 99;
-     		idProvincia = 13;
-     		descripcion = "Necochea";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 100;
-     		idProvincia = 6;
-     		descripcion = "Olavarría";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 101;
-     		idProvincia = 16;
-     		descripcion = "Partido de la Costa";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 102;
-     		idProvincia = 24;
-     		descripcion = "Pehuajó";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 103;
-     		idProvincia = 16;
-     		descripcion = "Pellegrini";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 104;
-     		idProvincia = 5;
-     		descripcion = "Pergamino";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 105;
-     		idProvincia = 14;
-     		descripcion = "Pigüé";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 106;
-     		idProvincia = 12;
-     		descripcion = "Pila";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 107;
-     		idProvincia = 24;
-     		descripcion = "Pilar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 108;
-     		idProvincia = 5;
-     		descripcion = "Pinamar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 109;
-     		idProvincia = 4;
-     		descripcion = "Pinar del Sol";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 110;
-     		idProvincia = 14;
-     		descripcion = "Polvorines";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 111;
-     		idProvincia = 7;
-     		descripcion = "Pte. Perón";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 112;
-     		idProvincia = 20;
-     		descripcion = "Puán";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 113;
-     		idProvincia = 23;
-     		descripcion = "Punta Indio";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 114;
-     		idProvincia = 9;
-     		descripcion = "Ramallo";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 115;
-     		idProvincia = 3;
-     		descripcion = "Rauch";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 116;
-     		idProvincia = 18;
-     		descripcion = "Rivadavia";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 117;
-     		idProvincia = 13;
-     		descripcion = "Rojas";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 118;
-     		idProvincia = 4;
-     		descripcion = "Roque Pérez";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 119;
-     		idProvincia = 23;
-     		descripcion = "Saavedra";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 120;
-     		idProvincia = 3;
-     		descripcion = "Saladillo";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 121;
-     		idProvincia = 20;
-     		descripcion = "Salliqueló";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 122;
-     		idProvincia = 18;
-     		descripcion = "Salto";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 123;
-     		idProvincia = 12;
-     		descripcion = "San Andrés de Giles";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 124;
-     		idProvincia = 22;
-     		descripcion = "San Antonio de Areco";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 125;
-     		idProvincia = 22;
-     		descripcion = "San Antonio de Padua";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 126;
-     		idProvincia = 3;
-     		descripcion = "San Bernardo";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 127;
-     		idProvincia = 13;
-     		descripcion = "San Cayetano";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 128;
-     		idProvincia = 9;
-     		descripcion = "San Clemente del Tuyú";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 129;
-     		idProvincia = 3;
-     		descripcion = "San Nicolás";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 130;
-     		idProvincia = 23;
-     		descripcion = "San Pedro";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 131;
-     		idProvincia = 4;
-     		descripcion = "San Vicente";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 132;
-     		idProvincia = 24;
-     		descripcion = "Santa Teresita";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 133;
-     		idProvincia = 4;
-     		descripcion = "Suipacha";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 134;
-     		idProvincia = 15;
-     		descripcion = "Tandil";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 135;
-     		idProvincia = 9;
-     		descripcion = "Tapalqué";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 136;
-     		idProvincia = 21;
-     		descripcion = "Tordillo";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 137;
-     		idProvincia = 24;
-     		descripcion = "Tornquist";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 138;
-     		idProvincia = 23;
-     		descripcion = "Trenque Lauquen";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 139;
-     		idProvincia = 24;
-     		descripcion = "Tres Lomas";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 140;
-     		idProvincia = 15;
-     		descripcion = "Villa Gesell";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 141;
-     		idProvincia = 4;
-     		descripcion = "Villarino";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 142;
-     		idProvincia = 13;
-     		descripcion = "Zárate";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 143;
-     		idProvincia = 19;
-     		descripcion = "11 de Septiembre";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 144;
-     		idProvincia = 5;
-     		descripcion = "20 de Junio";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 145;
-     		idProvincia = 22;
-     		descripcion = "25 de Mayo";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 146;
-     		idProvincia = 8;
-     		descripcion = "Acassuso";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 147;
-     		idProvincia = 18;
-     		descripcion = "Adrogué";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 148;
-     		idProvincia = 4;
-     		descripcion = "Aldo Bonzi";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 149;
-     		idProvincia = 17;
-     		descripcion = "Área Reserva Cinturón Ecológico";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 150;
-     		idProvincia = 21;
-     		descripcion = "Avellaneda";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 151;
-     		idProvincia = 11;
-     		descripcion = "Banfield";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 152;
-     		idProvincia = 14;
-     		descripcion = "Barrio Parque";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 153;
-     		idProvincia = 22;
-     		descripcion = "Barrio Santa Teresita";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 154;
-     		idProvincia = 23;
-     		descripcion = "Beccar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 155;
-     		idProvincia = 20;
-     		descripcion = "Bella Vista";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 156;
-     		idProvincia = 22;
-     		descripcion = "Berazategui";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 157;
-     		idProvincia = 7;
-     		descripcion = "Bernal Este";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 158;
-     		idProvincia = 8;
-     		descripcion = "Bernal Oeste";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 159;
-     		idProvincia = 11;
-     		descripcion = "Billinghurst";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 160;
-     		idProvincia = 5;
-     		descripcion = "Boulogne";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 161;
-     		idProvincia = 22;
-     		descripcion = "Burzaco";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 162;
-     		idProvincia = 12;
-     		descripcion = "Carapachay";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 163;
-     		idProvincia = 11;
-     		descripcion = "Caseros";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 164;
-     		idProvincia = 4;
-     		descripcion = "Castelar";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 165;
-     		idProvincia = 5;
-     		descripcion = "Churruca";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 166;
-     		idProvincia = 3;
-     		descripcion = "Ciudad Evita";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
-     		idLocalidad = 167;
-     		idProvincia = 4;
-     		descripcion = "Ciudad Madero";
-     		localidad.setDescripcion(descripcion);
-     		localidad.setIdLocalidad(idLocalidad);
-     		provincia.setIdProvincia(idProvincia);
-     		localidad.setProvincia(provincia);
-     		localidadNegocio.add(localidad);
-
+		//LISTADO PROVINCIAS okkkkkkk
+
+	    ProvinciaNegocio provinciaNegocio = (ProvinciaNegocio) appContext.getBean("ProvinciaNegocioBean");
+	        Provincia provincia = (Provincia) appContext.getBean("ProvinciaBean");
+	        int idProvincia; 
+	        String descripcion;
+
+
+	idProvincia = 1;
+	descripcion = "Buenos Aires";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 2;
+	descripcion = "Catamarca";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 3;
+	descripcion = "Chaco";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 4;
+	descripcion = "Chubut";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 5;
+	descripcion = "Córdoba";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 6;
+	descripcion = "Corrientes";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 7;
+	descripcion = "Entre Ríos";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 8;
+	descripcion = "Formosa";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 9;
+	descripcion = "Jujuy";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 10;
+	descripcion = "La Pampa";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 11;
+	descripcion = "La Rioja";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 12;
+	descripcion = "Mendoza";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 13;
+	descripcion = "Misiones";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 14;
+	descripcion = "Neuquén";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 15;
+	descripcion = "Río Negro";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 16;
+	descripcion = "Salta";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 17;
+	descripcion = "San Juan";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 18;
+	descripcion = "San Luis";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 19;
+	descripcion = "Santa Cruz";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 20;
+	descripcion = "Santa Fe";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 21;
+	descripcion = "Santiago del Estero";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 22;
+	descripcion = "Tierra del Fuego";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+	idProvincia = 23;
+	descripcion = "Tucumán";
+	provincia.setIdProvincia(idProvincia);
+	provincia.setDescripcion(descripcion);
+	provinciaNegocio.add(provincia);
+
+
+	        ///LOCALIDADES
+	        
+	    
+	        LocalidadNegocio localidadNegocio = (LocalidadNegocio) appContext.getBean("LocalidadNegocioBean");
+	        Localidad localidad = (Localidad) appContext.getBean("LocalidadBean");
+	        int idLocalidad;
+	        
+	idLocalidad = 1;
+	idProvincia = 1;
+	descripcion = "25 de Mayo";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 2;
+	idProvincia = 1;
+	descripcion = "3 de febrero";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 3;
+	idProvincia = 1;
+	descripcion = "A. Alsina";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 4;
+	idProvincia = 1;
+	descripcion = "A. Gonzáles Cháves";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 5;
+	idProvincia = 1;
+	descripcion = "Aguas Verdes";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 6;
+	idProvincia = 1;
+	descripcion = "Alberti";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 7;
+	idProvincia = 1;
+	descripcion = "Arrecifes";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 8;
+	idProvincia = 1;
+	descripcion = "Ayacucho";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 9;
+	idProvincia = 1;
+	descripcion = "Azul";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 10;
+	idProvincia = 1;
+	descripcion = "Bahía Blanca";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 11;
+	idProvincia = 1;
+	descripcion = "Balcarce";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 12;
+	idProvincia = 1;
+	descripcion = "Baradero";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 13;
+	idProvincia = 1;
+	descripcion = "Benito Juárez";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 14;
+	idProvincia = 1;
+	descripcion = "Berisso";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 15;
+	idProvincia = 1;
+	descripcion = "Bolívar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 16;
+	idProvincia = 1;
+	descripcion = "Bragado";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 17;
+	idProvincia = 1;
+	descripcion = "Brandsen";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 18;
+	idProvincia = 1;
+	descripcion = "Campana";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 19;
+	idProvincia = 1;
+	descripcion = "Cañuelas";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 20;
+	idProvincia = 1;
+	descripcion = "Capilla del Señor";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 21;
+	idProvincia = 1;
+	descripcion = "Capitán Sarmiento";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 22;
+	idProvincia = 1;
+	descripcion = "Carapachay";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 23;
+	idProvincia = 1;
+	descripcion = "Carhue";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 24;
+	idProvincia = 1;
+	descripcion = "Cariló";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 25;
+	idProvincia = 1;
+	descripcion = "Carlos Casares";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 26;
+	idProvincia = 1;
+	descripcion = "Carlos Tejedor";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 27;
+	idProvincia = 1;
+	descripcion = "Carmen de Areco";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 28;
+	idProvincia = 1;
+	descripcion = "Carmen de Patagones";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 29;
+	idProvincia = 1;
+	descripcion = "Castelli";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 30;
+	idProvincia = 1;
+	descripcion = "Chacabuco";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 31;
+	idProvincia = 1;
+	descripcion = "Chascomús";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 32;
+	idProvincia = 1;
+	descripcion = "Chivilcoy";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 33;
+	idProvincia = 1;
+	descripcion = "Colón";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 34;
+	idProvincia = 1;
+	descripcion = "Coronel Dorrego";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 35;
+	idProvincia = 1;
+	descripcion = "Coronel Pringles";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 36;
+	idProvincia = 1;
+	descripcion = "Coronel Rosales";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 37;
+	idProvincia = 1;
+	descripcion = "Coronel Suarez";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 38;
+	idProvincia = 1;
+	descripcion = "Costa Azul";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 39;
+	idProvincia = 1;
+	descripcion = "Costa Chica";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 40;
+	idProvincia = 1;
+	descripcion = "Costa del Este";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 41;
+	idProvincia = 1;
+	descripcion = "Costa Esmeralda";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 42;
+	idProvincia = 1;
+	descripcion = "Daireaux";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 43;
+	idProvincia = 1;
+	descripcion = "Darregueira";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 44;
+	idProvincia = 1;
+	descripcion = "Del Viso";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 45;
+	idProvincia = 1;
+	descripcion = "Dolores";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 46;
+	idProvincia = 1;
+	descripcion = "Don Torcuato";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 47;
+	idProvincia = 1;
+	descripcion = "Ensenada";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 48;
+	idProvincia = 1;
+	descripcion = "Escobar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 49;
+	idProvincia = 1;
+	descripcion = "Exaltación de la Cruz";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 50;
+	idProvincia = 1;
+	descripcion = "Florentino Ameghino";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 51;
+	idProvincia = 1;
+	descripcion = "Garín";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 52;
+	idProvincia = 1;
+	descripcion = "Gral. Alvarado";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 53;
+	idProvincia = 1;
+	descripcion = "Gral. Alvear";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 54;
+	idProvincia = 1;
+	descripcion = "Gral. Arenales";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 55;
+	idProvincia = 1;
+	descripcion = "Gral. Belgrano";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 56;
+	idProvincia = 1;
+	descripcion = "Gral. Guido";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 57;
+	idProvincia = 1;
+	descripcion = "Gral. Lamadrid";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 58;
+	idProvincia = 1;
+	descripcion = "Gral. Las Heras";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 59;
+	idProvincia = 1;
+	descripcion = "Gral. Lavalle";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 60;
+	idProvincia = 1;
+	descripcion = "Gral. Madariaga";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 61;
+	idProvincia = 1;
+	descripcion = "Gral. Pacheco";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 62;
+	idProvincia = 1;
+	descripcion = "Gral. Paz";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 63;
+	idProvincia = 1;
+	descripcion = "Gral. Pinto";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 64;
+	idProvincia = 1;
+	descripcion = "Gral. Pueyrredón";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 65;
+	idProvincia = 1;
+	descripcion = "Gral. Rodríguez";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 66;
+	idProvincia = 1;
+	descripcion = "Gral. Viamonte";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 67;
+	idProvincia = 1;
+	descripcion = "Gral. Villegas";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 68;
+	idProvincia = 1;
+	descripcion = "Guaminí";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 69;
+	idProvincia = 1;
+	descripcion = "Guernica";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 70;
+	idProvincia = 1;
+	descripcion = "Henderson";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 71;
+	idProvincia = 1;
+	descripcion = "Hurlingham";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 72;
+	idProvincia = 1;
+	descripcion = "Ituzaingó";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 73;
+	idProvincia = 1;
+	descripcion = "José C. Paz";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 74;
+	idProvincia = 1;
+	descripcion = "Junín";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 75;
+	idProvincia = 1;
+	descripcion = "La Plata";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 76;
+	idProvincia = 1;
+	descripcion = "Lanús";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 77;
+	idProvincia = 1;
+	descripcion = "Laprida";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 78;
+	idProvincia = 1;
+	descripcion = "Las Flores";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 79;
+	idProvincia = 1;
+	descripcion = "Las Toninas";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	idLocalidad = 80;
+	idProvincia = 1;
+	descripcion = "Leandro N. Alem";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 81
+	idLocalidad = 81;
+	idProvincia = 2;
+	descripcion = "Los Cardales";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 82
+	idLocalidad = 82;
+	idProvincia = 2;
+	descripcion = "Los Toldos";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 83
+	idLocalidad = 83;
+	idProvincia = 2;
+	descripcion = "Lucila del Mar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 84
+	idLocalidad = 84;
+	idProvincia = 2;
+	descripcion = "Luján";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 85
+	idLocalidad = 85;
+	idProvincia = 2;
+	descripcion = "Magdalena";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 86
+	idLocalidad = 86;
+	idProvincia = 3;
+	descripcion = "Maipú";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 87
+	idLocalidad = 87;
+	idProvincia = 3;
+	descripcion = "Mar Chiquita";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 88
+	idLocalidad = 88;
+	idProvincia = 3;
+	descripcion = "Mar de Ajó";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 89
+	idLocalidad = 89;
+	idProvincia = 3;
+	descripcion = "Mar de las Pampas";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 90
+	idLocalidad = 90;
+	idProvincia = 3;
+	descripcion = "Mar del Plata";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 91
+	idLocalidad = 91;
+	idProvincia = 4;
+	descripcion = "Mar del Tuyú";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 92
+	idLocalidad = 92;
+	idProvincia = 4;
+	descripcion = "Marcos Paz";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 93
+	idLocalidad = 93;
+	idProvincia = 4;
+	descripcion = "Mercedes";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 94
+	idLocalidad = 94;
+	idProvincia = 4;
+	descripcion = "Miramar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 95
+	idLocalidad = 95;
+	idProvincia = 4;
+	descripcion = "Monte";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 96
+	idLocalidad = 96;
+	idProvincia = 5;
+	descripcion = "Monte Hermoso";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 97
+	idLocalidad = 97;
+	idProvincia = 5;
+	descripcion = "Munro";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 98
+	idLocalidad = 98;
+	idProvincia = 5;
+	descripcion = "Navarro";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 99
+	idLocalidad = 99;
+	idProvincia = 5;
+	descripcion = "Necochea";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 100
+	idLocalidad = 100;
+	idProvincia = 5;
+	descripcion = "Olavarría";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 101
+	idLocalidad = 101;
+	idProvincia = 6;
+	descripcion = "Partido de la Costa";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 102
+	idLocalidad = 102;
+	idProvincia = 6;
+	descripcion = "Pehuajó";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 103
+	idLocalidad = 103;
+	idProvincia = 6;
+	descripcion = "Pellegrini";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 104
+	idLocalidad = 104;
+	idProvincia = 6;
+	descripcion = "Pergamino";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 105
+	idLocalidad = 105;
+	idProvincia = 6;
+	descripcion = "Pigüé";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 106
+	idLocalidad = 106;
+	idProvincia = 7;
+	descripcion = "Pila";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 107
+	idLocalidad = 107;
+	idProvincia = 7;
+	descripcion = "Pilar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 108
+	idLocalidad = 108;
+	idProvincia = 7;
+	descripcion = "Pinamar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 109
+	idLocalidad = 109;
+	idProvincia = 7;
+	descripcion = "Pinar del Sol";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 110
+	idLocalidad = 110;
+	idProvincia = 7;
+	descripcion = "Polvorines";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 111
+	idLocalidad = 111;
+	idProvincia = 8;
+	descripcion = "Pte. Perón";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 143
+	idLocalidad = 143;
+	idProvincia = 8;
+	descripcion = "11 de Septiembre";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 144
+	idLocalidad = 144;
+	idProvincia = 8;
+	descripcion = "20 de Junio";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 145
+	idLocalidad = 145;
+	idProvincia = 8;
+	descripcion = "25 de Mayo";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 146
+	idLocalidad = 146;
+	idProvincia = 9;
+	descripcion = "Acassuso";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 147
+	idLocalidad = 147;
+	idProvincia = 9;
+	descripcion = "Adrogué";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 148
+	idLocalidad = 148;
+	idProvincia = 9;
+	descripcion = "Aldo Bonzi";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 149
+	idLocalidad = 149;
+	idProvincia = 10;
+	descripcion = "Área Reserva Cinturón Ecológico";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 150
+	idLocalidad = 150;
+	idProvincia = 10;
+	descripcion = "Avellaneda";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 151
+	idLocalidad = 151;
+	idProvincia = 10;
+	descripcion = "Banfield";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 152
+	idLocalidad = 152;
+	idProvincia = 11;
+	descripcion = "Barrio Parque";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 153
+	idLocalidad = 153;
+	idProvincia = 11;
+	descripcion = "Barrio Santa Teresita";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 154
+	idLocalidad = 154;
+	idProvincia = 11;
+	descripcion = "Beccar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 155
+	idLocalidad = 155;
+	idProvincia = 12;
+	descripcion = "Bella Vista";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 156
+	idLocalidad = 156;
+	idProvincia = 12;
+	descripcion = "Berazategui";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 157
+	idLocalidad = 157;
+	idProvincia = 12;
+	descripcion = "Bernal Este";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 158
+	idLocalidad = 158;
+	idProvincia = 13;
+	descripcion = "Bernal Oeste";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 159
+	idLocalidad = 159;
+	idProvincia = 13;
+	descripcion = "Billinghurst";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 160
+	idLocalidad = 160;
+	idProvincia = 13;
+	descripcion = "Boulogne";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 161
+	idLocalidad = 161;
+	idProvincia = 14;
+	descripcion = "Burzaco";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 162
+	idLocalidad = 162;
+	idProvincia = 14;
+	descripcion = "Carapachay";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 163
+	idLocalidad = 163;
+	idProvincia = 14;
+	descripcion = "Caseros";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 164
+	idLocalidad = 164;
+	idProvincia = 15;
+	descripcion = "Castelar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 165
+	idLocalidad = 165;
+	idProvincia = 15;
+	descripcion = "Churruca";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 166
+	idLocalidad = 166;
+	idProvincia = 15;
+	descripcion = "Ciudad Evita";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 167
+	idLocalidad = 167;
+	idProvincia = 16;
+	descripcion = "Ciudad Madero";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 168
+	idLocalidad = 168;
+	idProvincia = 16;
+	descripcion = "Ciudadela";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 169
+	idLocalidad = 169;
+	idProvincia = 16;
+	descripcion = "Claypole";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 170
+	idLocalidad = 170;
+	idProvincia = 17;
+	descripcion = "Crucecita";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 171
+	idLocalidad = 171;
+	idProvincia = 17;
+	descripcion = "Dock Sud";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 172
+	idLocalidad = 172;
+	idProvincia = 17;
+	descripcion = "Don Bosco";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 173
+	idLocalidad = 173;
+	idProvincia = 18;
+	descripcion = "Don Orione";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 174
+	idLocalidad = 174;
+	idProvincia = 18;
+	descripcion = "El Jagüel";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 175
+	idLocalidad = 175;
+	idProvincia = 18;
+	descripcion = "El Libertador";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 176
+	idLocalidad = 176;
+	idProvincia = 19;
+	descripcion = "El Palomar";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 177
+	idLocalidad = 177;
+	idProvincia = 19;
+	descripcion = "El Tala";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 178
+	idLocalidad = 178;
+	idProvincia = 19;
+	descripcion = "El Trébol";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 179
+	idLocalidad = 179;
+	idProvincia = 20;
+	descripcion = "Ezeiza";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 180
+	idLocalidad = 180;
+	idProvincia = 20;
+	descripcion = "Ezpeleta";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 181
+	idLocalidad = 181;
+	idProvincia = 20;
+	descripcion = "Florencio Varela";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 182
+	idLocalidad = 182;
+	idProvincia = 21;
+	descripcion = "Florida";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 183
+	idLocalidad = 183;
+	idProvincia = 21;
+	descripcion = "Francisco Álvarez";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 184
+	idLocalidad = 184;
+	idProvincia = 21;
+	descripcion = "Gerli";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 185
+	idLocalidad = 185;
+	idProvincia = 22;
+	descripcion = "Glew";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 186
+	idLocalidad = 186;
+	idProvincia = 22;
+	descripcion = "González Catán";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 187
+	idLocalidad = 187;
+	idProvincia = 22;
+	descripcion = "Gral. Lamadrid";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 188
+	idLocalidad = 188;
+	idProvincia = 23;
+	descripcion = "Grand Bourg";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 189
+	idLocalidad = 189;
+	idProvincia = 23;
+	descripcion = "Gregorio de Laferrere";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 190
+	idLocalidad = 190;
+	idProvincia = 23;
+	descripcion = "Guillermo Enrique Hudson";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 191
+	idLocalidad = 191;
+	idProvincia = 13;
+	descripcion = "Haedo";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 192
+	idLocalidad = 192;
+	idProvincia = 13;
+	descripcion = "Hurlingham";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 193
+	idLocalidad = 193;
+	idProvincia = 11;
+	descripcion = "Ing. Sourdeaux";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 194
+	idLocalidad = 194;
+	idProvincia = 10;
+	descripcion = "Isidro Casanova";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 195
+	idLocalidad = 195;
+	idProvincia = 5;
+	descripcion = "Ituzaingó";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 196
+	idLocalidad = 196;
+	idProvincia = 9;
+	descripcion = "José C. Paz";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 197
+	idLocalidad = 197;
+	idProvincia = 9;
+	descripcion = "José Ingenieros";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 198
+	idLocalidad = 198;
+	idProvincia = 9;
+	descripcion = "José Marmol";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 199
+	idLocalidad = 199;
+	idProvincia = 8;
+	descripcion = "La Lucila";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
+
+	// Localidad 200
+	idLocalidad = 200;
+	idProvincia = 22;
+	descripcion = "La Reja";
+	localidad.setDescripcion(descripcion);
+	localidad.setIdLocalidad(idLocalidad);
+	provincia.setIdProvincia(idProvincia);
+	localidad.setProvincia(provincia);
+	localidadNegocio.add(localidad);
 
 		
 		

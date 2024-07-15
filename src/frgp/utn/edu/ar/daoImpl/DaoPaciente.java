@@ -46,10 +46,17 @@ public class DaoPaciente implements IDaoPaciente {
 
 	@Override
 	public Paciente readOne(int dniPaciente) {
+		
+		System.out.println("lllego a readONe");
+		System.out.println(dniPaciente);
+
+		System.out.println("lllego a readONe");
+
+		
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();
 		Paciente paciente = (Paciente) session.get(Paciente.class, dniPaciente);
-		paciente.toString();
+ 
 		tx = session.getTransaction();
 		tx.commit();
 		session.close();

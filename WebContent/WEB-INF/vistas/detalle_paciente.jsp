@@ -44,7 +44,7 @@
     <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     
    
-                        <form action="ABML_paciente.html" method="get">
+      <form action="ABML_paciente.html" method="get">
     
         <div class="modal-dialog">
             <div class="modal-content">
@@ -58,55 +58,56 @@
                 </div>
                 <!-- Cuerpo del Modal -->
                 <div class="modal-body">
-                    <form action="ServletClientes" method="post">
-                        <table>
+                    
+                        <table class="table table-striped">
                           
                             <tr> 
                                 <td>Nombre: </td>
-                                <td style="height: 0px;"><input type="text" name="txtNOMBRE" readonly value="${detalles_paci.getNombre()}" style="text-transform:uppercase"/> </td>
+                                <td style="height: 0px;"><input type="text" name="txtNOMBRE" readonly value="${detalles_paci.getNombre()}" style="text-transform:uppercase"  class="form-control"/> </td>
                             </tr>    
                             
                               <tr> 
                                 <td style="width: 139px;">DNI</td>
-                                <td style="height: 0px;"><input type="Number" name="txtDNI"  readonly value="${detalles_paci.getDni()}" /></td>
+                                <td style="height: 0px;"><input type="Number" name="txtDNI"  readonly value="${detalles_paci.getDni()}"  class="form-control"/></td>
                             </tr>
                             
                             <tr>
                                 <td>Apellido: </td>
-                                <td style="height: 0px;"><input type="text" name="txtAPELLIDO" readonly style="text-transform:uppercase" value="${detalles_paci.getApellido()}"/></td>
+                                <td style="height: 0px;"><input type="text" name="txtAPELLIDO" readonly style="text-transform:uppercase" value="${detalles_paci.getApellido()}"  class="form-control"/></td>
                             </tr>
                             <tr> 
                                 <td>Fecha de Nacimiento: </td>
-                                <td style="height: 0px;"><input type="date" name="txtFECHA_NAC"   readonly value="${detalles_paci.getFecha_nacimiento()}"/><br></td>        
+                                <td style="height: 0px;"><input type="date" name="txtFECHA_NAC"   readonly value="${detalles_paci.getFecha_nacimiento()}"  class="form-control"/><br></td>        
                             </tr>    
                            
                             <tr>
                                 <td>Domicilio: </td>
-                                <td style="height: 0px;"><input type="text" name="txtDIRECCION" readonly style="text-transform:uppercase" value="${detalles_paci.getDireccion()}"/><br></td>    
+                                <td style="height: 0px;"><input type="text" name="txtDIRECCION" readonly style="text-transform:uppercase" value="${detalles_paci.getDireccion()}"  class="form-control"/><br></td>    
                             </tr>
                             <tr>
-                                <td>Correo Electrónico: </td>
-                                <td style="height: 0px;"><input type="text" name="textEMAIL" readonly value="${detalles_paci.getEmail()}"/> </td>    
+                                <td>E-Mail: </td>
+                                <td style="height: 0px;"><input type="text" name="textEMAIL" readonly value="${detalles_paci.getEmail()}"  class="form-control"/> </td>    
                             </tr>
                             <tr> 
                                 <td>Teléfono: </td>
-                                <td style="height: 0px;"><input type="tel" name="txtTELEFONO"  readonly value="${detalles_paci.getTelefono()}"/></td>
+                                <td style="height: 0px;"><input type="tel" name="txtTELEFONO"  readonly value="${detalles_paci.getTelefono()}"  class="form-control"/></td>
                             </tr>
                              
-                            <tr>
-                                <td>Localidad: </td>
-                                <td style="height: 0px;"><input type="text" name="txtLocalidad" readonly value="${detalles_paci.getLocalidad()}"/></td>
-                            </tr>
+                            
                             <tr>
                             	<td>Provincia: </td>
-                                <td style="height: 0px;"><input type="text" name="txtProvincia" readonly value="${detalles_paci.getProvincia()}"/></td>
+                                <td style="height: 0px;"><input type="text" name="txtProvincia" readonly value="${detalles_paci.getProvincia()}"  class="form-control"/></td>
                                 
+                            </tr>
+                            <tr>
+                                <td>Localidad: </td>
+                                <td style="height: 0px;"><input type="text" name="txtLocalidad" readonly value="${detalles_paci.getLocalidad()}"  class="form-control"/></td>
                             </tr>
                             
                            
                         </table>
                         </br>
-                    </form>
+                   
                 </div>
                 <!-- Pie del Modal -->
                 <div class="modal-footer">

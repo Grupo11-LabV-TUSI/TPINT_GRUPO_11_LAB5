@@ -88,7 +88,7 @@
 							
 							<input type="submit" name="btnVerPaciente" value="IR" class="btn btn-success"> 
 							</form>
-							<table id="table_id_pacientes_admin" class="display" summary="Los pacientes registrados en la Clinica">
+							<table id="table_id_pacientes_admin" class="table table-striped" summary="Los pacientes registrados en la Clinica">
 								<caption>
 		    						Un listado de los pacientes registrados en la Clinica
 		  						</caption>
