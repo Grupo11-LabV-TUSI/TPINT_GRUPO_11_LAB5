@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.enums.EEstadoTurno;
+import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
@@ -24,6 +26,7 @@ import frgp.utn.edu.ar.resources.Config;
 public class PaginaController {
 	/** Importacion de Servicios */
 	ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
+	
 	/* Usuario */
 	UsuarioNegocio usuarioNegocio = (UsuarioNegocio) appContext.getBean("UsuarioNegocioBean");
 	Usuario usuario = (Usuario) appContext.getBean("UsuarioBean");
@@ -36,7 +39,10 @@ public class PaginaController {
 	/* Turno */
 	TurnoNegocio turnoNegocio = (TurnoNegocio) appContext.getBean("TurnoNegocioBean");
 	Turno turno = (Turno) appContext.getBean("TurnoBean");
-	
+	/* Especialidad */
+	EspecialidadNegocio especialidadNegocio = (EspecialidadNegocio) appContext.getBean("EspecialidadNegocioBean");
+	Especialidad especialidad = (Especialidad) appContext.getBean("EspecialidadBean");
+		
 	/** INICIO */
 	// al lanzar la aplicacion redirecciona a inicio
 	@RequestMapping("cargar_inicio.html")
@@ -178,12 +184,14 @@ public class PaginaController {
 		return MV;
 	}
 	/**Vista Informes*/
-	@RequestMapping("MenuInformes.html")
-	public ModelAndView eventoVerInformes(String informe) {
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("MenuInformes");
-		return MV;
-	}
+//	@RequestMapping("MenuInformes.html")
+//	public ModelAndView eventoVerInformes(String informe) {
+//		ModelAndView MV = new ModelAndView();
+//		MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
+//
+//		MV.setViewName("MenuInformes");
+//		return MV;
+//	}
 	
 	@RequestMapping("ReporteCalendario.html")
 	public ModelAndView eventoVerCalendario(String informe) {

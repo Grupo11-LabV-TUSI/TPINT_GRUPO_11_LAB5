@@ -25,16 +25,20 @@ public class Provincia implements Serializable {
 
     @Column(name = "Descripcion", length = 20, nullable = false)
     private String descripcion;
+        
 
     // Constructores
 
     public Provincia() {
         // Constructor vacío requerido por JPA
     }
-
     public Provincia(int idProvincia, String descripcion) {
         this.idProvincia = idProvincia;
         this.descripcion=descripcion;
+    }
+    
+    public Provincia(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     // Getters y Setters

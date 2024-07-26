@@ -1,7 +1,5 @@
 package frgp.utn.edu.ar.negocioImpl;
 
-
-
 import java.util.List;
 
 import frgp.utn.edu.ar.dao.IDaoEspecialidad;

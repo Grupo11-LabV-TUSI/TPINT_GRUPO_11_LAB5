@@ -39,13 +39,6 @@ public class Localidad implements Serializable {
         this.descripcion = descripcion;
         this.provincia = provincia;
     }
-    
-    
-    
-    public Localidad(String descripcion, Provincia provincia) {
-        this.descripcion = descripcion;
-        this.provincia = provincia;
-    }
 
     // Getters y Setters
 

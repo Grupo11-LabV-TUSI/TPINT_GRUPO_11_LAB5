@@ -1,6 +1,5 @@
 package frgp.utn.edu.ar.daoImpl;
 
-
 import java.util.List;
 
 import org.hibernate.Session;
@@ -74,7 +73,7 @@ public class DaoProvincia implements IDaoProvincia
 	public List<Provincia> readAll() {
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();
-		List<Provincia> provincias = session.createQuery("FROM Provincia").list();
+		List<Provincia> provincias = (List<Provincia>)session.createQuery("FROM Provincia").list();
 		tx = session.getTransaction();
 		tx.commit();
 		session.close();

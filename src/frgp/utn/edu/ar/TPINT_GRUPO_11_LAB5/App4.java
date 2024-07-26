@@ -1,5 +1,6 @@
 package frgp.utn.edu.ar.TPINT_GRUPO_11_LAB5;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,56 +31,242 @@ import frgp.utn.edu.ar.entidad.Provincia;
 
 import frgp.utn.edu.ar.resources.Config;
 
-public class App {
+public class App4 {
 	private final static String MENSAJE_AGREGADO = "AGREGADO CORRECTAMENTE";
 	private final static String MENSAJE_YA_EXISTE = "YA EXISTE EN LA BASE DE DATOS";
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
 		ApplicationContext appContext = new AnnotationConfigApplicationContext(Config.class);
+		
+		
+		
 		boolean estado = false;
 
-		/** Carga de datos */
-	
-		// Paciente
+		
 		PacienteNegocio pacienteNegocio = (PacienteNegocio) appContext.getBean("PacienteNegocioBean");
 		Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
-		for (int i = 0; i < 15; i++) {
-			paciente.setDni(10000000+(i+1));
-			try {
-				estado = pacienteNegocio.add(paciente);
-				// System.out.println(MENSAJE_AGREGADO);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			} finally {
-				System.out.println(paciente.toString());
-				System.out.println(MENSAJE_YA_EXISTE);
-			}
-		}
+	
+		/** Carga de datos */
+	
+		// Pacientes
+		
+		
+		// Paciente 1
+		paciente.setDni(10000001);
+		paciente.setNombre("Maria");
+		paciente.setApellido("Perez");
+		paciente.setEmail("mariaPerez@gmail.com");
+		paciente.setTelefono("78451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("1995-02-15"));
+		paciente.setDireccion("Calle Azul 789");
+		paciente.setLocalidad("Los Cardales");
+		paciente.setProvincia("Catamarca");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 2
+		paciente.setDni(10000002);
+		paciente.setNombre("Juan");
+		paciente.setApellido("Lopez");
+		paciente.setEmail("juanLopez@gmail.com");
+		paciente.setTelefono("66451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("1988-05-10"));
+		paciente.setDireccion("Avenida Libertad 123");
+		paciente.setLocalidad("Mar Chiquita");
+		paciente.setProvincia("Chaco");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 3
+		paciente.setDni(10000003);
+		paciente.setNombre("Lucia");
+		paciente.setApellido("Gonzalez");
+		paciente.setEmail("luciaGonzalez@gmail.com");
+		paciente.setTelefono("55451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("2000-03-25"));
+		paciente.setDireccion("Calle Rivadavia 456");
+		paciente.setLocalidad("Monte");
+		paciente.setProvincia("Chubut");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 4
+		paciente.setDni(10000004);
+		paciente.setNombre("Carlos");
+		paciente.setApellido("Martinez");
+		paciente.setEmail("carlosMartinez@gmail.com");
+		paciente.setTelefono("44451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("1977-12-30"));
+		paciente.setDireccion("Calle San Martin 789");
+		paciente.setLocalidad("Córdoba");
+		paciente.setProvincia("Navarro");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 5
+		paciente.setDni(10000005);
+		paciente.setNombre("Ana");
+		paciente.setApellido("Fernandez");
+		paciente.setEmail("anaFernandez@gmail.com");
+		paciente.setTelefono("33451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("1990-06-20"));
+		paciente.setDireccion("Avenida Corrientes 123");
+		paciente.setLocalidad("Corrientes");
+		paciente.setProvincia("Pellegrini");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 6
+		paciente.setDni(10000006);
+		paciente.setNombre("Luis");
+		paciente.setApellido("Diaz");
+		paciente.setEmail("luisDiaz@gmail.com");
+		paciente.setTelefono("22451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("1985-09-15"));
+		paciente.setDireccion("Calle Belgrano 456");
+		paciente.setLocalidad("Pila");
+		paciente.setProvincia("Entre Ríos");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 7
+		paciente.setDni(10000007);
+		paciente.setNombre("Sofia");
+		paciente.setApellido("Rodriguez");
+		paciente.setEmail("sofiaRodriguez@gmail.com");
+		paciente.setTelefono("11451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("1998-11-05"));
+		paciente.setDireccion("Calle Independencia 789");
+		paciente.setLocalidad("20 de Junio");
+		paciente.setProvincia("Formosa");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 8
+		paciente.setDni(10000008);
+		paciente.setNombre("Jorge");
+		paciente.setApellido("Ramirez");
+		paciente.setEmail("jorgeRamirez@gmail.com");
+		paciente.setTelefono("02451654");
+		paciente.setFecha_nacimiento(LocalDate.parse("2002-07-23"));
+		paciente.setDireccion("Avenida San Juan 123");
+		paciente.setLocalidad("Crucecita");
+		paciente.setProvincia("San Juan");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 9
+		paciente.setDni(10000009);
+		paciente.setNombre("Laura");
+		paciente.setApellido("Sanchez");
+		paciente.setEmail("lauraSanchez@gmail.com");
+		paciente.setTelefono("12345678");
+		paciente.setFecha_nacimiento(LocalDate.parse("1993-04-14"));
+		paciente.setDireccion("Calle Las Heras 456");
+		paciente.setLocalidad("Avellaneda");
+		paciente.setProvincia("La Pampa");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 10
+		paciente.setDni(10000010);
+		paciente.setNombre("Marta");
+		paciente.setApellido("Silva");
+		paciente.setEmail("martaSilva@gmail.com");
+		paciente.setTelefono("87654321");
+		paciente.setFecha_nacimiento(LocalDate.parse("1980-08-09"));
+		paciente.setDireccion("Avenida Colon 789");
+		paciente.setLocalidad("Churruca");
+		paciente.setProvincia("Río Negro");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 11
+		paciente.setDni(10000011);
+		paciente.setNombre("Gustavo");
+		paciente.setApellido("Mendoza");
+		paciente.setEmail("gustavoMendoza@gmail.com");
+		paciente.setTelefono("23456789");
+		paciente.setFecha_nacimiento(LocalDate.parse("1972-10-02"));
+		paciente.setDireccion("Calle Sarmiento 123");
+		paciente.setLocalidad("Bella Vista");
+		paciente.setProvincia("Mendoza");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 12
+		paciente.setDni(10000012);
+		paciente.setNombre("Clara");
+		paciente.setApellido("Ortiz");
+		paciente.setEmail("claraOrtiz@gmail.com");
+		paciente.setTelefono("34567890");
+		paciente.setFecha_nacimiento(LocalDate.parse("1999-05-12"));
+		paciente.setDireccion("Avenida San Martin 456");
+		paciente.setLocalidad("La Reja");
+		paciente.setProvincia("Tierra del Fuego");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 13
+		paciente.setDni(10000013);
+		paciente.setNombre("Roberto");
+		paciente.setApellido("Alvarez");
+		paciente.setEmail("robertoAlvarez@gmail.com");
+		paciente.setTelefono("45678901");
+		paciente.setFecha_nacimiento(LocalDate.parse("1983-01-19"));
+		paciente.setDireccion("Calle Mitre 789");
+		paciente.setLocalidad("Caseros");
+		paciente.setProvincia("Neuquén");
+		pacienteNegocio.add(paciente);
+
+		// Paciente 14
+		paciente.setDni(10000014);
+		paciente.setNombre("Elena");
+		paciente.setApellido("Medina");
+		paciente.setEmail("elenaMedina@gmail.com");
+		paciente.setTelefono("56789012");
+		paciente.setFecha_nacimiento(LocalDate.parse("2001-12-25"));
+		paciente.setDireccion("Avenida Roca 123");
+		paciente.setLocalidad("El Tala");
+		paciente.setProvincia("Santa Cruz");
+		pacienteNegocio.add(paciente);
+		
+		// Paciente 15
+				paciente.setDni(10000015);
+				paciente.setNombre("Felipe");
+				paciente.setApellido("Gomez");
+				paciente.setEmail("felipeGomez@gmail.com");
+				paciente.setTelefono("89431654");
+				paciente.setFecha_nacimiento(LocalDate.parse("2023-01-20"));
+				paciente.setDireccion("Calle Verde 456");
+				paciente.setLocalidad("25 de Mayo");
+				paciente.setProvincia("Buenos Aires");
+				pacienteNegocio.add(paciente);
+
+		
+		
+
 
 		// Especialidad
 		EspecialidadNegocio especialidadNegocio = (EspecialidadNegocio) appContext.getBean("EspecialidadNegocioBean");
 		Especialidad especialidad = (Especialidad) appContext.getBean("EspecialidadBean");
-		for (int i = 0; i < 15; i++) {
-			especialidad.setNombre("Especialidad"+(i+1));
-			try {
-				estado = especialidadNegocio.add(especialidad);
-				// System.out.println(MENSAJE_AGREGADO);
-			} catch (Exception e) {
-				// TODO: handle exception
-				// System.err.println(MENSAJE_YA_EXISTE);
-				e.printStackTrace();
-			} finally {
-				System.out.println(especialidad.toString());
-				System.out.println(MENSAJE_YA_EXISTE);
-			}
+		
+		
+		String[] especialidades = {
+		    "Cardiología", "Dermatología", "Ginecología", "Neurología", "Oftalmología",
+		    "Pediatría", "Psiquiatría", "Reumatología", "Traumatología", "Urología",
+		    "Oncología", "Endocrinología", "Gastroenterología", "Hematología", "Inmunología"
+		};
+
+		
+		for (String nombre : especialidades) {
+		 
+		    especialidad.setNombre(nombre);
+		    especialidadNegocio.add(especialidad);
 		}
+		
+		
+		
+		
+		
+		
+	
 
 		// Usuario
 		UsuarioNegocio usuarioNegocio = (UsuarioNegocio) appContext.getBean("UsuarioNegocioBean");
 		Usuario usuario = (Usuario) appContext.getBean("UsuarioBean");
+		
 		for (int i = 0; i < 15; i++) {
 			usuario.setUsuario("Usuario"+(i+1));
 			usuario.setContraseña("Clave1234");			
@@ -95,8 +282,17 @@ public class App {
 				System.out.println(MENSAJE_YA_EXISTE);
 			}
 		}
-
+		// Usuario ADMIN
+			
+				usuario.setUsuario("Admin");
+				usuario.setContraseña("Clave1234");
+				usuarioNegocio.add(usuario);
+				
+				
+				
 		// Horario
+				
+				
 		HorarioNegocio horarioNegocio = (HorarioNegocio) appContext.getBean("HorarioNegocioBean");
 		Horario horario = (Horario) appContext.getBean("HorarioBean");
 		for (int i = 1; i <= 5; i++) {
@@ -159,12 +355,51 @@ public class App {
 				System.out.println(MENSAJE_YA_EXISTE);
 			}
 		}
+		
+		
+		
+		
 
 		// Medico
 		MedicoNegocio medicoNegocio = (MedicoNegocio) appContext.getBean("MedicoNegocioBean");
 		Medico medico = (Medico) appContext.getBean("MedicoBean");
+		
+		
+			String[] nombres = {
+				    "Juan", "María", "Carlos", "Ana", "Luis",
+				    "Sofía", "Pedro", "Laura", "Jorge", "Lucía",
+				    "Miguel", "Elena", "Andrés", "Patricia", "Ricardo"
+				};
+			String[] apellidos = {
+				    "García", "Martínez", "Rodríguez", "López", "González",
+				    "Pérez", "Sánchez", "Ramírez", "Torres", "Flores",
+				    "Rivera", "Gómez", "Díaz", "Hernández", "Vargas"
+				};
+			String[] correos = {
+				    "juan.g@example.com", "maria.m@example.com", "carlos.r@example.com", "ana.l@example.com", "luis.g@example.com",
+				    "sofia.p@example.com", "pedro.s@example.com", "laura.r@example.com", "jorge.t@example.com", "lucia.f@example.com",
+				    "miguel.r@example.com", "elena.g@example.com", "andres.d@example.com", "patricia.h@example.com", "ricardo.v@example.com"
+				};
+			String[] fechasNacimiento = {
+				    "1983-01-19", "1984-02-25", "1985-03-10", "1986-04-15", "1987-05-20",
+				    "1988-06-30", "1989-07-14", "1990-08-22", "1991-09-11", "1992-10-05",
+				    "1993-11-17", "1994-12-23", "1995-01-09", "1996-02-28", "1997-03-16"
+				};
+			
+			String[] telefonos = {
+				    "12345678", "23456789", "34567890", "45678901", "56789012",
+				    "67890123", "78901234", "89012345", "90123456", "01234567",
+				    "12345678", "23456789", "34567890", "45678901", "56789012"
+				};
+			
+		
 		for (int i = 0; i < 15; i++) {
-			medico.setNombre("nombreMedico"+(i+1));
+			
+			medico.setNombre(nombres[i]);
+			medico.setApellido(apellidos[i]);
+			medico.setEmail(correos[i]);
+			medico.setFechaNacimiento(LocalDate.parse(fechasNacimiento[i]));
+			medico.setTelefono(telefonos[i]);
 			medico.setUsuario(usuarioNegocio.readOne(i+1L));
 			medico.setEspecialidad(especialidadNegocio.readOne(i+1));
 			Set<Horario> setHorario = new HashSet<Horario>();
@@ -183,11 +418,20 @@ public class App {
 			}
 		}
 
+		
+		
+		
+		
+		
+		
+		
+		
 		// Turno
 		TurnoNegocio turnoNegocio = (TurnoNegocio) appContext.getBean("TurnoNegocioBean");
 		Turno turno = (Turno) appContext.getBean("TurnoBean");
 		for (int i = 0; i < 15; i++) {
 			medico = medicoNegocio.readOne(i+1L);
+			
 			paciente = pacienteNegocio.readOne(10000000+(i+1));
 			turno.setMedico(medico);
 			turno.setPaciente(paciente);
@@ -204,21 +448,8 @@ public class App {
 			}
 		}		
 		
-		// Usuario ADMIN
-		usuario = (Usuario) appContext.getBean("UsuarioBean");
-		usuario.setUsuario("Admin");
-		usuario.setContraseña("Clave1234");
-		try {
-			estado = usuarioNegocio.add(usuario);
-			// System.out.println(MENSAJE_AGREGADO);
-		} catch (Exception e) {
-			// TODO: handle exception
-			// System.err.println(MENSAJE_YA_EXISTE);
-			e.printStackTrace();
-		} finally {
-			System.out.println(usuario.toString());
-			System.out.println(MENSAJE_YA_EXISTE);
-		}
+		
+		
 		
 		//LISTADO PROVINCIAS okkkkkkk
 

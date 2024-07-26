@@ -4,17 +4,20 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import frgp.utn.edu.ar.entidad.Especialidad;
+import frgp.utn.edu.ar.entidad.Horario;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
@@ -44,8 +47,11 @@ public class TurnoController {
 	Paciente paciente = (Paciente) appContext.getBean("PacienteBean");
 	
 	
+	
 	@RequestMapping("ABML_turno.html")
-	public ModelAndView ABML_turno(@RequestParam(required = false) Integer especialidad) {
+	public ModelAndView ABML_turno(@RequestParam(required = false) Integer especialidad, 
+			@RequestParam(required = false) Long medicoId, 
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
 	    ModelAndView MV = new ModelAndView("ABML_Turno");
 	    MV.addObject("listaTurnos", turnoNegocio.leerTodos());
 	    MV.addObject("listaEspecialidades", especialidadNegocio.readAll());
@@ -60,9 +66,38 @@ public class TurnoController {
 	    } else {
 	        MV.addObject("listaMedicosFiltrados", medicoNegocio.readAll());
 	    }
+	    
+	    if (medicoId != null) {
+	        Medico medico = medicoNegocio.readOne(medicoId);
+	        List<String> diasTrabajo = medico.getHorarios().stream()
+	                                          .map(horario -> horario.getDia().toString())
+	                                          .collect(Collectors.toList());
+	        MV.addObject("diasTrabajo", diasTrabajo);
+	    }
+	    
+	    if (medicoId != null && fecha != null) {
+            EDiaHorario dia = convertirDia(fecha.getDayOfWeek());
+            List<Horario> horariosTrabajo = turnoNegocio.buscarHorarioPorMedicoYDia(medicoId, dia);
+            List<LocalTime> horasOcupadas = turnoNegocio.buscarHorasDeTurnosPorFechaYMedico(fecha, medicoId);
+            
+            List<String> horariosDisponibles = new ArrayList<>();
+            for (Horario horario : horariosTrabajo) {
+                LocalTime start = horario.getHoraInicio();
+                while (start.isBefore(horario.getHoraFin())) {
+                    if (!horasOcupadas.contains(start)) {
+                        horariosDisponibles.add(start.toString());
+                    }
+                    start = start.plusHours(1);
+                }
+            }
+            MV.addObject("horariosDisponibles", horariosDisponibles);
+            
+        }
+	    
 
 	    return MV;
 	}
+	
 	
 	@RequestMapping(value = "/guardar_turno.html")
 	public ModelAndView guardarTurno(@RequestParam("fecha") String fechaStr,
@@ -122,6 +157,7 @@ public class TurnoController {
 	    nuevoTurno.setEstado(true);
 
 	    turnoNegocio.add(nuevoTurno);
+	    
 	    MV.setViewName("redirect:/ABML_turno.html");
 	    return MV;
 	}

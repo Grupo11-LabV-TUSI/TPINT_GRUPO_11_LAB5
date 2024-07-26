@@ -16,7 +16,10 @@ jsp
 
 
 
+
+
 :include
+
 
 
 
@@ -24,7 +27,10 @@ jsp
 
 
 
+
 page
+
+
 
 
 
@@ -40,7 +46,11 @@ css
 
 
 
+
+
 .css
+
+
 
 
 
@@ -51,6 +61,8 @@ css
 >
 </
 jsp
+
+
 
 
 
@@ -99,8 +111,8 @@ jsp
         // Manejar el cambio en el selector de provincias
         $('#provincias').change(function() {
             var provinciaId = $(this).val();
-            $('#localidades').empty(); // Limpiar el select de localidades
-           // $('#localidades').append('<option value="">Seleccione una localidad</option>');
+        	   $('#localidades').empty(); // Limpiar el select de localidades
+            //$('#localidades').append('<option value="">Seleccione una localidad</option>');
 
             // Filtrar localidades por idProvincia seleccionado
             localidades.forEach(function(localidad) {
@@ -109,6 +121,8 @@ jsp
                 }
             });
         });
+        
+        $('#provincias').change();
     });
 </script>
 
@@ -117,7 +131,7 @@ jsp
 	<jsp:include page="Menu.jsp"></jsp:include>
 
 	<div class="container">
-		<h2>Gestión de Usuarios</h2>
+		
 
 		<div class="container">
 			<div class="row">
@@ -153,82 +167,77 @@ jsp
 
 					</div>
 					<!-- Cuerpo del Modal -->
-					<div class="modal-body">
-						<form action="ServletClientes" method="post">
-							<table>
-
-								<table>
-									<tr>
-										<td style="width: 139px;">DNI</td>
-										<td style="height: 0px;"><input type="Number"
-											name="txtDNI" min="1" max="99999999" required maxlength="10"
-											onkeypress="return((event.charCode >= 48 && event.charCode <= 57))"
-											readonly value="${paciente.getDni()}" /><br></td>
-									</tr>
-
-
-									<tr>
-										<td>Nombre:</td>
-										<td style="height: 0px;"><input type="text"
-											name="txtNOMBRE" value="${paciente.getNombre()}"
-											style="text-transform: uppercase" /></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Apellido:</td>
-										<td style="height: 0px;"><input type="text"
-											name="txtAPELLIDO" value="${paciente.getApellido()}"
-											style="text-transform: uppercase" /></td>
-									</tr>
-									<tr>
-										<td>Fecha de Nacimiento:</td>
-										<td style="height: 0px;"><input type="date"
-											name="txtFECHA_NAC" value="${paciente.getFecha_nacimiento()}"
-											required /><br></td>
-									</tr>
-									<tr>
-										<td>Domicilio:</td>
-										<td style="height: 0px;"><input type="text"
-											name="txtDIRECCION" value="${paciente.getDireccion()}"
-											required maxlength="40" style="text-transform: uppercase" /><br>
-										</td>
-									</tr>
-									<tr>
-										<td>Correo Electr�nico:</td>
-										<td style="height: 0px;"><input type="email"
-											name="textEMAIL" value="${paciente.getEmail()}" required />
-										</td>
-									</tr>
-									<tr>
-										<td>Tel�fono:</td>
-										<td style="height: 0px;"><input type="tel"
-											name="txtTELEFONO" value="${paciente.getTelefono()}" /></td>
-									</tr>
-									<tr>
-
-										<td>Provincia:</td>
-										<td><select id="provincias" name="provinciasTXT">
-												<c:forEach var="provincia" items="${listaProvincias}">
-													<option value="${provincia.idProvincia}"
-														<c:if test="${provincia.descripcion == paciente.getProvincia()}">selected</c:if>>${provincia.descripcion}</option>
+					<div class="modal-body ">
 
 
 
-												</c:forEach>
-										</select></td>
+						<table  class="table table-striped">
+							<tr>
+								<td style="width: 139px;">DNI</td>
+								<td style="height: 0px;"><input type="Number" name="txtDNI"
+									min="1" max="99999999" required maxlength="10"
+									onkeypress="return((event.charCode >= 48 && event.charCode <= 57))"
+									readonly value="${paciente.getDni()}" class="form-control" /><br></td>
+							</tr>
 
-									</tr>
-									<td>Localidad:</td>
-									<td><select class="form-control" id="localidades"
-										name="localidades" requiered >
+
+							<tr>
+								<td style="width: 139px;">Nombre:</td>
+								<td style="height: 0px;"><input type="text"
+									name="txtNOMBRE" value="${paciente.getNombre()}"
+									style="text-transform: uppercase" class="form-control" /></td>
+
+							</tr>
+							<tr>
+								<td>Apellido:</td>
+								<td style="height: 0px;"><input type="text"
+									name="txtAPELLIDO" value="${paciente.getApellido()}"
+									style="text-transform: uppercase" class="form-control" /></td>
+							</tr>
+							<tr>
+								<td>Fecha de Nacimiento:</td>
+								<td style="height: 0px;"><input type="date"
+									name="txtFECHA_NAC" value="${paciente.getFecha_nacimiento()}"
+									required class="form-control" max="${LocalDate.now()}"/><br></td>
+							</tr>
+							<tr>
+								<td>Domicilio:</td>
+								<td style="height: 0px;"><input type="text"
+									name="txtDIRECCION" value="${paciente.getDireccion()}" required
+									maxlength="40" style="text-transform: uppercase"
+									class="form-control" /><br></td>
+							</tr>
+							<tr>
+								<td>E-Mail:</td>
+								<td style="height: 0px;"><input type="email"
+									name="textEMAIL" value="${paciente.getEmail()}" required
+									class="form-control" /></td>
+							</tr>
+							<tr>
+								<td>E-Mail:</td>
+								<td style="height: 0px;"><input type="tel"
+									name="txtTELEFONO" value="${paciente.getTelefono()}"
+									class="form-control" /></td>
+							</tr>
+							<tr>
+
+								<td>Provincia:</td>
+								<td><select id="provincias" name="provinciasTXT"
+									class="form-control">
+										<c:forEach var="provincia" items="${listaProvincias}">
+											<option value="${provincia.idProvincia}"
+												<c:if test="${provincia.descripcion == paciente.getProvincia()}">selected</c:if>>${provincia.descripcion}</option>
 
 
 
-											<c:set var="localidadValue"
-												value="${localidad.idLocalidad == null ? idLocalidadVieja : ''}" />
-											<option value="${localidadValue}">
-												${localidad.descripcion != null ? localidad.descripcion : paciente.localidad}
-											</option>
+										</c:forEach>
+								</select></td>
+
+
+
+
+
+							</tr>
 
 
 
@@ -236,17 +245,37 @@ jsp
 
 
 
+							<tr>
 
-									</select></td>
+								<td>Localidad:</td>
+								<td><select class="form-control" id="localidades"
+									name="localidades" requiered class="form-control">
 
-									</tr>
 
-									<br />
-								</table>
 
-							</table>
-							</br>
-						</form>
+										<c:set var="localidadValue" value="${localidad.idLocalidad == null ? idLocalidadVieja : ''}" />
+										
+										<option value="${localidadValue}">
+											${localidad.descripcion != null ? localidad.descripcion : paciente.localidad}
+										</option>
+
+
+
+
+
+
+
+
+								</select></td>
+
+							</tr>
+
+							<br />
+						</table>
+
+
+						</br>
+
 					</div>
 					<!-- Pie del Modal -->
 					<div class="modal-footer">

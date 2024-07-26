@@ -23,11 +23,27 @@ import org.springframework.stereotype.Component;
 import frgp.utn.edu.ar.enums.EEstadoTurno;
 
 /* Querys definidas por notacion */
-@NamedQueries({ 
-		@NamedQuery(name = "findTurnoById", query = "SELECT t FROM Turno t WHERE id=:id"),
-		@NamedQuery(name = "findAllTurnos", query = "SELECT t FROM Turno t"),
-		@NamedQuery(name = "findTurnosByMedico", query = "SELECT t FROM Turno t WHERE medico=:medico")
-		})
+@NamedQueries({
+	@NamedQuery(name = "findTurnoById",
+			query = "SELECT t FROM Turno t WHERE id=:id"),
+	@NamedQuery(name = "findAllTurnos",
+			query = "SELECT t FROM Turno t"),
+	@NamedQuery(name = "findTurnosByMedico",
+			query = "SELECT t FROM Turno t WHERE medico=:medico"),
+	@NamedQuery(name = "contarTurnosPorEspecilidadYFechas",
+		query = "SELECT COUNT(*) FROM Turno t "
+			+ " INNER JOIN t.medico m "
+			+ " INNER JOIN m.especialidad e "
+			+ " WHERE e=:especialidad AND t.fecha BETWEEN :fi AND :ff"),
+	@NamedQuery(name = "contarTurnosPorMedicoYFechaYEstado",
+		query = "SELECT COUNT(*) FROM Turno t "
+				+ "INNER JOIN t.medico m "
+				+ "WHERE m = :medico "
+				+ "AND t.fecha BETWEEN :fi AND :ff "
+				//+ "AND MONTH(t.fecha) = :mes "
+				+ "AND t.estadoTurno = :estadoTurno"
+		)
+})
 
 @Component
 @Entity

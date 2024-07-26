@@ -5,8 +5,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import frgp.utn.edu.ar.entidad.Especialidad;
+import frgp.utn.edu.ar.entidad.Horario;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Turno;
+import frgp.utn.edu.ar.enums.EDiaHorario;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 
 public interface ITurnoNegocio {
 	// crear
@@ -30,11 +34,24 @@ public interface ITurnoNegocio {
 	public long contarTurnosPresenteEntreFechas(Date startDate, Date endDate);
 
 	public long contarTurnosAusenteEntreFechas(Date startDate, Date endDate);
-	
+
 	// listar turnos medico fecha y hora
 	public boolean existeTurno(LocalDate fecha, LocalTime hora, Long medicoId);
-	
+
 	// listar turnos por medico
 	public List<Turno> buscarTurnosPorMedico(Medico medico);
+
+	// listar cuenta turnos por especialidad entre fechas
+	public long contarTurnosEspecialidadEntreFechas(Especialidad especialidad, LocalDate fechaInicio,
+			LocalDate fechaFin);
+
+	// listar cuenta turnos por medico en fecha mes año y estado
+	public long contarTurnosMedicoFechaEstado(Medico medico, LocalDate fechaInicio, LocalDate fechaFin, EEstadoTurno estadoTurno);
+	
+	//Metodos para traer Horarios de para Turnos:
+	
+	public List<LocalTime> buscarHorasDeTurnosPorFechaYMedico(LocalDate fecha, Long matricula);
+
+	public List<Horario> buscarHorarioPorMedicoYDia(Long medicoId, EDiaHorario dia);
 
 }

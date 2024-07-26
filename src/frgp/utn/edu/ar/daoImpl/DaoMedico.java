@@ -46,7 +46,7 @@ public class DaoMedico implements IDaoMedico {
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();;
 		Medico medico = (Medico) session.get(Medico.class, matriculaMedico);
-		//medico.getHorarios().size();
+		medico.getHorarios().size();
 		medico.getTurnos().size();
 		tx = session.getTransaction();
 		tx.commit();

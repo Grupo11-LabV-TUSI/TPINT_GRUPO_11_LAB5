@@ -20,38 +20,98 @@
     </style>
 
     <script type="text/javascript">
-	    $(document).ready(function() {
-	        function toggleMedicoSelect() {
-	            var especialidadSelected = $('#especialidad').val();
-	            $('#medico').prop('disabled', !especialidadSelected);
-	        }
-	
-	        $('#especialidad').change(function() {
-	            $('#especialidadForm').submit();
-	            toggleMedicoSelect();
-	        });
-	
-	        toggleMedicoSelect();
-	    }); 
-	    $(document).ready(function() {
-	        <c:if test="${not empty error}">
-	            alert('${error}');
-	        </c:if>
-	    });
+        $(document).ready(function() {
+            function toggleMedicoSelect() {
+                var especialidadSelected = $('#especialidad').val();
+                $('#medico').prop('disabled', !especialidadSelected);
+            }
+
+            $('#especialidad').change(function() {
+                $('#especialidadForm').submit();
+            });
+
+            $('#medico').change(function() {
+                var medicoId = $(this).val();
+                if (medicoId) {
+                    $.ajax({
+                        url: 'ABML_turno.html',
+                        method: 'GET',
+                        data: { medicoId: medicoId },
+                        success: function(response) {
+                            var diasTrabajo = $(response).find("#diasTrabajoContainer").html();
+                            $('#diasTrabajoContainer').html(diasTrabajo);
+                        },
+                        error: function() {
+                            $('#diasTrabajoContainer').text('Error al obtener los días de trabajo del médico.');
+                        }
+                    });
+                } else {
+                    $('#diasTrabajoContainer').text('');
+                }
+                $('#hora').html('<option disabled="disabled">==SELECCIONE UN HORARIO==</option>'); // Reset horarios
+            });
+
+            $('#fecha').change(function() {
+                var medicoId = $('#medico').val();
+                var fecha = $(this).val();
+
+                if (medicoId && fecha) {
+                    $.ajax({
+                        url: 'ABML_turno.html',
+                        method: 'GET',
+                        data: { medicoId: medicoId, fecha: fecha },
+                        success: function(response) {
+                            var horariosDisponibles = $(response).find("#horariosDisponiblesContainer").html();
+                            $('#horariosDisponiblesContainer').html(horariosDisponibles);
+
+                            // Update the hour select options
+                            var horariosOptions = '<option disabled="disabled">==SELECCIONE UN HORARIO==</option>';
+                            var horarioCount = 0;
+                            $(response).find("#hora option").each(function() {
+                                horariosOptions += '<option value="' + $(this).val() + '">' + $(this).text() + '</option>';
+                                horarioCount++;
+                            });
+                            if (horarioCount === 0) {
+                                horariosOptions += '<option disabled="disabled">No hay horarios disponibles</option>';
+                            }
+                            $('#hora').html(horariosOptions);
+                        },
+                        error: function() {
+                            $('#horariosDisponiblesContainer').text('Error al obtener los horarios disponibles.');
+                        }
+                    });
+                } else {
+                    $('#horariosDisponiblesContainer').text('');
+                    $('#hora').html('<option disabled="disabled">==SELECCIONE UN HORARIO==</option>'); // Reset horarios
+                }
+            });
+
+            toggleMedicoSelect();
+            
+           
+
+            <c:if test="${not empty error}">
+                alert('${error}');
+            </c:if>
+        });
+
+        $(document).ready(function() {
+            $('#tabla_Medicos').DataTable();
+        });
     </script>
 </head>
 <body>
     <jsp:include page="Menu.jsp"></jsp:include>
 
     <div class="container">
-        <h2>Gestión de Turnos</h2>
+        <h2>Gestion de Turnos</h2>
 
         <section class="row justify-content-center pt-3 px-3">
             <fieldset>
                 <legend>Asignacion de Turnos</legend>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container">
-                        <!-- Botón de Inicio -->
+                        <!-- BotÃ³n de Inicio -->
                         <form class="form-inline mr-auto" action="cargar_inicio.html" method="get">
                             <button class="btn btn-primary" type="submit" name="btnNavIrInicio">Inicio</button>
                         </form>
@@ -72,40 +132,42 @@
                     </form>
                     <form action="guardar_turno.html" method="post" id="assignTurnForm">
                         <div class="form-group">
-                            <label for="medico">Médico</label>
+                            <label for="medico">Medico</label>
                             <select class="form-control" id="medico" name="medico" required>
-							    <option value="">Seleccione un médico</option>
+							    <option value="">Seleccione un medico</option>
 							    <c:forEach items="${listaMedicosFiltrados}" var="medico">
 							        <option value="${medico.getMatricula()}">${medico.getNombre()} ${medico.getApellido()}</option>
 							    </c:forEach>
 							</select>
                         </div>
                         <div class="form-group">
-                            <label for="fecha">Día</label>
-    						<input type="date" class="form-control" id="fecha" name="fecha" required min="${LocalDate.now()}" max="${LocalDate.now().plusMonths(1)}">
-                        </div>
-                        <div class="form-group">
+						    <label for="fecha">Dia</label>
+						    <input type="date" class="form-control" id="fecha" name="fecha" required min="${LocalDate.now()}" max="${LocalDate.now().plusMonths(1)}">
+						    <label id="diasTrabajoContainer">
+						        <c:if test="${not empty diasTrabajo}">
+						            Dias de Trabajo del Medico: 
+						            <c:forEach items="${diasTrabajo}" var="dia">
+						                [${dia}] 
+						            </c:forEach>
+						        </c:if>
+						    </label>
+						</div>
+                        <div class="form-group" id="horariosDisponiblesContainer">
 						    <label for="hora">Horario</label>
 						    <select class="form-control" id="hora" name="hora" required>
-						        <option value="">Seleccione un horario</option>
-						        <option value="09:00">09:00 AM</option>
-						        <option value="10:00">10:00 AM</option>
-						        <option value="11:00">11:00 AM</option>
-						        <option value="12:00">12:00 PM</option>
-						        <option value="13:00">01:00 PM</option>
-						        <option value="14:00">02:00 PM</option>
-						        <option value="15:00">03:00 PM</option>
-						        <option value="16:00">04:00 PM</option>
-						        <option value="17:00">05:00 PM</option>
+						        <c:if test="${not empty horariosDisponibles}">
+						            <c:forEach items="${horariosDisponibles}" var="horario">
+						                <option value="${horario}">${horario}</option>
+						            </c:forEach>
+						        </c:if>
 						    </select>
 						</div>
-
                         <div class="form-group">
                             <label for="paciente">Paciente</label>
                             <select class="form-control" id="paciente" name="paciente" required>
                                 <option value="">Seleccione un paciente</option>
                                 <c:forEach items="${listaPacientes}" var="paciente">
-                                    <option value="${paciente.getDni()}">${paciente.getNombre()}</option>
+                                    <option value="${paciente.getDni()}">${paciente.getDni()} - ${paciente.getNombre()} ${paciente.getApellido()}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -113,8 +175,11 @@
                     </form>
                 </div>
 
+				<jsp:include page="tablaTurnos.jsp"></jsp:include>
+
+				<!-- 
                 <div class="table-responsive">
-                    <table summary="Los turnos registrados en la Clinica">
+                    <table summary="Los turnos registrados en la Clinica" class="table table-striped">
                         <legend>Listado de Turnos</legend>
                         <thead>
                             <tr>
@@ -148,6 +213,7 @@
                         </tbody>
                     </table>
                 </div>
+                 -->
             </fieldset>
         </section>
     </div>

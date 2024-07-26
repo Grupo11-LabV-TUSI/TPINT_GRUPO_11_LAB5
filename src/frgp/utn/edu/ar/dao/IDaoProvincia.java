@@ -1,4 +1,3 @@
-
 package frgp.utn.edu.ar.dao;
 
 import java.util.List;
@@ -12,5 +11,6 @@ public interface IDaoProvincia {
 	public Provincia readOne(int idProvincia);
 	public List<Provincia> readAll();
 
+	
 	
 }

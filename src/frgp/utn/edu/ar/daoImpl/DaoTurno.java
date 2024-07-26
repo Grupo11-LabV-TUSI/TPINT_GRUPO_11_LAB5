@@ -3,6 +3,7 @@ package frgp.utn.edu.ar.daoImpl;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,8 +12,12 @@ import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
 import frgp.utn.edu.ar.dao.IDaoTurno;
+import frgp.utn.edu.ar.entidad.Especialidad;
+import frgp.utn.edu.ar.entidad.Horario;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Turno;
+import frgp.utn.edu.ar.enums.EDiaHorario;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 
 @Repository
 public class DaoTurno implements IDaoTurno {
@@ -200,26 +205,118 @@ public class DaoTurno implements IDaoTurno {
 		session.close();
 		return lista;
 	}
-	
+
 	@Override
 	public List<Turno> buscarTurnosPorFechaHoraYMedico(LocalDate fecha, LocalTime hora, Long medicoId) {
+		Session session = conexion.abrirConexion();
+		Transaction tx = session.beginTransaction();
+		try {
+			Query query = session
+					.createQuery("FROM Turno t WHERE t.fecha = :fecha AND t.hora = :hora AND t.medico.id = :medicoId");
+			query.setParameter("fecha", fecha);
+			query.setParameter("hora", hora);
+			query.setParameter("medicoId", medicoId);
+			List<Turno> turnos = query.list();
+			tx.commit();
+			return turnos;
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public long contarTurnosEspecialidadEntreFechas(Especialidad especialidad, LocalDate fechaInicio,
+			LocalDate fechaFin) {
+		Session session = conexion.abrirConexion();
+		Transaction tx = session.beginTransaction();
+		try {
+			Query query = session.getNamedQuery("contarTurnosPorEspecilidadYFechas");
+			query.setParameter("especialidad", especialidad);
+			query.setParameter("fi", fechaInicio);
+			query.setParameter("ff", fechaFin);
+			Long cantTurnos = (Long) query.uniqueResult();
+			tx.commit();
+			return cantTurnos;
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			return -1;
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public long contarTurnosMedicoFechaEstado(Medico medico, LocalDate fechaInicio, LocalDate fechaFin, EEstadoTurno estadoTurno) {
+		Session session = conexion.abrirConexion();
+		Transaction tx = session.beginTransaction();
+		try {
+			Query query = session.getNamedQuery("contarTurnosPorMedicoYFechaYEstado");
+			query.setParameter("medico", medico);
+			query.setParameter("fi", fechaInicio);
+			query.setParameter("ff", fechaFin);
+			query.setParameter("estadoTurno", estadoTurno);
+			Long cantTurnos = (Long) query.uniqueResult();
+			tx.commit();
+			return cantTurnos;
+		} catch (Exception e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			return -1;
+		} finally {
+			session.close();
+		}
+	}
+	
+	@Override
+	public List<LocalTime> buscarHorasDeTurnosPorFechaYMedico(LocalDate fecha, Long medicoId) {
 	    Session session = conexion.abrirConexion();
-	    Transaction tx = session.beginTransaction();
+	    Transaction tx = null;
+	    List<LocalTime> horas = new ArrayList<>();
 	    try {
-	        Query query = session.createQuery("FROM Turno t WHERE t.fecha = :fecha AND t.hora = :hora AND t.medico.id = :medicoId");
+	        tx = session.beginTransaction();
+	        Query query = session.createQuery("SELECT t.hora FROM Turno t WHERE t.fecha = :fecha AND t.medico.id = :medicoId");
 	        query.setParameter("fecha", fecha);
-	        query.setParameter("hora", hora);
 	        query.setParameter("medicoId", medicoId);
-	        List<Turno> turnos = query.list();
+	        horas = query.list();
 	        tx.commit();
-	        return turnos;
 	    } catch (Exception e) {
 	        if (tx != null) tx.rollback();
 	        e.printStackTrace();
-	        return null;
 	    } finally {
 	        session.close();
 	    }
+	    return horas;
+	}
+	
+	
+	@Override
+	public List<Horario> buscarHorarioPorMedicoYDia(Long medicoId, EDiaHorario dia) {
+	    Session session = conexion.abrirConexion();
+	    Transaction tx = null;
+	    List<Horario> horarios = new ArrayList<>();
+	    try {
+	        tx = session.beginTransaction();
+	        String hql = "SELECT h FROM Horario h JOIN h.medicos m WHERE m.matricula = :medicoId AND h.dia = :dia";
+	        Query query = session.createQuery(hql);
+	        query.setParameter("medicoId", medicoId);
+	        query.setParameter("dia", dia);
+	        horarios = query.list();
+	        tx.commit();
+	    } catch (Exception e) {
+	        if (tx != null) tx.rollback();
+	        e.printStackTrace();
+	    } finally {
+	        session.close();
+	    }
+	    return horarios;
 	}
 
 }

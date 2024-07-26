@@ -57,6 +57,7 @@ public class Paciente implements Serializable {
 	@Column(name = "estado")
 	private boolean estado;
 
+	
 	// Bidireccion
 	@OneToMany(mappedBy = "paciente", fetch = FetchType.EAGER)
 	private List<Turno> turnos;
@@ -64,9 +65,10 @@ public class Paciente implements Serializable {
 	// Constructor vacio requerido por Hibernate
 	public Paciente() {
 	}
+	
 
 	public Paciente(String nombre, String apellido, String email, String telefono, LocalDate fecha_nacimiento,
-			String direccion, String localidad, String provincia, boolean estado, List<Turno> turnos) {
+			String direccion, String localidad, String provincia, boolean estado/*, List<Turno> turnos*/) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -76,7 +78,7 @@ public class Paciente implements Serializable {
 		this.localidad = localidad;
 		this.provincia = provincia;
 		this.estado = estado;
-		this.turnos = turnos;
+		//this.turnos = turnos;
 	}
 
 	public Paciente(int dni, String nombre, String apellido, String email, String telefono, LocalDate fecha_nacimiento,
@@ -175,6 +177,7 @@ public class Paciente implements Serializable {
 	}
 
 	// Bidireccion
+	
 	public List<Turno> getTurnos() {
 		return turnos;
 	}
@@ -188,13 +191,16 @@ public class Paciente implements Serializable {
 		String mensaje = "Paciente [dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
 				+ ", telefono=" + telefono + ", fecha_nacimiento=" + fecha_nacimiento + ", direccion=" + direccion
 				+ ", localidad=" + localidad + ", provincia=" + provincia + ", estado=" + estado + ", turnos=";
+		
+		
 		String auxMensaje =	"{";
+	/*
 		if (turnos != null) {
 			for (Turno turno : turnos) {
 				auxMensaje += turno.getId() + " " + turno.getMedico() + " " + turno.getFecha() + " " + turno.getHora()
 						+ " " + turno.getObservacion() + " " + turno.getEstadoTurno() + " " + turno.getEstado() + " - ";
 			}
-		}
+		}*/
 		auxMensaje += "}";
 		return mensaje + auxMensaje + "]";
 	}

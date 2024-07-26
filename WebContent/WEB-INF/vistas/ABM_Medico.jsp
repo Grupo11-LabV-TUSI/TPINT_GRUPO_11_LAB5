@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -6,45 +6,76 @@
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>Turnos</title>
+		<title>Medicos</title>
 		<style type="text/css">
 			<jsp:include page="../css/StyleSheet.css"></jsp:include>
 		</style>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<!-- //cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css -->
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">		
-		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>		
-		<!-- //cdn.datatables.net/2.0.8/js/dataTables.min.js -->
-		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/sl-1.2.6/datatables.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+
+	    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+        <script type="text/javascript" src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/3.0.2/js/dataTables.buttons.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.dataTables.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.7.1/js/dataTables.searchBuilder.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/searchbuilder/1.7.1/js/searchBuilder.dataTables.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/datetime/1.5.2/js/dataTables.dateTime.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+		 <script type="text/javascript" src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.html5.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>        
+        
+  <link href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" rel="stylesheet" />
+  	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css" rel="stylesheet" />
+      <link href="https://cdn.datatables.net/searchbuilder/1.7.1/css/searchBuilder.dataTables.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<jsp:include page="Menu.jsp"></jsp:include>
 
 	<script>
-	$(document).ready(function() {
+
+	  // Setup - add a text input to each footer cell
+  //  $('#tabla_Medicos thead tr')
+    
+		$(document).ready(function() {
 		$('#tabla_Medicos').DataTable();
 	});
-	
+ 
+
 	</script>	
 <div class="container">
-        <h2>Gestión de Usuarios</h2>
+        <h2>GestiÃ³n de Medicos</h2>
         
         <div class="container">
   <div class="row">
     <div class="col-sm">
+	<!-- BotÃ¯Â¿Â½n de Inicio -->
+				<form class="form-inline mr-auto" action="cargar_inicio.html"
+					method="get">
+					<button class="btn btn-primary" type="submit" name="btnNavIrInicio">Inicio</button>
+				</form>
+    </div>
+    <div class="col-sm">
+    
+    
 
     </div>
     <div class="col-sm">
-
-    </div>
-    <div class="col-sm">
-        <!-- Botón para abrir el modal -->
+        <!-- BotÃ³n para abrir el modal -->
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#userModal">
-            Añadir Medico
+            AÃ±adir Medico
         </button>
     </div>
   </div>
@@ -57,7 +88,7 @@
     <fieldset>
         <legend>ABM Medicos</legend>
         <div class="table-responsive">
-            <table id="tabla_Medicos"  class="display" summary="Los medicos registrados en la Clinica">
+            <table id="tabla_Medicos"  class="table table-striped" summary="Los medicos registrados en la Clinica">
                 <caption>
                     Un listado de los medicos registrados en la Clinica
                 </caption>
@@ -129,7 +160,7 @@
 
 
         <!-- El Modal -->
-        <div class="modal fade" id="userModal">
+        <div class="modal fade" id="userModal"  tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
              
@@ -140,12 +171,8 @@
                     </div>
                       <form id="myForm" action="alta_medico.html" method="post">
                     <!-- Cuerpo del Modal -->
-                    <div class="modal-body">
-                  
-                     
-                          <!-- COMIENZO USARIO -->
-                          
-                          
+                    <div class="modal-body">   
+                          <!-- COMIENZO USARIO -->                          
                            <div class="card w-100" >
 							  <h5 class="card-header">Usuario</h5>
 							  <div class="card-body">
@@ -159,29 +186,24 @@
 						    <input type="text" id="txtNOMBRE" name="txtUSERID">					    	
 						    </div>
 						   </div>
-						   </div>
-					
+						   </div>					
 							    <div class="form-group row">
 							        <label class="col-sm-4 col-form-label">Clave:</label>
 							        <div class="col-sm-4">
 							            <input type="password" class="form-control" id="txtCLAVE" name="txtCLAVE" required>
 							        </div>
-							    </div>
-							    
+							    </div>							    
 							    <div class="form-group row">
 							        <label class="col-sm-4 col-form-label">Confirmar Clave:</label>
 							        <div class="col-sm-4">
 							            <input type="password" class="form-control" id="txtCLAVE2" name="txtCLAVE2" required>
 							        </div>
-							    </div>
-							
+							    </div>				
+							     <span id="message" style="color:red;"></span>			
 						   </div>
 						   </div>
 							</div>
-                          
-                          
-                  
-		                <span id="message" style="color:red;"></span><br><br>
+		               
 		                <!-- FIN USARIO -->
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Nombre:</label>
@@ -190,63 +212,73 @@
 		                        <input type="text" id="txtNOMBRE" name="txtNOMBRE">
 		                    </div>
 		                </div>
-		                
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Apellido:</label>
 		                    <div class="col-sm-6">
 		                     <input type="text" id="txtAPELLIDO" name="txtAPELLIDO">
 		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.apellido}"/> -->
-		                       
 		                    </div>
-		                </div>
-		                
+		                </div>		                
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Telefono:</label>
 		                    <div class="col-sm-6">
-		                     <input type="text" class="form-control" id="telefono" name="telefono" placeholder="+1234567890" value="${medico.telefono}" required>
+		                     <input type="text" class="form-control" id="txtTELEFONO" name="txtTELEFONO" placeholder="+1234567890" value="${medico.telefono}" required>
 		                    <!--<input type="phone" id="txtTELEFONO" name="txtTELEFONO">-->
 		                    <!--  <input type="text" class="form-control" name="nombre" value="${medico.telefono}"/> -->
-		                       
 		                    </div>
 		                </div>
-		                
 		                <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Fecha Nacimiento:</label>
 		                    <div class="col-sm-6">
-		              			<input type="date" id="txtFECHA_NAC" name="txtFECHA_NAC" value="2000-07-22" min="1980-01-01" max="2004-12-31" />
-
-		            
+		              			<input type="date" id="txtFECHA_NAC" name="txtFECHA_NAC" value="2000-07-22" min="1980-01-01" max="2004-12-31" />		            
 		                      <!-- <input type="text" class="form-control" name="nombre" value="${medico.fechaNacimiento}"/> -->  
 		                    </div>
-		                </div>
-		                
+		                </div>		                
 		                 <div class="form-group row">
 		                    <label class="col-sm-2 col-form-label">Email:</label>
-		                    <div class="col-sm-6">
-		                    
-		                    <input type="email" class="form-control" id="email" name="email" value="${medico.email}" required />
+		                    <div class="col-sm-6">		                    
+		                    <input type="email" class="form-control" id="txtemail" name="txtemail" value="${medico.email}" required />
 						      <div class="invalid-feedback">
 						        Debe ingresar un correo
 						      </div>
 		                    <!-- <input type="email" id="textEMAIL" name="textEMAIL">-->
 		                    <!-- <input type="text" class="form-control" name="nombre" value="${medico.email}"/> -->  
-		                        
 		                    </div>
 		                </div>
-
-						<div class="form-group row">
+		                <div class="form-group row">
                        <div class="col-sm-3">	
                             <label for="especialidad">Especialidad:</label>
                             </div>
                             <div class="col-sm-7">
-                            <select class="form-control" id="especialidad" name="especialidad" required>
+                            <select class="form-control" id="txtESPECIALIDAD" name="txtESPECIALIDAD" required>
  				               <c:forEach var="especialidad" items="${listaEspecialidades}">
                                     <option value="${especialidad.especialidad_id}" <c:if test="${especialidad.especialidad_id eq medico.especialidad.especialidad_id}">selected</c:if>>${especialidad.nombre}</option>
                                 </c:forEach>
                             </select>
                             </div>
                         </div>
+		                    
+		                <div class="form-group row">
+					    <label class="col-sm-2 col-form-label">Horarios:</label>
+					        <div class="col-sm-6">
 
+					                <select class="js-example-basic-multiple js-states form-control" id="horario" name="horario" multiple="multiple" required>
+								 <c:forEach var="horario" items="${listaHorarios}">
+                                    <option value="${horario.id}">${horario.dia}-${horario.horaInicio}-${horario.horaFin}</option>
+                                </c:forEach>
+									</select>						        								
+		                    </div>		 
+		                </div>		          
+                                            <script> 
+                                            	$(".js-example-basic-multiple").select2({
+                                                    placeholder: {
+	                                                    id: 0,
+	                                                    text: "Seleccione un Horario"
+                                                    },
+                                                    dropdownParent: $('#userModal')
+													});
+                                             </script>
+						
 		              
 
                     </div>
@@ -269,7 +301,7 @@
 
   
   <!-- Modal EDITAR MEDICO -->
-    <div class="modal fade" id="medicoModal" >
+    <div class="modal fade" id="medicoModal" tabindex="-1" role="dialog" aria-hidden="true" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -281,7 +313,7 @@
                     <c:if test="${not empty medico}">
                      		<div class="form-group row">
 						   	<div class="col-sm-3">	
-						   		<label for="email">Matrícula:</label>	
+						   		<label for="email">MatrÃ­cula:</label>	
 						   	</div>	
 						    <div class="col-sm-7">
 						    <input type="hidden" name="matricula" value="${medico.matricula}" />
@@ -327,7 +359,7 @@
 						   
 						   <div class="form-group row">
 						   	<div class="col-sm-3">	
-						   		<label for="email">Teléfono:</label>	
+						   		<label for="email">TelÃ©fono:</label>	
 						   	</div>	
 						    <div class="col-sm-7">
 						    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="+1234567890" value="${medico.telefono}" required>
@@ -356,6 +388,44 @@
                             </select>
                             </div>
                         </div>
+
+                        	                <div class="form-group row">
+					    <label class="col-sm-2 col-form-label">Horarios:</label>
+					    
+					        <div class="col-sm-4">
+					        <label class="col-sm-2 col-form-label">Actuales:</label>
+					        <ul class="list-group">
+					        <c:forEach var="horario" items="${listaHorarios}">
+					        <li class="list-group-item">${horario.dia}-${horario.horaInicio}-${horario.horaFin}</li>
+					        </c:forEach>
+					        </ul>
+							</div>
+							
+							<div class="col-sm-4">
+							<label class="col-sm-2 col-form-label">Asignar:</label>
+        <select class="js-example-basic-multiple" id="horario" Style="width: 100%" name="horario" multiple="multiple" required>
+            <c:forEach var="horario" items="${listatodosHorarios}">
+                <option value="${horario.id}" >${horario.dia}-${horario.horaInicio}-${horario.horaFin}</option>
+            </c:forEach>
+        </select>					        								
+		                    </div>		 
+		                </div>		          
+
+     		                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+	
+                                            <script> 
+                                            	$(".js-example-basic-multiple").select2({
+                                                    placeholder: {
+	                                                    id: 0,
+	                                                    text: "Seleccione un Horario"
+                                                    },
+                                                    dropdownParent: $('#medicoModal')
+													});
+                                             </script>
+						
+						
+						
                           <div class="card w-100" >
 							  <h5 class="card-header">Usuario</h5>
 							  <div class="card-body">
@@ -378,7 +448,7 @@
 						   		<label for="email">Clave:</label>	
 						   	</div>	
 						    <div class="col-sm-8">
-						    <input type="password" class="form-control" id="contraseña" name="contraseña" value="${usuario.contraseña}" required />
+						    <input type="password" class="form-control" id="contraseÃ±a" name="contraseÃ±a" value="${usuario.contraseÃ±a}" required />
 						 					    	
 						    </div>
 						   </div>
@@ -406,13 +476,13 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar EliminaciÃ³n</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ¿Está seguro que desea eliminar este médico?
+                Â¿EstÃ¡ seguro que desea eliminar este mÃ©dico?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -437,7 +507,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                ¿Está seguro que desea dar de alta a este médico?
+                Â¿EstÃ¡ seguro que desea dar de alta a este mÃ©dico?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -506,7 +576,7 @@
         telefonoInput.addEventListener('input', () => {
             let value = telefonoInput.value;
             
-            // Permitir sólo números y el símbolo '+'
+            // Permitir sÃ³lo nÃºmeros y el sÃ­mbolo '+'
             value = value.replace(/[^0-9+]/g, '');
             
             // Asegurarse de que empiece con '+'
@@ -514,7 +584,7 @@
                 value = '+' + value.replace(/\+/g, '');
             }
             
-            // Limitar a un máximo de 10 dígitos después del '+'
+            // Limitar a un mÃ¡ximo de 10 dÃ­gitos despuÃ©s del '+'
             const digits = value.substring(1).replace(/\D/g, '').substring(0, 10);
             telefonoInput.value = '+' + digits;
         });
@@ -524,7 +594,7 @@
 
             if (!/^\+\d{10}$/.test(telefonoValue)) {
                 event.preventDefault();
-                alert('El número de teléfono debe comenzar con "+" y tener exactamente 10 dígitos.');
+                alert('El nÃºmero de telÃ©fono debe comenzar con "+" y tener exactamente 10 dÃ­gitos.');
             }
         });
     });

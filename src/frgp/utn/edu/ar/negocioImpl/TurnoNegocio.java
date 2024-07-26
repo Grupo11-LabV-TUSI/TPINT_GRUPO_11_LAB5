@@ -8,8 +8,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import frgp.utn.edu.ar.dao.IDaoTurno;
+import frgp.utn.edu.ar.entidad.Especialidad;
+import frgp.utn.edu.ar.entidad.Horario;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Turno;
+import frgp.utn.edu.ar.enums.EDiaHorario;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocio.ITurnoNegocio;
 
 @Service
@@ -74,8 +78,8 @@ public class TurnoNegocio implements ITurnoNegocio {
 
 	@Override
 	public boolean existeTurno(LocalDate fecha, LocalTime hora, Long medicoId) {
-	    List<Turno> turnos = daoTurno.buscarTurnosPorFechaHoraYMedico(fecha, hora, medicoId);
-	    return !turnos.isEmpty();
+		List<Turno> turnos = daoTurno.buscarTurnosPorFechaHoraYMedico(fecha, hora, medicoId);
+		return !turnos.isEmpty();
 	}
 
 	@Override
@@ -83,6 +87,26 @@ public class TurnoNegocio implements ITurnoNegocio {
 		return daoTurno.buscarTurnosPorMedico(medico);
 	}
 
+	@Override
+	public long contarTurnosEspecialidadEntreFechas(Especialidad especialidad, LocalDate fechaInicio,
+			LocalDate fechaFin) {
+		return daoTurno.contarTurnosEspecialidadEntreFechas(especialidad, fechaInicio, fechaFin);
+	}
+
+	@Override
+	public long contarTurnosMedicoFechaEstado(Medico medico, LocalDate fechaInicio, LocalDate fechaFin,
+			EEstadoTurno estadoTurno) {
+		return daoTurno.contarTurnosMedicoFechaEstado(medico, fechaInicio, fechaFin, estadoTurno);
+	}
 	
+	@Override
+	public List<LocalTime> buscarHorasDeTurnosPorFechaYMedico(LocalDate fecha, Long matricula){
+		return daoTurno.buscarHorasDeTurnosPorFechaYMedico(fecha, matricula);
+	}
+	
+	@Override
+	public List<Horario> buscarHorarioPorMedicoYDia(Long medicoId, EDiaHorario dia){
+		return daoTurno.buscarHorarioPorMedicoYDia(medicoId, dia);
+	}
 
 }

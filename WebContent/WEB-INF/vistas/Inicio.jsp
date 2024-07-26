@@ -77,15 +77,16 @@
 				<c:when test="${usuarioIngresado.getUsuario().equals('Admin')}">
 					<p>Bienvenido administrador ${usuarioIngresado.getUsuario() }</p>
 					<section class="row justify-content-center pt-3 px-3">
+						
 						<fieldset>
 							<legend>ABML Pacientes</legend>
 							<form action="ABML_paciente.html" method="get">
 							
 							
 							
-							<input type="submit" name="btnVerPaciente" value="IR" class="btn btn-success"> 
+							<input type="submit" name="btnVerPaciente" value="Ir a ABML pacientes" class="btn btn-success"> 
 							</form>
-							<table id="table_id_pacientes_admin" class="display" summary="Los pacientes registrados en la Clinica">
+							<table id="table_id_pacientes_admin" class="table table-striped" summary="Los pacientes registrados en la Clinica">
 								<caption>
 		    						Un listado de los pacientes registrados en la Clinica
 		  						</caption>
@@ -132,9 +133,9 @@
 						<fieldset>
 							<legend>ABML Medicos</legend>
 											<form action="ABM_medico.html" method="get">
-												<input type="submit" name="btnVerTurno" value="IR" class="btn btn-success"> 
+												<input type="submit" name="btnVerTurno" value="Ir a ABML Medicos" class="btn btn-success"> 
 											</form>
-							<table id="table_id_medicos_admin" class="display" summary="Los medicos registrados en la Clinica">
+							<table id="table_id_medicos_admin" class="table table-striped" summary="Los medicos registrados en la Clinica">
 								<caption>
 		    						Un listado de los medicos registrados en la Clinica
 		  						</caption>
@@ -157,7 +158,8 @@
 							    	<c:forEach items="${listaMedicos}" var="medico">
 								        <tr>
 								        	<form action="ver_medico.html" method="get">
-								        		<td> <input type="submit" name="btnVerMedico" value="Ver" class="bg-warning"> </td>
+								        		<!-- <td> <input type="submit" name="btnVerMedico" value="Ver" class="bg-warning"> </td>  -->
+								        		<td></td>
 									            <td> ${medico.getMatricula()} <input type="hidden" name="medico" value="${medico}"> </td>
 									            <td> ${medico.getNombre()} </td>
 									            <td> ${medico.getApellido()} </td>
@@ -192,9 +194,9 @@
 							
 							
 							
-							<input type="submit" name="btnVerTurno" value="IR" class="btn btn-success"> 
+							<input type="submit" name="btnVerTurno" value="Ir a Turnos" class="btn btn-success"> 
 							</form>
-							<table id="table_id_turnos_admin" class="display"s summary="Los medicos registrados en la Clinica">
+							<table id="table_id_turnos_admin" class="table table-striped" summary="Los medicos registrados en la Clinica">
 								<caption>
 		    						Un listado de los turnos registrados en la Clinica
 		  						</caption>
@@ -237,7 +239,10 @@
 					<section class="row justify-content-center pt-3 px-3">
 						<fieldset>
 							<legend>REPORTE/ESTADISTICA/INFORME Turnos</legend>
-							<table id="table_id_estadisticasTurno_admin" class="display" summary="Los medicos registrados en la Clinica">
+							<form action="MenuInformes.html" method="post" >
+								  <button type="submit" class="btn btn-success">Ir a Reportes</button>
+							</form>
+							<table id="table_id_estadisticasTurno_admin" class="table table-striped" summary="Los medicos registrados en la Clinica">
 								<caption>
 		    						Un listado de los turnos registrados en la Clinica
 		  						</caption>
@@ -257,8 +262,10 @@
 							    <tbody>
 							    	<c:forEach items="${listaTurnos}" var="turno">
 								        <tr>
+								      
 								        	<form action="ver_turno.html" method="get">
-								        		<td> <input type="submit" name="btnVerTurno" value="Ver" class="bg-warning"> </td>
+								        	<!-- <td> <input type="submit" name="btnVerTurno" value="Ver" class="bg-warning"> </td>  -->
+								        		<td></td>
 									            <td> ${turno.getId()} <input type="hidden" name="turno" value="${turno}"> </td>
 									            <td> ${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()} </td>
 									            <td> ${turno.getPaciente().getApellido()} </td>
@@ -280,13 +287,16 @@
 						<p>Bienvenido doctor</p>
 						<fieldset>
 					        <legend>ABML Turnos</legend>
-					        <table id="table_id_turnos_medic" class="display" summary="Los turnos registrados en la Clínica">
+					        
+						
+					        <table id="table_id_turnos_medic" class="table table-striped" summary="Los turnos registrados en la Clínica">
 					            <caption>Un listado de los turnos registrados en la Clínica</caption>
 					            <thead>
 					                <tr>
 					                    <th></th>
 					                    <th>ID</th>
 					                    <th>MÉDICO</th>
+					                    <th>DNI PACIENTE</th>
 					                    <th>PACIENTE</th>
 					                    <th>FECHA</th>
 					                    <th>HORA</th>
@@ -304,6 +314,7 @@
 					                                    <td><input type="submit" name="btnVerTurno" value="Ver" class="btn bg-warning"></td>
 					                                    <td>${turno.getId()}</td>
 					                                    <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
+					                                    <td>${turno.getPaciente().getDni()}</td>
 					                                    <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
 					                                    <td>${turno.getFecha()}</td>
 					                                    <td>${turno.getHora()}</td>
@@ -322,6 +333,7 @@
 					                                        <td><button type="button" onclick="mostrarDetalleTurno('${turno.id}', '${turno.medico.nombre} ${turno.medico.apellido}', '${turno.paciente.nombre} ${turno.paciente.apellido}', '${turno.fecha}', '${turno.hora}', '${turno.observacion}', '${turno.paciente.direccion}', '${turno.paciente.localidad}', '${turno.paciente.provincia}', '${turno.paciente.email}', '${turno.paciente.telefono}')" class="btn bg-warning">Ver</button></td>
 					                                        <td>${turno.getId()}</td>
 					                                        <td>${turno.getMedico().getNombre()} - ${turno.getMedico().getApellido()}</td>
+					                                        <td>${turno.getPaciente().getDni()}</td>
 					                                        <td>${turno.getPaciente().getNombre()} - ${turno.getPaciente().getApellido()}</td>
 					                                        <td>${turno.getFecha()}</td>
 					                                        <td>${turno.getHora()}</td>

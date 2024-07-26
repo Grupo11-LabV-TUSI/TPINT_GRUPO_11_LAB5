@@ -14,22 +14,28 @@ import org.springframework.context.annotation.Scope;
 import frgp.utn.edu.ar.daoImpl.Conexion;
 import frgp.utn.edu.ar.daoImpl.DaoEspecialidad;
 import frgp.utn.edu.ar.daoImpl.DaoHorario;
+import frgp.utn.edu.ar.daoImpl.DaoLocalidad;
 import frgp.utn.edu.ar.daoImpl.DaoMedico;
 import frgp.utn.edu.ar.daoImpl.DaoPaciente;
+import frgp.utn.edu.ar.daoImpl.DaoProvincia;
 import frgp.utn.edu.ar.daoImpl.DaoTurno;
 import frgp.utn.edu.ar.daoImpl.DaoUsuario;
 import frgp.utn.edu.ar.entidad.Especialidad;
 import frgp.utn.edu.ar.entidad.Horario;
+import frgp.utn.edu.ar.entidad.Localidad;
 import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
+import frgp.utn.edu.ar.entidad.Provincia;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
 import frgp.utn.edu.ar.enums.EDiaHorario;
 import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.HorarioNegocio;
+import frgp.utn.edu.ar.negocioImpl.LocalidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
 import frgp.utn.edu.ar.negocioImpl.PacienteNegocio;
+import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 import frgp.utn.edu.ar.negocioImpl.TurnoNegocio;
 import frgp.utn.edu.ar.negocioImpl.UsuarioNegocio;
 
@@ -45,11 +51,8 @@ import frgp.utn.edu.ar.negocioImpl.ProvinciaNegocio;
 @Configuration
 @ComponentScan(basePackages = "utnfrgp")
 public class Config {
-	
-	
 	private static final Provincia Provincia = null;
-	
-	
+
 	/** BEANS CAPAS */
 	/* Bean Conexion */
 	@Bean
@@ -113,8 +116,7 @@ public class Config {
 		return daoTurno;
 	}
 	
-	
-/* Bean DaoProvincia*/
+	/* Bean DaoProvincia*/
 	
 	@Bean
 	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -190,7 +192,6 @@ public class Config {
 		return turnoNegocio;
 	}
 	
-	
 	/* Bean Provincia Negocio */
 	@Bean
 	@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
@@ -208,8 +209,6 @@ public class Config {
 		localidadNegocio.setDaoLocalidad(DaoLocalidadBean());
 		return localidadNegocio;
 	}
-	
-	
 	
 
 	/** BEANS ENTIDADES */
@@ -260,7 +259,6 @@ public class Config {
 				EEstadoTurno.Pendiente, true);
 	}
 	
-
 	/* Los Beans de provincia */
 	@Bean
 	@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -279,5 +277,4 @@ public class Config {
 	
 	
 	
-
 }

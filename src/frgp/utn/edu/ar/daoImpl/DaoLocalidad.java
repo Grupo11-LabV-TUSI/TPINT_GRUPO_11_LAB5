@@ -1,4 +1,3 @@
-
 package frgp.utn.edu.ar.daoImpl;
 
 import java.util.List;
@@ -58,7 +57,7 @@ public class DaoLocalidad implements IDaoLocalidad {
 		
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();
-		Localidad localidad = (Localidad) session.get(Localidad.class, idLocalidad);
+		Localidad localidad = (Localidad)session.get(Localidad.class, idLocalidad);
 		tx = session.getTransaction();
 		tx.commit();
 		session.close();
@@ -72,7 +71,7 @@ public class DaoLocalidad implements IDaoLocalidad {
 	public List<Localidad> readAll() {
 		Session session = conexion.abrirConexion();
 		Transaction tx = session.beginTransaction();
-		List<Localidad> provincias = session.createQuery("FROM Localidad").list();
+		List<Localidad> provincias = (List<Localidad>)session.createQuery("FROM Localidad").list();
 		tx = session.getTransaction();
 		tx.commit();
 		session.close();

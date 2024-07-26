@@ -1,5 +1,7 @@
 package frgp.utn.edu.ar.TPINT_GRUPO_11_LAB5;
 
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -11,6 +13,7 @@ import frgp.utn.edu.ar.entidad.Medico;
 import frgp.utn.edu.ar.entidad.Paciente;
 import frgp.utn.edu.ar.entidad.Turno;
 import frgp.utn.edu.ar.entidad.Usuario;
+import frgp.utn.edu.ar.enums.EEstadoTurno;
 import frgp.utn.edu.ar.negocioImpl.EspecialidadNegocio;
 import frgp.utn.edu.ar.negocioImpl.HorarioNegocio;
 import frgp.utn.edu.ar.negocioImpl.MedicoNegocio;
@@ -71,7 +74,7 @@ public class App2 {
 		MedicoNegocio medicoNegocio = (MedicoNegocio) appContext.getBean("MedicoNegocioBean");
 		Medico medico = (Medico) appContext.getBean("MedicoBean");
 		System.err.println("Listado de tabla Medico");
-		System.out.println(medicoNegocio.readOne(1L));
+	//	System.out.println(medicoNegocio.readOne(1L));
 		List<Medico> listaMedico = medicoNegocio.readAll();
 		for (Medico aux : listaMedico) {
 			System.out.println(aux.toString());
@@ -86,7 +89,7 @@ public class App2 {
 		for (Turno aux : listaTurno) {
 			System.out.println(aux.toString());
 		}
-
+		
 	}
 
 }
